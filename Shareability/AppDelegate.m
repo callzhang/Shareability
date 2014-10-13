@@ -7,9 +7,13 @@
 //
 
 #import "AppDelegate.h"
+#import "WXApi.h"
+#import "WXApiObject.h"
+#import "SendMsgToWechatMgr.h"
+#import "ViewController.h"
 
 @interface AppDelegate ()
-
+@property (nonatomic) SendMsgToWechatMgr *WXManager;
 @end
 
 @implementation AppDelegate
@@ -17,6 +21,15 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    UIViewController *controller = [[ViewController alloc] initWithNibName:nil bundle:nil];
+    _WXManager = [[SendMsgToWechatMgr alloc] init];
+    _WXManager.viewController = controller;
+    self.window.rootViewController = controller;
+    [self.window makeKeyAndVisible];
+    
+    // Register your app
+    [WXApi registerApp:@"wx166b37c35f3f6d9a" withDescription:@"demo 2.0"];
     return YES;
 }
 
@@ -40,6 +53,16 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+    return  [WXApi handleOpenURL:url delegate:_WXManager];
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    return  [WXApi handleOpenURL:url delegate:_WXManager];
 }
 
 @end
