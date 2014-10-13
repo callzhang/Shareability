@@ -12,8 +12,7 @@
 #import "SendMsgToWeChatViewController.h"
 #import "RespForWeChatViewController.h"
 
-@interface SendMsgToWechatMgr : NSObject <sendMsgToWeChatViewDelegate,
-UIAlertViewDelegate, WXApiDelegate, RespForWeChatViewDelegate>
+@interface SendMsgToWechatMgr : NSObject <sendMsgToWeChatViewDelegate, UIAlertViewDelegate, WXApiDelegate, RespForWeChatViewDelegate>
 {
     enum WXScene _scene;
 }

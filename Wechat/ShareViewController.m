@@ -52,9 +52,13 @@
                 self.image = [UIImage imageWithData:item];
             }];
         }
-        
         [self validateContent];
     }
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+        // Register your app
+        [WXApi registerApp:@"wx166b37c35f3f6d9a" withDescription:@"Shareability"];
+    });
 }
 
 - (void)didSelectPost {
@@ -70,8 +74,17 @@
     {
         NSLog(@"List of properties: %@", item);
     }];
-    // Register your app
-    [WXApi registerApp:@"wx166b37c35f3f6d9a" withDescription:@"Shareability"];
+    
+    if (!self.image) {
+        for (UIView *view in self.loadPreviewView.subviews) {
+            if ([view isKindOfClass:[UIImageView class]]) {
+                UIImage *img = [(UIImageView *)view image];
+                self.image = img;
+                break;
+            }
+        }
+    }
+    
     //send msg
     WXMediaMessage *message = [WXMediaMessage message];
     message.title = self.contentText;
@@ -106,11 +119,11 @@
 
 
 - (NSArray *)configurationItems{
-    SLComposeSheetConfigurationItem *conversation = [[SLComposeSheetConfigurationItem alloc] init];
-    conversation.title = @"Conversation";
-    SLComposeSheetConfigurationItem *moments = [SLComposeSheetConfigurationItem new];
-    moments.title = @"Moments";
-    return @[conversation, moments];
+    SLComposeSheetConfigurationItem *types = [[SLComposeSheetConfigurationItem alloc] init];
+    types.title = @"Types";
+    return @[types];
 }
+
+
 
 @end

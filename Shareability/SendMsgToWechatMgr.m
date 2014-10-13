@@ -18,7 +18,7 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (alertView.tag == 1000) {
-        RespForWeChatViewController* controller = [[RespForWeChatViewController alloc] autorelease];
+        RespForWeChatViewController* controller = [[RespForWeChatViewController alloc] initWithNibName:nil bundle:nil];
         controller.delegate = self;
         [self.viewController presentModalViewController:controller animated:YES];
     }
@@ -35,7 +35,6 @@
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle message:strMsg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         alert.tag = 1000;
         [alert show];
-        [alert release];
     }
     else if([req isKindOfClass:[ShowMessageFromWXReq class]])
     {
@@ -49,7 +48,6 @@
         
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle message:strMsg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alert show];
-        [alert release];
     }
     else if([req isKindOfClass:[LaunchFromWXReq class]])
     {
@@ -59,7 +57,6 @@
         
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle message:strMsg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alert show];
-        [alert release];
     }
 }
 
@@ -77,13 +74,12 @@
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil, nil];
         [alert show];
-        [alert release];
     }
 }
 
 - (void) sendTextContent
 {
-    SendMessageToWXReq* req = [[[SendMessageToWXReq alloc] init]autorelease];
+    SendMessageToWXReq* req = [[SendMessageToWXReq alloc] init];
     req.text = @"Beneath it were the words: Stay Hungry. Stay Foolish. It was their farewell message as they signed off. Stay Hungry. Stay Foolish.";
     req.bText = YES;
     req.scene = _scene;
@@ -93,7 +89,7 @@
 
 -(void) RespTextContent
 {
-    GetMessageFromWXResp* resp = [[[GetMessageFromWXResp alloc] init] autorelease];
+    GetMessageFromWXResp* resp = [[GetMessageFromWXResp alloc] init] ;
     resp.text = @"Beneath it were the words: Stay Hungry. Stay Foolish. It was their farewell message as they signed off. Stay Hungry. Stay Foolish.";
     resp.bText = YES;
     
@@ -111,7 +107,7 @@
     
     message.mediaObject = ext;
     
-    SendMessageToWXReq* req = [[[SendMessageToWXReq alloc] init]autorelease];
+    SendMessageToWXReq* req = [[SendMessageToWXReq alloc] init];
     req.bText = NO;
     req.message = message;
     req.scene = _scene;
@@ -128,7 +124,7 @@
     ext.imageData = [NSData dataWithContentsOfFile:filePath];
     message.mediaObject = ext;
     
-    GetMessageFromWXResp* resp = [[[GetMessageFromWXResp alloc] init] autorelease];
+    GetMessageFromWXResp* resp = [[GetMessageFromWXResp alloc] init] ;
     resp.message = message;
     resp.bText = NO;
     
@@ -147,7 +143,7 @@
     
     message.mediaObject = ext;
     
-    SendMessageToWXReq* req = [[[SendMessageToWXReq alloc] init]autorelease];
+    SendMessageToWXReq* req = [[SendMessageToWXReq alloc] init];
     req.bText = NO;
     req.message = message;
     req.scene = _scene;
@@ -167,7 +163,7 @@
     
     message.mediaObject = ext;
     
-    GetMessageFromWXResp* resp = [[[GetMessageFromWXResp alloc] init] autorelease];
+    GetMessageFromWXResp* resp = [[GetMessageFromWXResp alloc] init] ;
     resp.message = message;
     resp.bText = NO;
     
@@ -186,7 +182,7 @@
     
     message.mediaObject = ext;
     
-    SendMessageToWXReq* req = [[[SendMessageToWXReq alloc] init]autorelease];
+    SendMessageToWXReq* req = [[SendMessageToWXReq alloc] init];
     req.bText = NO;
     req.message = message;
     req.scene = _scene;
@@ -206,7 +202,7 @@
     
     message.mediaObject = ext;
     
-    GetMessageFromWXResp* resp = [[[GetMessageFromWXResp alloc] init] autorelease];
+    GetMessageFromWXResp* resp = [[GetMessageFromWXResp alloc] init] ;
     resp.message = message;
     resp.bText = NO;
     
@@ -225,7 +221,7 @@
     
     message.mediaObject = ext;
     
-    SendMessageToWXReq* req = [[[SendMessageToWXReq alloc] init]autorelease];
+    SendMessageToWXReq* req = [[SendMessageToWXReq alloc] init];
     req.bText = NO;
     req.message = message;
     req.scene = _scene;
@@ -245,7 +241,7 @@
     
     message.mediaObject = ext;
     
-    GetMessageFromWXResp* resp = [[[GetMessageFromWXResp alloc] init] autorelease];
+    GetMessageFromWXResp* resp = [[GetMessageFromWXResp alloc] init] ;
     resp.message = message;
     resp.bText = NO;
     
@@ -273,7 +269,7 @@
     
     message.mediaObject = ext;
     
-    SendMessageToWXReq* req = [[[SendMessageToWXReq alloc] init]autorelease];
+    SendMessageToWXReq* req = [[SendMessageToWXReq alloc] init];
     req.bText = NO;
     req.message = message;
     req.scene = _scene;
@@ -301,7 +297,7 @@
     
     message.mediaObject = ext;
     
-    GetMessageFromWXResp* resp = [[[GetMessageFromWXResp alloc] init] autorelease];
+    GetMessageFromWXResp* resp = [[GetMessageFromWXResp alloc] init] ;
     resp.message = message;
     resp.bText = NO;
     
@@ -319,7 +315,7 @@
     
     message.mediaObject = ext;
     
-    SendMessageToWXReq* req = [[[SendMessageToWXReq alloc] init]autorelease];
+    SendMessageToWXReq* req = [[SendMessageToWXReq alloc] init];
     req.bText = NO;
     req.message = message;
     req.scene = _scene;
@@ -336,7 +332,7 @@
     ext.emoticonData = [NSData dataWithContentsOfFile:filePath];
     message.mediaObject = ext;
     
-    GetMessageFromWXResp* resp = [[[GetMessageFromWXResp alloc] init] autorelease];
+    GetMessageFromWXResp* resp = [[GetMessageFromWXResp alloc] init] ;
     resp.message = message;
     resp.bText = NO;
     
@@ -354,7 +350,7 @@
     
     message.mediaObject = ext;
     
-    SendMessageToWXReq* req = [[[SendMessageToWXReq alloc] init]autorelease];
+    SendMessageToWXReq* req = [[SendMessageToWXReq alloc] init];
     req.bText = NO;
     req.message = message;
     req.scene = _scene;
@@ -371,7 +367,7 @@
     ext.emoticonData = [NSData dataWithContentsOfFile:filePath] ;
     message.mediaObject = ext;
     
-    GetMessageFromWXResp* resp = [[[GetMessageFromWXResp alloc] init] autorelease];
+    GetMessageFromWXResp* resp = [[GetMessageFromWXResp alloc] init] ;
     resp.message = message;
     resp.bText = NO;
     
@@ -387,7 +383,7 @@
     ext.emoticonData = [NSData dataWithContentsOfFile:filePath];
     message.mediaObject = ext;
     
-    GetMessageFromWXResp* resp = [[[GetMessageFromWXResp alloc] init] autorelease];
+    GetMessageFromWXResp* resp = [[GetMessageFromWXResp alloc] init] ;
     resp.message = message;
     resp.bText = NO;
     
@@ -408,7 +404,7 @@
     
     message.mediaObject = ext;
     
-    SendMessageToWXReq* req = [[[SendMessageToWXReq alloc] init]autorelease];
+    SendMessageToWXReq* req = [[SendMessageToWXReq alloc] init];
     req.bText = NO;
     req.message = message;
     req.scene = _scene;
@@ -430,7 +426,7 @@
     
     message.mediaObject = ext;
     
-    GetMessageFromWXResp* resp = [[[GetMessageFromWXResp alloc] init] autorelease];
+    GetMessageFromWXResp* resp = [[GetMessageFromWXResp alloc] init] ;
     resp.message = message;
     resp.bText = NO;
     

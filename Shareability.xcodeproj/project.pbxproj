@@ -20,6 +20,8 @@
 		9BDBA71C19EA202300EF194D /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BDBA71919EA202300EF194D /* libWeChatSDK.a */; };
 		9BDBA73B19EAC58200EF194D /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BDBA71919EA202300EF194D /* libWeChatSDK.a */; };
 		9BDBA73E19EB976500EF194D /* SendMsgToWechatMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BDBA73D19EB976500EF194D /* SendMsgToWechatMgr.m */; };
+		9BDBA74219EB9B7900EF194D /* RespForWeChatViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9BDBA74119EB9B7800EF194D /* RespForWeChatViewController.mm */; };
+		9BDBA74519EB9B9B00EF194D /* SendMsgToWeChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BDBA74419EB9B9B00EF194D /* SendMsgToWeChatViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +86,10 @@
 		9BDBA71B19EA202300EF194D /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
 		9BDBA73C19EB976500EF194D /* SendMsgToWechatMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendMsgToWechatMgr.h; sourceTree = "<group>"; };
 		9BDBA73D19EB976500EF194D /* SendMsgToWechatMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendMsgToWechatMgr.m; sourceTree = "<group>"; };
+		9BDBA74019EB9B7800EF194D /* RespForWeChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RespForWeChatViewController.h; sourceTree = "<group>"; };
+		9BDBA74119EB9B7800EF194D /* RespForWeChatViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RespForWeChatViewController.mm; sourceTree = "<group>"; };
+		9BDBA74319EB9B9B00EF194D /* SendMsgToWeChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendMsgToWeChatViewController.h; sourceTree = "<group>"; };
+		9BDBA74419EB9B9B00EF194D /* SendMsgToWeChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendMsgToWeChatViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +147,10 @@
 				9B87B6A219E8E7A100F1C01C /* AppDelegate.m */,
 				9BDBA73C19EB976500EF194D /* SendMsgToWechatMgr.h */,
 				9BDBA73D19EB976500EF194D /* SendMsgToWechatMgr.m */,
+				9BDBA74319EB9B9B00EF194D /* SendMsgToWeChatViewController.h */,
+				9BDBA74419EB9B9B00EF194D /* SendMsgToWeChatViewController.m */,
+				9BDBA74019EB9B7800EF194D /* RespForWeChatViewController.h */,
+				9BDBA74119EB9B7800EF194D /* RespForWeChatViewController.mm */,
 				9B87B6A419E8E7A100F1C01C /* ViewController.h */,
 				9B87B6A519E8E7A100F1C01C /* ViewController.m */,
 				9B87B6A719E8E7A100F1C01C /* Main.storyboard */,
@@ -341,6 +351,8 @@
 			files = (
 				9B87B6A619E8E7A100F1C01C /* ViewController.m in Sources */,
 				9BDBA73E19EB976500EF194D /* SendMsgToWechatMgr.m in Sources */,
+				9BDBA74219EB9B7900EF194D /* RespForWeChatViewController.mm in Sources */,
+				9BDBA74519EB9B9B00EF194D /* SendMsgToWeChatViewController.m in Sources */,
 				9B87B6A319E8E7A100F1C01C /* AppDelegate.m in Sources */,
 				9B87B6A019E8E7A100F1C01C /* main.m in Sources */,
 			);
