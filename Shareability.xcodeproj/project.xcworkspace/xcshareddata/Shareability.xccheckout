@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>9EDADE7E-5CB9-4ACA-80AE-27BB548F9FE9</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Shareability</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>35B57E9FB94F29D5E63CBF06D9F9FC8AB3506235</key>
+		<string>https://github.com/callzhang/Shareability.git</string>
+		<key>DA8DC18DA8B66C57662FC5914158CB3A50454A1B</key>
+		<string>https://github.com/callzhang/Shareability.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Shareability.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>35B57E9FB94F29D5E63CBF06D9F9FC8AB3506235</key>
+		<string>../../..</string>
+		<key>DA8DC18DA8B66C57662FC5914158CB3A50454A1B</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/callzhang/Shareability.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>DA8DC18DA8B66C57662FC5914158CB3A50454A1B</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>35B57E9FB94F29D5E63CBF06D9F9FC8AB3506235</string>
+			<key>IDESourceControlWCCName</key>
+			<string></string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>DA8DC18DA8B66C57662FC5914158CB3A50454A1B</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Shareability</string>
+		</dict>
+	</array>
+</dict>
+</plist>

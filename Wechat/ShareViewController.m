@@ -15,6 +15,7 @@
 @property (nonatomic) NSURL *url;
 @property (nonatomic) NSString *content;
 @property (nonatomic) UIImage *image;
+@property (nonatomic) NSString *text;
 @end
 
 @implementation ShareViewController
@@ -41,19 +42,27 @@
 //        {
 //            //
 //        }];
-        if ([provider hasItemConformingToTypeIdentifier:(__bridge NSString *)kUTTypeURL]) {
-            [provider loadItemForTypeIdentifier:(__bridge NSString *)kUTTypeURL options:nil completionHandler:^(NSURL *item, NSError *error) {
+        if ([provider hasItemConformingToTypeIdentifier:( NSString *)kUTTypeURL]) {
+            [provider loadItemForTypeIdentifier:( NSString *)kUTTypeURL options:nil completionHandler:^(NSURL *item, NSError *error) {
                 self.url = item;
             }];
         }
         
-        if ([provider hasItemConformingToTypeIdentifier:(__bridge NSString *)kUTTypeImage]) {
-            [provider loadItemForTypeIdentifier:(__bridge NSString *)kUTTypeImage options:nil completionHandler:^(NSData *item, NSError *error) {
-                self.image = [UIImage imageWithData:item];
+        if ([provider hasItemConformingToTypeIdentifier:( NSString *)kUTTypeImage]) {
+            [provider loadItemForTypeIdentifier:( NSString *)kUTTypeImage options:nil completionHandler:^(UIImage *item, NSError *error) {
+                self.image = item;
             }];
         }
+        
+        if ([provider hasItemConformingToTypeIdentifier:( NSString *)kUTTypeText]) {
+            [provider loadItemForTypeIdentifier:( NSString *)kUTTypeText options:nil completionHandler:^(NSString *item, NSError *error) {
+                self.text = item;
+            }];
+        }
+        
         [self validateContent];
     }
+    
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
         // Register your app
@@ -69,26 +78,20 @@
     NSArray *items = context.inputItems;
     NSExtensionItem *inputItem = items.firstObject;
     NSItemProvider *itemProvider = inputItem.attachments.firstObject;
-    [itemProvider loadItemForTypeIdentifier:(__bridge NSString *)kUTTypePropertyList options:nil
+    [itemProvider loadItemForTypeIdentifier:(NSString *)kUTTypePropertyList options:nil
                           completionHandler:^(NSDictionary *item, NSError *error)
     {
         NSLog(@"List of properties: %@", item);
     }];
     
-    if (!self.image) {
-        for (UIView *view in self.loadPreviewView.subviews) {
-            if ([view isKindOfClass:[UIImageView class]]) {
-                UIImage *img = [(UIImageView *)view image];
-                self.image = img;
-                break;
-            }
-        }
-    }
     
+    if (!self.image) {
+        self.image = [self getImageFromSubviews:self.view];
+    }
     //send msg
     WXMediaMessage *message = [WXMediaMessage message];
     message.title = self.contentText;
-    message.description = self.url.absoluteString;
+    message.description = self.text;
     [message setThumbImage:self.image];
     
     WXWebpageObject *ext = [WXWebpageObject object];
@@ -103,7 +106,7 @@
     
     [WXApi sendReq:req];
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         
         //complete
         NSExtensionItem *outputItem = [inputItem copy];
@@ -115,6 +118,22 @@
         [self.extensionContext completeRequestReturningItems:outputItems completionHandler:nil];
     });
     
+}
+
+- (UIImage *)getImageFromSubviews:(UIView *)view{
+    UIImage *img;
+    for (UIView *subView in view.subviews) {
+        if ([subView isKindOfClass:[UIImageView class]]) {
+            img = [(UIImageView *)subView image];
+            
+        }else if (subView.subviews){
+            img = [self getImageFromSubviews:subView];
+        }
+        if (img) {
+            return img;
+        }
+    }
+    return nil;
 }
 
 

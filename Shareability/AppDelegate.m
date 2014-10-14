@@ -21,13 +21,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    UIViewController *controller = [[ViewController alloc] initWithNibName:nil bundle:nil];
-    self.window.rootViewController = controller;
-    [self.window makeKeyAndVisible];
+    //self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    //UIViewController *controller = [[ViewController alloc] initWithNibName:nil bundle:nil];
+    //self.window.rootViewController = controller;
+    //[self.window makeKeyAndVisible];
     
     _WXManager = [[SendMsgToWechatMgr alloc] init];
-    _WXManager.viewController = controller;
+    //_WXManager.viewController = controller;
     // Register your app
     [WXApi registerApp:@"wx166b37c35f3f6d9a" withDescription:@"demo 2.0"];
     return YES;
