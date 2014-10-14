@@ -24,6 +24,13 @@
 	<string>1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>wx166b37c35f3f6d9a</string>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>NSExtension</key>
@@ -32,9 +39,9 @@
 		<dict>
 			<key>NSExtensionActivationRule</key>
 			<string>TRUEPREDICATE</string>
-			<key>NSExtensionActivationSupportsWebURLWithMaxCount</key>
-			<integer>1</integer>
 			<key>NSExtensionActivationSupportsImageWithMaxCount</key>
+			<integer>1</integer>
+			<key>NSExtensionActivationSupportsWebURLWithMaxCount</key>
 			<integer>1</integer>
 		</dict>
 		<key>NSExtensionMainStoryboard</key>
