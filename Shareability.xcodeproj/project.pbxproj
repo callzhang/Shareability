@@ -17,6 +17,7 @@
 		9B87B6CD19E8EF7900F1C01C /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B87B6CC19E8EF7900F1C01C /* ShareViewController.m */; };
 		9B87B6CF19E8EF7900F1C01C /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B87B6CE19E8EF7900F1C01C /* MainInterface.storyboard */; };
 		9B87B6D219E8EF7900F1C01C /* Wechat.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 9B87B6C719E8EF7900F1C01C /* Wechat.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		9B89750519EF06D0004D75F3 /* ConfigTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B89750419EF06D0004D75F3 /* ConfigTableViewController.m */; };
 		9BDBA71C19EA202300EF194D /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BDBA71919EA202300EF194D /* libWeChatSDK.a */; };
 		9BDBA73B19EAC58200EF194D /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BDBA71919EA202300EF194D /* libWeChatSDK.a */; };
 		9BDBA73E19EB976500EF194D /* SendMsgToWechatMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BDBA73D19EB976500EF194D /* SendMsgToWechatMgr.m */; };
@@ -81,6 +82,8 @@
 		9B87B6CB19E8EF7900F1C01C /* ShareViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShareViewController.h; sourceTree = "<group>"; };
 		9B87B6CC19E8EF7900F1C01C /* ShareViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShareViewController.m; sourceTree = "<group>"; };
 		9B87B6CE19E8EF7900F1C01C /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
+		9B89750319EF06D0004D75F3 /* ConfigTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigTableViewController.h; sourceTree = "<group>"; };
+		9B89750419EF06D0004D75F3 /* ConfigTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigTableViewController.m; sourceTree = "<group>"; };
 		9BDBA71919EA202300EF194D /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
 		9BDBA71A19EA202300EF194D /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
 		9BDBA71B19EA202300EF194D /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
@@ -192,6 +195,8 @@
 			children = (
 				9B87B6CB19E8EF7900F1C01C /* ShareViewController.h */,
 				9B87B6CC19E8EF7900F1C01C /* ShareViewController.m */,
+				9B89750319EF06D0004D75F3 /* ConfigTableViewController.h */,
+				9B89750419EF06D0004D75F3 /* ConfigTableViewController.m */,
 				9B87B6CE19E8EF7900F1C01C /* MainInterface.storyboard */,
 				9B87B6C919E8EF7900F1C01C /* Supporting Files */,
 			);
@@ -371,6 +376,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B87B6CD19E8EF7900F1C01C /* ShareViewController.m in Sources */,
+				9B89750519EF06D0004D75F3 /* ConfigTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -16,6 +16,10 @@
 @property (nonatomic) NSString *content;
 @property (nonatomic) UIImage *image;
 @property (nonatomic) NSString *text;
+@property (nonatomic) NSString *title;
+@property (nonatomic) NSData *video;
+@property (nonatomic) NSData *audio;
+@property (nonatomic) SLComposeSheetConfigurationItem *selected;
 @end
 
 @implementation ShareViewController
@@ -36,30 +40,51 @@
 - (void)presentationAnimationDidFinish{
     NSExtensionItem *item = self.extensionContext.inputItems.firstObject;
     for (NSItemProvider *provider in item.attachments) {
-//        [provider loadItemForTypeIdentifier:(NSString *)kUTTypePropertyList
-//                                    options:nil
-//                          completionHandler:^(id<NSSecureCoding> item, NSError *error)
-//        {
-//            //
-//        }];
+		if ([provider hasItemConformingToTypeIdentifier:(NSString *)kUTTypePropertyList]) {
+			[provider loadItemForTypeIdentifier:(NSString *)kUTTypePropertyList
+										options:nil
+							  completionHandler:^(NSDictionary *item, NSError *error){
+				 NSLog(@"get property list from the host app: %@", item);
+			 }];
+		}
+		
         if ([provider hasItemConformingToTypeIdentifier:( NSString *)kUTTypeURL]) {
             [provider loadItemForTypeIdentifier:( NSString *)kUTTypeURL options:nil completionHandler:^(NSURL *item, NSError *error) {
                 self.url = item;
+				NSLog(@"Get url: %@", item);
             }];
         }
         
         if ([provider hasItemConformingToTypeIdentifier:( NSString *)kUTTypeImage]) {
             [provider loadItemForTypeIdentifier:( NSString *)kUTTypeImage options:nil completionHandler:^(UIImage *item, NSError *error) {
                 self.image = item;
+				NSLog(@"Get image");
             }];
         }
         
         if ([provider hasItemConformingToTypeIdentifier:( NSString *)kUTTypeText]) {
             [provider loadItemForTypeIdentifier:( NSString *)kUTTypeText options:nil completionHandler:^(NSString *item, NSError *error) {
                 self.text = item;
+				NSLog(@"Get text: %@", item);
             }];
         }
-        
+		
+		if ([provider hasItemConformingToTypeIdentifier:(NSString *)kUTTypeVideo]) {
+			[provider loadItemForTypeIdentifier:(NSString *)kUTTypeVideo options:nil completionHandler:^(NSData *item, NSError *error) {
+				self.video = item;
+				NSLog(@"Get video: %@", item);
+			}];
+		}
+		
+		if ([provider hasItemConformingToTypeIdentifier:(NSString *)kUTTypeAudio]) {
+			[provider loadItemForTypeIdentifier:(NSString *)kUTTypeAudio options:nil completionHandler:^(NSData *item, NSError *error) {
+				self.audio = item;
+				NSLog(@"Get audio: %@", item);
+			}];
+		}
+		
+		//get title first
+		self.title = self.contentText;
         [self validateContent];
     }
     
@@ -84,28 +109,80 @@
         NSLog(@"List of properties: %@", item);
     }];
     
-    
+	//get image
     if (!self.image) {
         self.image = [self getImageFromSubviews:self.view];
     }
+	
+	
     //send msg
-    WXMediaMessage *message = [WXMediaMessage message];
-    message.title = self.contentText;
-    message.description = self.text;
-    [message setThumbImage:self.image];
-    
-    WXWebpageObject *ext = [WXWebpageObject object];
-    ext.webpageUrl = self.url.absoluteString;
-    
-    message.mediaObject = ext;
-    
-    SendMessageToWXReq* req = [[SendMessageToWXReq alloc] init];
-    req.bText = NO;
-    req.message = message;
-    req.scene = WXSceneSession;
-    
-    [WXApi sendReq:req];
-    
+	//conversation
+	WXMediaMessage *message = [WXMediaMessage message];
+	if (!self.title) {
+		message.title = self.contentText;
+	}else{
+		if (self.text) {
+			message.description = [self.text stringByAppendingString:[NSString stringWithFormat:@"\n%@", self.contentText]];
+		}else{
+			message.description = self.contentText;
+		}
+		
+	}
+	
+	//thumbnail
+	if (self.image) {
+		UIImage *thumb = [self imageWithImage:self.image scaledToSize:CGSizeMake(100, 100)];
+		[message setThumbImage:thumb];
+	}
+	
+	//request
+	SendMessageToWXReq* req = [[SendMessageToWXReq alloc] init];
+	req.bText = NO;
+	req.message = message;
+	
+	//media
+	if (self.url) {
+		WXWebpageObject *ext = [WXWebpageObject object];
+		ext.webpageUrl = self.url.absoluteString;
+		message.mediaObject = ext;
+	}else if (self.image){
+		WXImageObject *ext = [WXImageObject object];
+		ext.imageData = UIImageJPEGRepresentation(self.image, 0.8);
+		message.mediaObject = ext;
+	}else if (self.video){
+		WXVideoObject *ext = [WXVideoObject object];
+		ext.videoUrl = @"http://www.youtube.com/watch?v=UF8uR6Z6KLc";
+		message.mediaObject = ext;
+	}else if (self.audio){
+		WXMusicObject *ext = [WXMusicObject object];
+		ext.musicUrl = @"http://voice.wechat.com/kitty.mp3";
+		ext.musicDataUrl = @"http://voice.wechat.com/kitty.mp3";
+		message.mediaObject = ext;
+	}
+	else{
+		req.bText = YES;
+	}
+	
+	
+	
+	
+	if ([self.selected.value isEqualToString:@"Send to conversation"]) {
+		req.scene = WXSceneSession;
+	}
+	else if ([self.selected.value isEqualToString:@"Post to moments"]) {
+		req.scene = WXSceneTimeline;
+	}
+	else if ([self.selected.value isEqualToString:@"Add to favorite"]) {
+		req.scene = WXSceneFavorite;
+	}
+	else{
+		req.scene = WXSceneSession;
+		NSLog(@"Unexpected selection");
+	}
+	
+	
+	[WXApi sendReq:req];
+	
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         
         //complete
@@ -124,8 +201,9 @@
     UIImage *img;
     for (UIView *subView in view.subviews) {
         if ([subView isKindOfClass:[UIImageView class]]) {
-            img = [(UIImageView *)subView image];
-            
+			if (subView.frame.size.height >10 && subView.frame.size.width > 10) {
+				img = [(UIImageView *)subView image];
+			}
         }else if (subView.subviews){
             img = [self getImageFromSubviews:subView];
         }
@@ -138,11 +216,64 @@
 
 
 - (NSArray *)configurationItems{
-    SLComposeSheetConfigurationItem *types = [[SLComposeSheetConfigurationItem alloc] init];
-    types.title = @"Types";
-    return @[types];
+	if (!self.selected) {
+		self.selected = [SLComposeSheetConfigurationItem new];
+		NSString *selection = selections[0];
+		NSArray *array = [selection componentsSeparatedByString:@" - "];
+		self.selected.title = array[0];
+		self.selected.value = array[1];
+		__block ShareViewController *blockSelf = self;
+		self.selected.tapHandler = ^{
+			[blockSelf pushConfigurationViewController:[blockSelf selectionViewController]];
+		};
+	}
+    return @[_selected];
 }
 
 
+- (UIViewController *)selectionViewController{
+	ConfigTableViewController *vc = [[ConfigTableViewController alloc] init];
+	vc.OptionNames = selections;
+	vc.delegate = self;
+	return vc;
+}
+
+//Config View Delegate Method
+-(void)didSelectOptionAtIndexPath:(NSIndexPath *)indexPath {
+	NSString *selection = selections[indexPath.row];
+	NSArray *array = [selection componentsSeparatedByString:@" - "];
+	self.selected.title = array[0];
+	self.selected.value = array[1];
+	[self popConfigurationViewController];
+}
+
+
+- (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)size
+{
+	if (!image) {
+		return nil;
+	}
+	if (image.size.width < size.width && image.size.height < size.height) {
+		return image;
+	}
+	CGFloat ratioW = size.width / image.size.width;
+	CGFloat ratioH = size.height / image.size.height;
+	CGFloat h;
+	CGFloat	w;
+	//aspect shrink
+	if (ratioH < ratioW) {
+		//use h
+		h = size.height;
+		w = image.size.width * ratioH;
+	}else{
+		w = size.width;
+		h = image.size.height * ratioW;
+	}
+	UIGraphicsBeginImageContextWithOptions(size, NO, 0);
+	[image drawInRect:CGRectMake(0, 0, w, h)];
+	UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+	UIGraphicsEndImageContext();
+	return newImage;
+}
 
 @end

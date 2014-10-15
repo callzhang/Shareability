@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import <Social/Social.h>
+#import "ConfigTableViewController.h"
 
-@interface ShareViewController : SLComposeServiceViewController
+#define selections		@[@"Wechat - Send to conversation", @"Wechat - Post to moments", @"Wechat - Add to favorite"]
+
+@interface ShareViewController : SLComposeServiceViewController<ConfigTableViewControllerDelegate>
 
 @end
