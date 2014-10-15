@@ -73,7 +73,23 @@
 		if ([provider hasItemConformingToTypeIdentifier:(NSString *)kUTTypeVideo]) {
 			[provider loadItemForTypeIdentifier:(NSString *)kUTTypeVideo options:nil completionHandler:^(NSData *item, NSError *error) {
 				self.video = item;
-				NSLog(@"Get video: %@", item);
+				NSLog(@"Get video: %luMB", item.length/1048576);
+			}];
+		}else if ([provider hasItemConformingToTypeIdentifier:(NSString *)kUTTypeMovie]) {
+			[provider loadItemForTypeIdentifier:(NSString *)kUTTypeMovie options:nil completionHandler:^(NSData *item, NSError *error) {
+				self.video = item;
+				NSLog(@"Get video: %luMB", item.length/1048576);
+				
+				if (self.video.length/1048576 > 10) {
+					UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Size over limit"
+																				   message:@"File exceeds 10MB. Too big to send."
+																			preferredStyle:UIAlertControllerStyleAlert];
+					
+					UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+																		  handler:^(UIAlertAction * action) {}];
+					[alert addAction:defaultAction];
+					[self presentViewController:alert animated:YES completion:nil];
+				}
 			}];
 		}
 		
@@ -81,6 +97,17 @@
 			[provider loadItemForTypeIdentifier:(NSString *)kUTTypeAudio options:nil completionHandler:^(NSData *item, NSError *error) {
 				self.audio = item;
 				NSLog(@"Get audio: %@", item);
+				`
+				if (self.audio.length/1048576 > 10) {
+					UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Size over limit"
+																				   message:@"File exceeds 10MB. Too big to send."
+																			preferredStyle:UIAlertControllerStyleAlert];
+					
+					UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+																		  handler:^(UIAlertAction * action) {}];
+					[alert addAction:defaultAction];
+					[self presentViewController:alert animated:YES completion:nil];
+				}
 			}];
 		}
 		
@@ -109,12 +136,7 @@
     NSArray *items = context.inputItems;
     NSExtensionItem *inputItem = items.firstObject;
     NSItemProvider *itemProvider = inputItem.attachments.firstObject;
-    [itemProvider loadItemForTypeIdentifier:(NSString *)kUTTypePropertyList options:nil
-                          completionHandler:^(NSDictionary *item, NSError *error)
-    {
-        NSLog(@"List of properties: %@", item);
-    }];
-    
+
 	//get image
     if (!self.image) {
         self.image = [self getImageFromSubviews:self.view];
@@ -151,24 +173,27 @@
 		WXWebpageObject *ext = [WXWebpageObject object];
 		ext.webpageUrl = self.url.absoluteString;
 		message.mediaObject = ext;
-	}else if (self.image){
-		WXImageObject *ext = [WXImageObject object];
-		ext.imageData = UIImageJPEGRepresentation(self.image, 0.8);
-		message.mediaObject = ext;
 	}else if (self.video){
-		WXVideoObject *ext = [WXVideoObject object];
-		ext.videoUrl = @"http://www.youtube.com/watch?v=UF8uR6Z6KLc";
+		WXFileObject *ext = [WXFileObject object];
+		ext.fileExtension = @"mov";
+		ext.fileData = self.video;
 		message.mediaObject = ext;
+		
 	}else if (self.audio){
-		WXMusicObject *ext = [WXMusicObject object];
-		ext.musicUrl = @"http://voice.wechat.com/kitty.mp3";
-		ext.musicDataUrl = @"http://voice.wechat.com/kitty.mp3";
+		WXFileObject *ext = [WXFileObject object];
+		ext.fileExtension = @"m4a";
+		ext.fileData = self.audio;
 		message.mediaObject = ext;
 	}else if (self.file){
 		WXFileObject *file = [WXFileObject object];
 		file.fileExtension = nil;
 		file.fileData = self.file;
 		message.mediaObject = file;
+	}else if (self.image){
+		WXImageObject *ext = [WXImageObject object];
+		UIImage *thumb = [self imageWithImage:self.image scaledToSize:CGSizeMake(1000, 1000)];
+		ext.imageData = UIImageJPEGRepresentation(thumb, 0.8);
+		message.mediaObject = ext;
 	}
 	else{
 		req.bText = YES;
