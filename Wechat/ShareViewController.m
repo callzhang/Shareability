@@ -19,6 +19,7 @@
 @property (nonatomic) NSString *title;
 @property (nonatomic) NSData *video;
 @property (nonatomic) NSData *audio;
+@property (nonatomic) NSData *file;
 @property (nonatomic) SLComposeSheetConfigurationItem *selected;
 @end
 
@@ -83,16 +84,21 @@
 			}];
 		}
 		
+		if ([provider hasItemConformingToTypeIdentifier:(NSString *)kUTTypeFileURL]) {
+			[provider loadItemForTypeIdentifier:(NSString *)kUTTypeFileURL options:nil completionHandler:^(NSURL *item, NSError *error) {
+				self.file = [NSData dataWithContentsOfURL:item];
+				NSLog(@"Get file: %@", item);
+			}];
+		}
+		
 		//get title first
 		self.title = self.contentText;
         [self validateContent];
     }
     
-    
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-        // Register your app
-        [WXApi registerApp:@"wx166b37c35f3f6d9a" withDescription:@"Shareability"];
-    });
+	
+	// Register your app
+	[WXApi registerApp:@"wx166b37c35f3f6d9a" withDescription:@"Shareability"];
 }
 
 - (void)didSelectPost {
@@ -158,6 +164,11 @@
 		ext.musicUrl = @"http://voice.wechat.com/kitty.mp3";
 		ext.musicDataUrl = @"http://voice.wechat.com/kitty.mp3";
 		message.mediaObject = ext;
+	}else if (self.file){
+		WXFileObject *file = [WXFileObject object];
+		file.fileExtension = nil;
+		file.fileData = self.file;
+		message.mediaObject = file;
 	}
 	else{
 		req.bText = YES;
