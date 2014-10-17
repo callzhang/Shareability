@@ -16,9 +16,9 @@
 @property (nonatomic) NSString *content;
 @property (nonatomic) UIImage *image;
 @property (nonatomic) NSString *text;
-@property (nonatomic) NSString *title;
 @property (nonatomic) NSData *video;
 @property (nonatomic) NSData *audio;
+@property (nonatomic) NSData *gifData;
 @property (nonatomic) NSData *file;
 @property (nonatomic) SLComposeSheetConfigurationItem *selected;
 @end
@@ -39,6 +39,12 @@
 }
 
 - (void)presentationAnimationDidFinish{
+	
+	
+	//get the context title first, as it will be changed by user
+	self.title = self.contentText;
+	
+	
     NSExtensionItem *item = self.extensionContext.inputItems.firstObject;
     for (NSItemProvider *provider in item.attachments) {
 		if ([provider hasItemConformingToTypeIdentifier:(NSString *)kUTTypePropertyList]) {
@@ -55,12 +61,38 @@
 				NSLog(@"Get url: %@", item);
             }];
         }
-        
+		
         if ([provider hasItemConformingToTypeIdentifier:( NSString *)kUTTypeImage]) {
-            [provider loadItemForTypeIdentifier:( NSString *)kUTTypeImage options:nil completionHandler:^(UIImage *item, NSError *error) {
-                self.image = item;
-				NSLog(@"Get image");
-            }];
+			if ([provider hasItemConformingToTypeIdentifier:( NSString *)kUTTypeGIF]) {
+				[provider loadItemForTypeIdentifier:( NSString *)kUTTypeGIF options:nil completionHandler:^(NSData *item, NSError *error) {
+					uint8_t c;
+					[item getBytes:&c length:1];
+					switch (c) {
+						case 0xFF:
+							NSLog(@"image/jpeg");
+							break;
+						case 0x89:
+							NSLog(@"image/png");
+							break;
+						case 0x47:
+							NSLog(@"image/gif");
+							self.gifData = item;
+							break;
+						case 0x49:
+						case 0x4D:
+							NSLog(@"image/tiff");
+							break;
+						default:
+							break;
+					}
+					NSLog(@"Get GIF");
+				}];
+			}else{
+				[provider loadItemForTypeIdentifier:( NSString *)kUTTypeImage options:nil completionHandler:^(UIImage *item, NSError *error) {
+					self.image = item;
+					NSLog(@"Get image");
+				}];
+			}
         }
         
         if ([provider hasItemConformingToTypeIdentifier:( NSString *)kUTTypeText]) {
@@ -97,7 +129,7 @@
 			[provider loadItemForTypeIdentifier:(NSString *)kUTTypeAudio options:nil completionHandler:^(NSData *item, NSError *error) {
 				self.audio = item;
 				NSLog(@"Get audio: %@", item);
-				`
+
 				if (self.audio.length/1048576 > 10) {
 					UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Size over limit"
 																				   message:@"File exceeds 10MB. Too big to send."
@@ -118,8 +150,6 @@
 			}];
 		}
 		
-		//get title first
-		self.title = self.contentText;
         [self validateContent];
     }
     
@@ -146,20 +176,12 @@
     //send msg
 	//conversation
 	WXMediaMessage *message = [WXMediaMessage message];
-	if (!self.title) {
-		message.title = self.contentText;
-	}else{
-		if (self.text) {
-			message.description = [self.text stringByAppendingString:[NSString stringWithFormat:@"\n%@", self.contentText]];
-		}else{
-			message.description = self.contentText;
-		}
-		
-	}
+	message.title = self.title;
+	message.description = self.contentText;
 	
 	//thumbnail
 	if (self.image) {
-		UIImage *thumb = [self imageWithImage:self.image scaledToSize:CGSizeMake(100, 100)];
+		UIImage *thumb = [self imageWithImage:self.image scaledToSize:CGSizeMake(200, 200)];
 		[message setThumbImage:thumb];
 	}
 	
@@ -167,6 +189,7 @@
 	SendMessageToWXReq* req = [[SendMessageToWXReq alloc] init];
 	req.bText = NO;
 	req.message = message;
+	req.text = self.contentText;
 	
 	//media
 	if (self.url) {
@@ -191,11 +214,16 @@
 		message.mediaObject = file;
 	}else if (self.image){
 		WXImageObject *ext = [WXImageObject object];
-		UIImage *thumb = [self imageWithImage:self.image scaledToSize:CGSizeMake(1000, 1000)];
-		ext.imageData = UIImageJPEGRepresentation(thumb, 0.8);
+		UIImage *img = [self imageWithImage:self.image scaledToSize:CGSizeMake(2000, 2000)];
+		ext.imageData = UIImageJPEGRepresentation(img, 0.8);
 		message.mediaObject = ext;
+	}else if(self.text){
+		req.message = nil;
+		req.text = self.text;
+		req.bText = YES;
 	}
 	else{
+		//message.description = self.contentText;
 		req.bText = YES;
 	}
 	
@@ -296,7 +324,7 @@
 	CGFloat ratioH = size.height / image.size.height;
 	CGFloat h;
 	CGFloat	w;
-	//aspect shrink
+	//aspect fit
 	if (ratioH < ratioW) {
 		//use h
 		h = size.height;
@@ -305,7 +333,7 @@
 		w = size.width;
 		h = image.size.height * ratioW;
 	}
-	UIGraphicsBeginImageContextWithOptions(size, NO, 0);
+	UIGraphicsBeginImageContextWithOptions(CGSizeMake(w, h), NO, 0);
 	[image drawInRect:CGRectMake(0, 0, w, h)];
 	UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
 	UIGraphicsEndImageContext();
