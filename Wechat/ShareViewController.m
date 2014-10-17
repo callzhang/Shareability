@@ -10,6 +10,7 @@
 #import <MobileCoreServices/UTCoreTypes.h>
 #import "WXApi.h"
 #import "WXApiObject.h"
+#import "AnimatedGIFImageSerialization.h"
 
 @interface ShareViewController ()
 @property (nonatomic) NSURL *url;
@@ -65,26 +66,8 @@
         if ([provider hasItemConformingToTypeIdentifier:( NSString *)kUTTypeImage]) {
 			if ([provider hasItemConformingToTypeIdentifier:( NSString *)kUTTypeGIF]) {
 				[provider loadItemForTypeIdentifier:( NSString *)kUTTypeGIF options:nil completionHandler:^(NSData *item, NSError *error) {
-					uint8_t c;
-					[item getBytes:&c length:1];
-					switch (c) {
-						case 0xFF:
-							NSLog(@"image/jpeg");
-							break;
-						case 0x89:
-							NSLog(@"image/png");
-							break;
-						case 0x47:
-							NSLog(@"image/gif");
-							self.gifData = item;
-							break;
-						case 0x49:
-						case 0x4D:
-							NSLog(@"image/tiff");
-							break;
-						default:
-							break;
-					}
+					self.gifData = item;
+					self.image = [UIImage imageWithData:item];
 					NSLog(@"Get GIF");
 				}];
 			}else{
@@ -212,6 +195,10 @@
 		file.fileExtension = nil;
 		file.fileData = self.file;
 		message.mediaObject = file;
+	}else if (self.gifData){
+		WXEmoticonObject *emo = [WXEmoticonObject object];
+		emo.emoticonData = self.gifData;
+		message.mediaObject = emo;
 	}else if (self.image){
 		WXImageObject *ext = [WXImageObject object];
 		UIImage *img = [self imageWithImage:self.image scaledToSize:CGSizeMake(2000, 2000)];
