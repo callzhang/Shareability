@@ -20,7 +20,7 @@
     if (alertView.tag == 1000) {
         RespForWeChatViewController* controller = [[RespForWeChatViewController alloc] initWithNibName:nil bundle:nil];
         controller.delegate = self;
-        [self.viewController presentModalViewController:controller animated:YES];
+        [self.viewController presentViewController:controller animated:YES completion:NULL];
     }
 }
 
@@ -44,7 +44,7 @@
         WXAppExtendObject *obj = msg.mediaObject;
         
         NSString *strTitle = [NSString stringWithFormat:@"Message from WeChat"];
-        NSString *strMsg = [NSString stringWithFormat:@"Title: %@ \nContent:%@ \nDescription: %@ \nThumb: %u bytes\n\n",msg.title, msg.description, obj.extInfo, msg.thumbData.length];
+        NSString *strMsg = [NSString stringWithFormat:@"Title: %@ \nContent:%@ \nDescription: %@ \nThumb: %lu bytes\n\n",msg.title, msg.description, obj.extInfo, (unsigned long)msg.thumbData.length];
         
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle message:strMsg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alert show];

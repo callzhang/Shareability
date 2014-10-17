@@ -124,8 +124,9 @@
     UIImage *img;
     for (UIView *subView in view.subviews) {
         if ([subView isKindOfClass:[UIImageView class]]) {
-            img = [(UIImageView *)subView image];
-            
+            if (subView.frame.size.height > 10 && subView.frame.size.width > 10) {
+                img = [(UIImageView *)subView image];
+            }
         }else if (subView.subviews){
             img = [self getImageFromSubviews:subView];
         }
@@ -139,7 +140,7 @@
 
 - (NSArray *)configurationItems{
     SLComposeSheetConfigurationItem *types = [[SLComposeSheetConfigurationItem alloc] init];
-    types.title = @"Types";
+    types.title = @"Wechat - Conversation";
     return @[types];
 }
 

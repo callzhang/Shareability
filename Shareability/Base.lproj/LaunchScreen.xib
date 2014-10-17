@@ -10,23 +10,23 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="dYM-Nc-ckr">
+                    <rect key="frame" x="100" y="100" width="120" height="368"/>
+                </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shareability" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NuE-b8-3jX">
                     <rect key="frame" x="108" y="440" width="107" height="28"/>
                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="dYM-Nc-ckr">
-                    <rect key="frame" x="50" y="50" width="220" height="418"/>
-                </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="dYM-Nc-ckr" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="50" id="4S3-QW-YYl"/>
-                <constraint firstItem="dYM-Nc-ckr" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="50" id="7ss-U4-BGR"/>
+                <constraint firstItem="dYM-Nc-ckr" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="100" id="4S3-QW-YYl"/>
+                <constraint firstItem="dYM-Nc-ckr" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="100" id="7ss-U4-BGR"/>
                 <constraint firstAttribute="bottom" secondItem="dYM-Nc-ckr" secondAttribute="bottom" constant="100" id="9vJ-ec-QKp"/>
                 <constraint firstAttribute="centerX" secondItem="NuE-b8-3jX" secondAttribute="centerX" constant="-1" id="Pkp-XV-REk"/>
-                <constraint firstAttribute="trailing" secondItem="dYM-Nc-ckr" secondAttribute="trailing" constant="50" id="i1P-q7-gTk"/>
+                <constraint firstAttribute="trailing" secondItem="dYM-Nc-ckr" secondAttribute="trailing" constant="100" id="i1P-q7-gTk"/>
                 <constraint firstAttribute="bottom" secondItem="NuE-b8-3jX" secondAttribute="bottom" constant="100" id="yI3-yq-Vik"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
@@ -35,6 +35,6 @@
         </view>
     </objects>
     <resources>
-        <image name="logo" width="1024" height="1024"/>
+        <image name="logo" width="512" height="512"/>
     </resources>
 </document>
