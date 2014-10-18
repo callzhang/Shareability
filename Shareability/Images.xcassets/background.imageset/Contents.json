@@ -2,12 +2,13 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x"
+      "scale" : "1x",
+      "filename" : "iPhone 6 wechat.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "9452-1195-IMG_0036-xl.png"
+      "filename" : "iPhone 6 wechat@2x.png"
     },
     {
       "idiom" : "universal",
