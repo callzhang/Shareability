@@ -10,13 +10,13 @@
 #import <MobileCoreServices/UTCoreTypes.h>
 #import "WXApi.h"
 #import "WXApiObject.h"
+#import "AnimatedGIFImageSerialization.h"
 
 @interface ShareViewController ()
 @property (nonatomic) NSURL *url;
 @property (nonatomic) NSString *content;
 @property (nonatomic) UIImage *image;
 @property (nonatomic) NSString *text;
-@property (nonatomic) NSString *title;
 @property (nonatomic) NSData *video;
 @property (nonatomic) NSData *audio;
 @property (nonatomic) NSData *file;
@@ -39,89 +39,99 @@
 }
 
 - (void)presentationAnimationDidFinish{
-    NSExtensionItem *item = self.extensionContext.inputItems.firstObject;
-    for (NSItemProvider *provider in item.attachments) {
-		if ([provider hasItemConformingToTypeIdentifier:(NSString *)kUTTypePropertyList]) {
-			[provider loadItemForTypeIdentifier:(NSString *)kUTTypePropertyList
-										options:nil
-							  completionHandler:^(NSDictionary *item, NSError *error){
-				 NSLog(@"get property list from the host app: %@", item);
-			 }];
-		}
-		
-        if ([provider hasItemConformingToTypeIdentifier:( NSString *)kUTTypeURL]) {
-            [provider loadItemForTypeIdentifier:( NSString *)kUTTypeURL options:nil completionHandler:^(NSURL *item, NSError *error) {
-                self.url = item;
-				NSLog(@"Get url: %@", item);
-            }];
-        }
-        
-        if ([provider hasItemConformingToTypeIdentifier:( NSString *)kUTTypeImage]) {
-            [provider loadItemForTypeIdentifier:( NSString *)kUTTypeImage options:nil completionHandler:^(UIImage *item, NSError *error) {
-                self.image = item;
-				NSLog(@"Get image");
-            }];
-        }
-        
-        if ([provider hasItemConformingToTypeIdentifier:( NSString *)kUTTypeText]) {
-            [provider loadItemForTypeIdentifier:( NSString *)kUTTypeText options:nil completionHandler:^(NSString *item, NSError *error) {
-                self.text = item;
-				NSLog(@"Get text: %@", item);
-            }];
-        }
-		
-		if ([provider hasItemConformingToTypeIdentifier:(NSString *)kUTTypeVideo]) {
-			[provider loadItemForTypeIdentifier:(NSString *)kUTTypeVideo options:nil completionHandler:^(NSData *item, NSError *error) {
-				self.video = item;
-				NSLog(@"Get video: %luMB", item.length/1048576);
-			}];
-		}else if ([provider hasItemConformingToTypeIdentifier:(NSString *)kUTTypeMovie]) {
-			[provider loadItemForTypeIdentifier:(NSString *)kUTTypeMovie options:nil completionHandler:^(NSData *item, NSError *error) {
-				self.video = item;
-				NSLog(@"Get video: %luMB", item.length/1048576);
-				
-				if (self.video.length/1048576 > 10) {
-					UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Size over limit"
-																				   message:@"File exceeds 10MB. Too big to send."
-																			preferredStyle:UIAlertControllerStyleAlert];
+	
+	//get the context title first, as it will be changed by user
+	self.title = self.contentText;
+	
+	for (NSExtensionItem *item in self.extensionContext.inputItems) {
+		NSLog(@"checking for input item: %@", item);
+		for (NSItemProvider *provider in item.attachments) {
+			NSLog(@"checking for ItemProvidor: %@", provider);
+			if ([provider hasItemConformingToTypeIdentifier:(NSString *)kUTTypePropertyList]) {
+				[provider loadItemForTypeIdentifier:(NSString *)kUTTypePropertyList
+											options:nil
+								  completionHandler:^(NSDictionary *item, NSError *error){
+					 NSLog(@"get property list from the host app: %@", item);
+				 }];
+			}
+			
+			if ([provider hasItemConformingToTypeIdentifier:( NSString *)kUTTypeURL]) {
+				[provider loadItemForTypeIdentifier:( NSString *)kUTTypeURL options:nil completionHandler:^(NSURL *item, NSError *error) {
+					self.url = item;
+					NSLog(@"Get url: %@", item);
+				}];
+			}
+			
+			if ([provider hasItemConformingToTypeIdentifier:( NSString *)kUTTypeImage]) {
+				[provider loadItemForTypeIdentifier:( NSString *)kUTTypeImage options:nil completionHandler:^(UIImage *item, NSError *error) {
+					self.image = item;
+					if (item.duration > 0) {
+						NSLog(@"Get GIF");
+					}
+					NSLog(@"Get image");
+				}];
+			}
+			
+			if ([provider hasItemConformingToTypeIdentifier:( NSString *)kUTTypeText]) {
+				[provider loadItemForTypeIdentifier:( NSString *)kUTTypeText options:nil completionHandler:^(NSString *item, NSError *error) {
+					self.text = item;
+					NSLog(@"Get text: %@", item);
+				}];
+			}
+			
+			if ([provider hasItemConformingToTypeIdentifier:(NSString *)kUTTypeVideo]) {
+				[provider loadItemForTypeIdentifier:(NSString *)kUTTypeVideo options:nil completionHandler:^(NSData *item, NSError *error) {
+					self.video = item;
+					NSLog(@"Get video: %luMB", item.length/1048576);
+				}];
+			}else if ([provider hasItemConformingToTypeIdentifier:(NSString *)kUTTypeMovie]) {
+				[provider loadItemForTypeIdentifier:(NSString *)kUTTypeMovie options:nil completionHandler:^(NSData *item, NSError *error) {
+					self.video = item;
+					NSLog(@"Get video: %luMB", item.length/1048576);
 					
-					UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-																		  handler:^(UIAlertAction * action) {}];
-					[alert addAction:defaultAction];
-					[self presentViewController:alert animated:YES completion:nil];
-				}
-			}];
+					if (self.video.length/1048576 > 10) {
+						UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Size over limit"
+																					   message:@"File exceeds 10MB. Too big to send."
+																				preferredStyle:UIAlertControllerStyleAlert];
+						
+						UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+																			  handler:^(UIAlertAction * action) {}];
+						[alert addAction:defaultAction];
+						[self presentViewController:alert animated:YES completion:nil];
+					}
+				}];
+			}
+			
+			if ([provider hasItemConformingToTypeIdentifier:(NSString *)kUTTypeAudio]) {
+				[provider loadItemForTypeIdentifier:(NSString *)kUTTypeAudio options:nil completionHandler:^(NSData *item, NSError *error) {
+					self.audio = item;
+					NSLog(@"Get audio: %@", item);
+
+					if (self.audio.length/1048576 > 10) {
+						UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Size over limit"
+																					   message:@"File exceeds 10MB. Too big to send."
+																				preferredStyle:UIAlertControllerStyleAlert];
+						
+						UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+																			  handler:^(UIAlertAction * action) {}];
+						[alert addAction:defaultAction];
+						[self presentViewController:alert animated:YES completion:nil];
+					}
+				}];
+			}
+			
+			if ([provider hasItemConformingToTypeIdentifier:(NSString *)kUTTypeFileURL]) {
+				[provider loadItemForTypeIdentifier:(NSString *)kUTTypeFileURL options:nil completionHandler:^(NSURL *item, NSError *error) {
+					self.file = [NSData dataWithContentsOfURL:item];
+					NSLog(@"Get file: %@", item);
+				}];
+			}
+			
+			
 		}
-		
-		if ([provider hasItemConformingToTypeIdentifier:(NSString *)kUTTypeAudio]) {
-			[provider loadItemForTypeIdentifier:(NSString *)kUTTypeAudio options:nil completionHandler:^(NSData *item, NSError *error) {
-				self.audio = item;
-				NSLog(@"Get audio: %@", item);
-				if (self.audio.length/1048576 > 10) {
-					UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Size over limit"
-																				   message:@"File exceeds 10MB. Too big to send."
-																			preferredStyle:UIAlertControllerStyleAlert];
-					
-					UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-																		  handler:^(UIAlertAction * action) {}];
-					[alert addAction:defaultAction];
-					[self presentViewController:alert animated:YES completion:nil];
-				}
-			}];
-		}
-		
-		if ([provider hasItemConformingToTypeIdentifier:(NSString *)kUTTypeFileURL]) {
-			[provider loadItemForTypeIdentifier:(NSString *)kUTTypeFileURL options:nil completionHandler:^(NSURL *item, NSError *error) {
-				self.file = [NSData dataWithContentsOfURL:item];
-				NSLog(@"Get file: %@", item);
-			}];
-		}
-		
-		//get title first
-		self.title = self.contentText;
-        [self validateContent];
-    }
-    
+	}
+	
+	[self validateContent];
 	
 	// Register your app
 	[WXApi registerApp:@"wx166b37c35f3f6d9a" withDescription:@"Shareability"];
@@ -145,20 +155,12 @@
     //send msg
 	//conversation
 	WXMediaMessage *message = [WXMediaMessage message];
-	if (!self.title) {
-		message.title = self.contentText;
-	}else{
-		if (self.text) {
-			message.description = [self.text stringByAppendingString:[NSString stringWithFormat:@"\n%@", self.contentText]];
-		}else{
-			message.description = self.contentText;
-		}
-		
-	}
+	message.title = self.title;
+	message.description = [self.contentText stringByAppendingString:@"\n(from Shareability)"];
 	
 	//thumbnail
 	if (self.image) {
-		UIImage *thumb = [self imageWithImage:self.image scaledToSize:CGSizeMake(100, 100)];
+		UIImage *thumb = [self imageWithImage:self.image scaledToSize:CGSizeMake(200, 200)];
 		[message setThumbImage:thumb];
 	}
 	
@@ -166,6 +168,7 @@
 	SendMessageToWXReq* req = [[SendMessageToWXReq alloc] init];
 	req.bText = NO;
 	req.message = message;
+	req.text = self.contentText;
 	
 	//media
 	if (self.url) {
@@ -189,12 +192,25 @@
 		file.fileData = self.file;
 		message.mediaObject = file;
 	}else if (self.image){
-		WXImageObject *ext = [WXImageObject object];
-		UIImage *thumb = [self imageWithImage:self.image scaledToSize:CGSizeMake(1000, 1000)];
-		ext.imageData = UIImageJPEGRepresentation(thumb, 0.8);
-		message.mediaObject = ext;
+		if (self.image.duration > 0) {
+			//GIF
+			WXEmoticonObject *emo = [WXEmoticonObject object];
+			emo.emoticonData = [AnimatedGIFImageSerialization animatedGIFDataWithImage:self.image duration:self.image.duration loopCount:0 error:nil];
+			message.mediaObject = emo;
+		}else{
+			WXImageObject *ext = [WXImageObject object];
+			UIImage *img = [self imageWithImage:self.image scaledToSize:CGSizeMake(2000, 2000)];
+			ext.imageData = UIImageJPEGRepresentation(img, 0.8);
+			message.mediaObject = ext;
+		}
+		
+	}else if(self.text){
+		req.message = nil;
+		req.text = self.text;
+		req.bText = YES;
 	}
 	else{
+		//message.description = self.contentText;
 		req.bText = YES;
 	}
 	
@@ -297,7 +313,7 @@
 	CGFloat ratioH = size.height / image.size.height;
 	CGFloat h;
 	CGFloat	w;
-	//aspect shrink
+	//aspect fit
 	if (ratioH < ratioW) {
 		//use h
 		h = size.height;
@@ -306,7 +322,7 @@
 		w = size.width;
 		h = image.size.height * ratioW;
 	}
-	UIGraphicsBeginImageContextWithOptions(size, NO, 0);
+	UIGraphicsBeginImageContextWithOptions(CGSizeMake(w, h), NO, 0);
 	[image drawInRect:CGRectMake(0, 0, w, h)];
 	UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
 	UIGraphicsEndImageContext();
