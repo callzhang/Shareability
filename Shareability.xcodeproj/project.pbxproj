@@ -20,6 +20,9 @@
 		9B89750519EF06D0004D75F3 /* ConfigTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B89750419EF06D0004D75F3 /* ConfigTableViewController.m */; };
 		9BB0816419F1BFA700570E1D /* AnimatedGIFImageSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB0816319F1BFA700570E1D /* AnimatedGIFImageSerialization.m */; };
 		9BB0816519F1BFA700570E1D /* AnimatedGIFImageSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB0816319F1BFA700570E1D /* AnimatedGIFImageSerialization.m */; };
+		9BB0816719F581E100570E1D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BB0816619F581E100570E1D /* AVFoundation.framework */; };
+		9BB0816B19F58A8200570E1D /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB0816A19F58A8200570E1D /* MBProgressHUD.m */; };
+		9BB0816C19F58A8200570E1D /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB0816A19F58A8200570E1D /* MBProgressHUD.m */; };
 		9BDBA71C19EA202300EF194D /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BDBA71919EA202300EF194D /* libWeChatSDK.a */; };
 		9BDBA73B19EAC58200EF194D /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BDBA71919EA202300EF194D /* libWeChatSDK.a */; };
 		9BDBA73E19EB976500EF194D /* SendMsgToWechatMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BDBA73D19EB976500EF194D /* SendMsgToWechatMgr.m */; };
@@ -88,6 +91,9 @@
 		9B89750419EF06D0004D75F3 /* ConfigTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigTableViewController.m; sourceTree = "<group>"; };
 		9BB0816219F1BFA700570E1D /* AnimatedGIFImageSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedGIFImageSerialization.h; sourceTree = "<group>"; };
 		9BB0816319F1BFA700570E1D /* AnimatedGIFImageSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimatedGIFImageSerialization.m; sourceTree = "<group>"; };
+		9BB0816619F581E100570E1D /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		9BB0816919F58A8200570E1D /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		9BB0816A19F58A8200570E1D /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		9BDBA71919EA202300EF194D /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
 		9BDBA71A19EA202300EF194D /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
 		9BDBA71B19EA202300EF194D /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
@@ -104,6 +110,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9BB0816719F581E100570E1D /* AVFoundation.framework in Frameworks */,
 				9BDBA71C19EA202300EF194D /* libWeChatSDK.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -129,8 +136,10 @@
 		9B87B69119E8E7A100F1C01C = {
 			isa = PBXGroup;
 			children = (
+				9BB0816619F581E100570E1D /* AVFoundation.framework */,
 				9BB0816119F1BFA700570E1D /* AnimatedGIFImageSerialization */,
 				9BDBA71819EA202300EF194D /* SDKExport */,
+				9BB0816819F58A8200570E1D /* MBProgressHUD */,
 				9B87B69C19E8E7A100F1C01C /* Shareability */,
 				9B87B6B619E8E7A100F1C01C /* ShareabilityTests */,
 				9B87B6C819E8EF7900F1C01C /* Wechat */,
@@ -223,6 +232,15 @@
 				9BB0816319F1BFA700570E1D /* AnimatedGIFImageSerialization.m */,
 			);
 			path = AnimatedGIFImageSerialization;
+			sourceTree = "<group>";
+		};
+		9BB0816819F58A8200570E1D /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				9BB0816919F58A8200570E1D /* MBProgressHUD.h */,
+				9BB0816A19F58A8200570E1D /* MBProgressHUD.m */,
+			);
+			path = MBProgressHUD;
 			sourceTree = "<group>";
 		};
 		9BDBA71819EA202300EF194D /* SDKExport */ = {
@@ -375,6 +393,7 @@
 				9B87B6A319E8E7A100F1C01C /* AppDelegate.m in Sources */,
 				9B87B6A019E8E7A100F1C01C /* main.m in Sources */,
 				9BB0816419F1BFA700570E1D /* AnimatedGIFImageSerialization.m in Sources */,
+				9BB0816B19F58A8200570E1D /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -393,6 +412,7 @@
 				9BB0816519F1BFA700570E1D /* AnimatedGIFImageSerialization.m in Sources */,
 				9B87B6CD19E8EF7900F1C01C /* ShareViewController.m in Sources */,
 				9B89750519EF06D0004D75F3 /* ConfigTableViewController.m in Sources */,
+				9BB0816C19F58A8200570E1D /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

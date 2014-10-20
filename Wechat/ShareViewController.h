@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <Social/Social.h>
+#import <Foundation/Foundation.h>
 #import "ConfigTableViewController.h"
 
 #define selections		@[@"Wechat - Send to conversation", @"Wechat - Post to moments", @"Wechat - Add to favorite"]

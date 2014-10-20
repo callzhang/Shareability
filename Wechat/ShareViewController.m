@@ -11,6 +11,8 @@
 #import "WXApi.h"
 #import "WXApiObject.h"
 #import "AnimatedGIFImageSerialization.h"
+#import <AVFoundation/AVFoundation.h>
+//#import "MBProgressHUD.h"
 
 @interface ShareViewController ()
 @property (nonatomic) NSURL *url;
@@ -26,16 +28,50 @@
 @implementation ShareViewController
 
 - (BOOL)isContentValid {
+	BOOL charValid = YES;
+	BOOL sizeValid = YES;
     // Do validation of contentText and/or NSExtensionContext attachments here
     NSInteger messageLength = [[self.contentText stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length];
-    NSInteger charactersRemaining = 100 - messageLength;
+    NSInteger charactersRemaining = 1000 - messageLength;
     self.charactersRemaining = @(charactersRemaining);
     
-    if (charactersRemaining >= 0 && charactersRemaining != 0) {
-        return YES;
-    }
-    
-    return NO;
+    if (charactersRemaining >= 0) {
+        charValid = YES;
+	}else{
+		charValid = NO;
+	}
+	
+	float dataSize = 0;
+	if (self.image) {
+		NSData *imgData = UIImageJPEGRepresentation(self.image, 0.8);
+		dataSize = imgData.length;
+	}else if(self.audio){
+		dataSize = self.audio.length;
+	}else if (self.video){
+		dataSize = self.video.length;
+	}else if (self.file){
+		dataSize = self.file.length;
+	}
+	if (dataSize/1024/1024 > 10) {
+		sizeValid = NO;
+	}
+	if (self.text){
+		if (self.text.length / 1024 > 10) {
+			sizeValid = NO;
+		}
+	}
+	
+	if (!sizeValid) {
+		NSLog(@"too large");
+//		MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+//		hud.mode = MBProgressHUDModeIndeterminate;
+//		hud.labelText = @"Too large";
+//		[hud hide:YES afterDelay:2];
+	}
+	
+	
+	
+    return sizeValid && charValid;
 }
 
 - (void)presentationAnimationDidFinish{
@@ -87,17 +123,52 @@
 			}else if ([provider hasItemConformingToTypeIdentifier:(NSString *)kUTTypeMovie]) {
 				[provider loadItemForTypeIdentifier:(NSString *)kUTTypeMovie options:nil completionHandler:^(NSData *item, NSError *error) {
 					self.video = item;
-					NSLog(@"Get video: %luMB", item.length/1048576);
+					NSLog(@"Get movie: %luMB", item.length/1048576);
 					
 					if (self.video.length/1048576 > 10) {
-						UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Size over limit"
-																					   message:@"File exceeds 10MB. Too big to send."
-																				preferredStyle:UIAlertControllerStyleAlert];
-						
-						UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-																			  handler:^(UIAlertAction * action) {}];
-						[alert addAction:defaultAction];
-						[self presentViewController:alert animated:YES completion:nil];
+//						MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+//						hud.mode = MBProgressHUDModeIndeterminate;
+//						hud.labelText = @"Transcoding";
+						//resize
+						NSString *path = [NSTemporaryDirectory() stringByAppendingString:@"videoTempFile.mov"];
+						[item writeToFile:path atomically:YES];
+						AVURLAsset *urlAsset = [AVURLAsset URLAssetWithURL:[NSURL fileURLWithPath:path] options:nil];
+						AVAssetExportSession *session = [[AVAssetExportSession alloc] initWithAsset:urlAsset presetName:AVAssetExportPresetLowQuality];
+						NSURL *outputURL = [NSURL fileURLWithPath:[NSTemporaryDirectory() stringByAppendingString:@"videoOutTempFile.mov"]];
+						session.outputURL = outputURL;
+						session.outputFileType = AVFileTypeQuickTimeMovie;
+						[session exportAsynchronouslyWithCompletionHandler:^(void){
+							
+							 switch ([session status]) {
+								 case AVAssetExportSessionStatusFailed:
+									 NSLog(@"Failed with error: %@", session.error.description);
+//									 hud.mode = MBProgressHUDModeText;
+//									 hud.labelText = @"Failed";
+//									 [hud hide:YES afterDelay:3];
+									 break;
+								 case AVAssetExportSessionStatusCancelled:
+									 NSLog(@"User cancelled");
+									 break;
+								 default:{
+									 NSData *data = [NSData dataWithContentsOfURL:outputURL];
+									 if (data.length/1048576 > 10) {
+										 NSLog(@"Too large");
+										 //too large
+//										 hud.mode = MBProgressHUDModeText;
+//										 hud.labelText = @"Too large!";
+//										 [hud hide:YES afterDelay:3];
+									 }else{
+										 NSLog(@"Finished");
+//										 hud.mode = MBProgressHUDModeText;
+//										 hud.labelText = @"Finished";
+//										 [hud hide:YES afterDelay:1.5];
+									 }
+									 self.video = data;
+								 }
+									 break;
+							 }
+							 [self validateContent];
+						 }];
 					}
 				}];
 			}
@@ -107,16 +178,6 @@
 					self.audio = item;
 					NSLog(@"Get audio: %@", item);
 
-					if (self.audio.length/1048576 > 10) {
-						UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Size over limit"
-																					   message:@"File exceeds 10MB. Too big to send."
-																				preferredStyle:UIAlertControllerStyleAlert];
-						
-						UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-																			  handler:^(UIAlertAction * action) {}];
-						[alert addAction:defaultAction];
-						[self presentViewController:alert animated:YES completion:nil];
-					}
 				}];
 			}
 			
@@ -201,6 +262,7 @@
 			WXImageObject *ext = [WXImageObject object];
 			UIImage *img = [self imageWithImage:self.image scaledToSize:CGSizeMake(2000, 2000)];
 			ext.imageData = UIImageJPEGRepresentation(img, 0.8);
+			//ext.imageData = UIImagePNGRepresentation(img);
 			message.mediaObject = ext;
 		}
 		
@@ -232,20 +294,20 @@
 	}
 	
 	
-	[WXApi sendReq:req];
+	if (![WXApi sendReq:req]){
+		NSLog(@"Failed to send request");
+	}
 	
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         
-        //complete
-        NSExtensionItem *outputItem = [inputItem copy];
-        outputItem.attributedContentText = [[NSAttributedString alloc] initWithString:self.contentText attributes:nil];
-        // Complete this implementation by setting the appropriate value on the output item.
-        
-        NSArray *outputItems = @[outputItem];
-        // Inform the host that we're done, so it un-blocks its UI. Note: Alternatively you could call super's -didSelectPost, which will similarly complete the extension context.
-        [self.extensionContext completeRequestReturningItems:outputItems completionHandler:nil];
-    });
-    
+	//complete
+	NSExtensionItem *outputItem = [inputItem copy];
+	outputItem.attributedContentText = [[NSAttributedString alloc] initWithString:self.contentText attributes:nil];
+	// Complete this implementation by setting the appropriate value on the output item.
+	
+	NSArray *outputItems = @[outputItem];
+	// Inform the host that we're done, so it un-blocks its UI. Note: Alternatively you could call super's -didSelectPost, which will similarly complete the extension context.
+	[self.extensionContext completeRequestReturningItems:outputItems completionHandler:nil];
+	
 }
 
 - (UIImage *)getImageFromSubviews:(UIView *)view{
