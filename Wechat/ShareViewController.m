@@ -131,10 +131,10 @@
 //						hud.labelText = @"Transcoding";
 						//resize
 						NSString *path = [NSTemporaryDirectory() stringByAppendingString:@"videoTempFile.mov"];
-						[item writeToFile:path atomically:YES];
+						NSParameterAssert([item writeToFile:path atomically:NO]);
 						AVURLAsset *urlAsset = [AVURLAsset URLAssetWithURL:[NSURL fileURLWithPath:path] options:nil];
 						AVAssetExportSession *session = [[AVAssetExportSession alloc] initWithAsset:urlAsset presetName:AVAssetExportPresetLowQuality];
-						NSURL *outputURL = [NSURL fileURLWithPath:[NSTemporaryDirectory() stringByAppendingString:@"videoOutTempFile.mov"]];
+						NSURL *outputURL = [NSURL fileURLWithPath:[NSTemporaryDirectory() stringByAppendingString:@"videoOutTempFile"]];
 						session.outputURL = outputURL;
 						session.outputFileType = AVFileTypeQuickTimeMovie;
 						[session exportAsynchronouslyWithCompletionHandler:^(void){
@@ -221,8 +221,13 @@
 	
 	//thumbnail
 	if (self.image) {
-		UIImage *thumb = [self imageWithImage:self.image scaledToSize:CGSizeMake(200, 200)];
-		[message setThumbImage:thumb];
+		NSInteger thumbSize = 100;
+		
+		while (message.thumbData.length > 32*1024 || message.thumbData == nil) {
+			UIImage *thumb = [self imageWithImage:self.image scaledToSize:CGSizeMake(thumbSize, thumbSize)];
+			[message setThumbImage:thumb];
+			thumbSize *= 0.9;
+		}
 	}
 	
 	//request
@@ -261,8 +266,7 @@
 		}else{
 			WXImageObject *ext = [WXImageObject object];
 			UIImage *img = [self imageWithImage:self.image scaledToSize:CGSizeMake(2000, 2000)];
-			ext.imageData = UIImageJPEGRepresentation(img, 0.8);
-			//ext.imageData = UIImagePNGRepresentation(img);
+			ext.imageData = UIImageJPEGRepresentation(img, 0.7);
 			message.mediaObject = ext;
 		}
 		
