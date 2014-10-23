@@ -12,7 +12,8 @@
 #import "WXApiObject.h"
 #import "AnimatedGIFImageSerialization.h"
 #import <AVFoundation/AVFoundation.h>
-//#import "MBProgressHUD.h"
+//#import "JGProgressHUD.h"
+#import "ProgressHUD.h"
 
 @interface ShareViewController ()
 @property (nonatomic) NSURL *url;
@@ -63,10 +64,10 @@
 	
 	if (!sizeValid) {
 		NSLog(@"too large");
-//		MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-//		hud.mode = MBProgressHUDModeIndeterminate;
-//		hud.labelText = @"Too large";
-//		[hud hide:YES afterDelay:2];
+		JGProgressHUD *hud = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleDark];
+		hud.textLabel.text = @"Too large";
+		[hud showInView:self.view];
+		[hud dismissAfterDelay:3.0];
 	}
 	
 	
@@ -123,18 +124,22 @@
 			}else if ([provider hasItemConformingToTypeIdentifier:(NSString *)kUTTypeMovie]) {
 				[provider loadItemForTypeIdentifier:(NSString *)kUTTypeMovie options:nil completionHandler:^(NSData *item, NSError *error) {
 					self.video = item;
+					[self validateContent];
 					NSLog(@"Get movie: %luMB", item.length/1048576);
 					
 					if (self.video.length/1048576 > 10) {
-//						MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-//						hud.mode = MBProgressHUDModeIndeterminate;
-//						hud.labelText = @"Transcoding";
+						JGProgressHUD *hud = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleDark];
+						hud.textLabel.text = @"Transcoding";
 						//resize
 						NSString *path = [NSTemporaryDirectory() stringByAppendingString:@"videoTempFile.mov"];
 						NSParameterAssert([item writeToFile:path atomically:NO]);
 						AVURLAsset *urlAsset = [AVURLAsset URLAssetWithURL:[NSURL fileURLWithPath:path] options:nil];
-						AVAssetExportSession *session = [[AVAssetExportSession alloc] initWithAsset:urlAsset presetName:AVAssetExportPresetLowQuality];
+						AVAssetExportSession *session = [[AVAssetExportSession alloc] initWithAsset:urlAsset presetName:AVAssetExportPreset640x480];
+						
+						//output
 						NSURL *outputURL = [NSURL fileURLWithPath:[NSTemporaryDirectory() stringByAppendingString:@"videoOutTempFile"]];
+						NSFileManager *fileManager = [NSFileManager defaultManager];
+						[fileManager removeItemAtURL:outputURL error:NULL];
 						session.outputURL = outputURL;
 						session.outputFileType = AVFileTypeQuickTimeMovie;
 						[session exportAsynchronouslyWithCompletionHandler:^(void){
@@ -142,9 +147,9 @@
 							 switch ([session status]) {
 								 case AVAssetExportSessionStatusFailed:
 									 NSLog(@"Failed with error: %@", session.error.description);
-//									 hud.mode = MBProgressHUDModeText;
-//									 hud.labelText = @"Failed";
-//									 [hud hide:YES afterDelay:3];
+									 hud.indicatorView = nil;
+									 hud.textLabel.text = @"Failed";
+									 [hud dismissAfterDelay:3];
 									 break;
 								 case AVAssetExportSessionStatusCancelled:
 									 NSLog(@"User cancelled");
@@ -154,20 +159,27 @@
 									 if (data.length/1048576 > 10) {
 										 NSLog(@"Too large");
 										 //too large
-//										 hud.mode = MBProgressHUDModeText;
-//										 hud.labelText = @"Too large!";
-//										 [hud hide:YES afterDelay:3];
+										 hud.indicatorView = nil;
+										 hud.textLabel.text = @"Too large!";
+										 [hud dismissAfterDelay:3];
 									 }else{
 										 NSLog(@"Finished");
-//										 hud.mode = MBProgressHUDModeText;
-//										 hud.labelText = @"Finished";
-//										 [hud hide:YES afterDelay:1.5];
+										 hud.indicatorView = nil;
+										 hud.textLabel.text = @"Finished";
+										 [hud dismissAfterDelay:1.5];
 									 }
 									 self.video = data;
 								 }
 									 break;
 							 }
-							 [self validateContent];
+							
+							//delete file
+							NSFileManager *fileManager = [NSFileManager defaultManager];
+							[fileManager removeItemAtPath:path error:NULL];
+							[fileManager removeItemAtURL:outputURL error:NULL];
+							
+							//validate
+							[self validateContent];
 						 }];
 					}
 				}];
