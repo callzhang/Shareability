@@ -63,16 +63,32 @@
 	}
 	
 	if (!sizeValid) {
-		NSLog(@"too large");
+		NSLog(@"Too large");
 		JGProgressHUD *hud = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleDark];
 		hud.textLabel.text = @"Too large";
 		[hud showInView:self.view];
 		[hud dismissAfterDelay:3.0];
+		[self.view setNeedsDisplay];
 	}
 	
 	
 	
-    return sizeValid && charValid;
+    BOOL valid = sizeValid && charValid;
+	if (!valid) {
+		NSLog(@"Not valid");
+		UIView *hud = [[UIView alloc] initWithFrame:self.view.frame];
+		hud.backgroundColor	= [UIColor colorWithWhite:0 alpha:0.5];
+		UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 30)];
+		label.center = CGPointMake([UIScreen mainScreen].bounds.size.width/2, [UIScreen mainScreen].bounds.size.height/2);
+		label.text = @"Too large";
+		[hud addSubview:label];
+		[self.view addSubview:hud];
+		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+			[hud removeFromSuperview];
+		});
+	}
+	
+	return valid;
 }
 
 - (void)presentationAnimationDidFinish{

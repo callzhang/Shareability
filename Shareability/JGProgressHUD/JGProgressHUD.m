@@ -396,6 +396,8 @@ static CGRect keyboardFrame = (CGRect){{0.0f, 0.0f}, {0.0f, 0.0f}};
     else {
         [self cleanUpAfterPresentation];
     }
+	
+	[view setNeedsDisplay];
 }
 
 #pragma mark - Hiding
