@@ -12,8 +12,8 @@
 #import "WXApiObject.h"
 #import "AnimatedGIFImageSerialization.h"
 #import <AVFoundation/AVFoundation.h>
-//#import "JGProgressHUD.h"
-#import "ProgressHUD.h"
+#import "JGProgressHUD.h"
+//#import "ProgressHUD.h"
 
 @interface ShareViewController ()
 @property (nonatomic) NSURL *url;
@@ -130,6 +130,7 @@
 					if (self.video.length/1048576 > 10) {
 						JGProgressHUD *hud = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleDark];
 						hud.textLabel.text = @"Transcoding";
+                        [hud showInView:self.view];
 						//resize
 						NSString *path = [NSTemporaryDirectory() stringByAppendingString:@"videoTempFile.mov"];
 						NSParameterAssert([item writeToFile:path atomically:NO]);
