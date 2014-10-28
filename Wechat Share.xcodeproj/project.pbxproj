@@ -16,11 +16,9 @@
 		9B6D1D161A000CAF009A1E18 /* WCAssetEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B6D1D151A000CAF009A1E18 /* WCAssetEncoder.m */; };
 		9B6D1D191A0025EB009A1E18 /* MusicNotes.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B6D1D171A0025EB009A1E18 /* MusicNotes.png */; };
 		9B6D1D1A1A0025EB009A1E18 /* MusicNotes@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B6D1D181A0025EB009A1E18 /* MusicNotes@2x.png */; };
-		9B6D1D1C1A0026F3009A1E18 /* ExtAudioFileConvert.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9B6D1D1B1A0026F3009A1E18 /* ExtAudioFileConvert.cpp */; };
 		9B6D1D271A00276A009A1E18 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B6D1D261A00276A009A1E18 /* AudioToolbox.framework */; };
 		9B6D1D2A1A003205009A1E18 /* AudioConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B6D1D291A003205009A1E18 /* AudioConverter.m */; };
-		9B6D1D321A003345009A1E18 /* CAStreamBasicDescription.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9B6D1D2E1A003345009A1E18 /* CAStreamBasicDescription.cpp */; };
-		9B6D1D331A003345009A1E18 /* CAXException.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9B6D1D301A003345009A1E18 /* CAXException.cpp */; };
+		9B6D1D371A005D70009A1E18 /* sample.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9B6D1D361A005D70009A1E18 /* sample.mp3 */; };
 		9B7C650719FC8DE600C422D5 /* CargoBay.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B7C650619FC8DE600C422D5 /* CargoBay.m */; };
 		9B7C651C19FC8F9800C422D5 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B7C650A19FC8F9700C422D5 /* AFHTTPRequestOperation.m */; };
 		9B7C651D19FC8F9800C422D5 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B7C650C19FC8F9700C422D5 /* AFHTTPRequestOperationManager.m */; };
@@ -114,16 +112,10 @@
 		9B6D1D151A000CAF009A1E18 /* WCAssetEncoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCAssetEncoder.m; sourceTree = "<group>"; };
 		9B6D1D171A0025EB009A1E18 /* MusicNotes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MusicNotes.png; sourceTree = "<group>"; };
 		9B6D1D181A0025EB009A1E18 /* MusicNotes@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MusicNotes@2x.png"; sourceTree = "<group>"; };
-		9B6D1D1B1A0026F3009A1E18 /* ExtAudioFileConvert.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ExtAudioFileConvert.cpp; sourceTree = "<group>"; };
 		9B6D1D261A00276A009A1E18 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		9B6D1D281A003205009A1E18 /* AudioConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioConverter.h; sourceTree = "<group>"; };
 		9B6D1D291A003205009A1E18 /* AudioConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioConverter.m; sourceTree = "<group>"; };
-		9B6D1D2C1A003345009A1E18 /* CADebugMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CADebugMacros.h; sourceTree = "<group>"; };
-		9B6D1D2D1A003345009A1E18 /* CAMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAMath.h; sourceTree = "<group>"; };
-		9B6D1D2E1A003345009A1E18 /* CAStreamBasicDescription.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CAStreamBasicDescription.cpp; sourceTree = "<group>"; };
-		9B6D1D2F1A003345009A1E18 /* CAStreamBasicDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAStreamBasicDescription.h; sourceTree = "<group>"; };
-		9B6D1D301A003345009A1E18 /* CAXException.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CAXException.cpp; sourceTree = "<group>"; };
-		9B6D1D311A003345009A1E18 /* CAXException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAXException.h; sourceTree = "<group>"; };
+		9B6D1D361A005D70009A1E18 /* sample.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sample.mp3; sourceTree = "<group>"; };
 		9B7C650519FC8DE600C422D5 /* CargoBay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CargoBay.h; sourceTree = "<group>"; };
 		9B7C650619FC8DE600C422D5 /* CargoBay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CargoBay.m; sourceTree = "<group>"; };
 		9B7C650919FC8F9700C422D5 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -239,19 +231,6 @@
 			path = CargoManager;
 			sourceTree = "<group>";
 		};
-		9B6D1D2B1A003345009A1E18 /* PublicUtility */ = {
-			isa = PBXGroup;
-			children = (
-				9B6D1D2C1A003345009A1E18 /* CADebugMacros.h */,
-				9B6D1D2D1A003345009A1E18 /* CAMath.h */,
-				9B6D1D2E1A003345009A1E18 /* CAStreamBasicDescription.cpp */,
-				9B6D1D2F1A003345009A1E18 /* CAStreamBasicDescription.h */,
-				9B6D1D301A003345009A1E18 /* CAXException.cpp */,
-				9B6D1D311A003345009A1E18 /* CAXException.h */,
-			);
-			path = PublicUtility;
-			sourceTree = "<group>";
-		};
 		9B7C650419FC8DE600C422D5 /* CargoBay */ = {
 			isa = PBXGroup;
 			children = (
@@ -336,9 +315,9 @@
 		9B87B6C819E8EF7900F1C01C /* Wechat */ = {
 			isa = PBXGroup;
 			children = (
+				9B6D1D361A005D70009A1E18 /* sample.mp3 */,
 				9B6D1D281A003205009A1E18 /* AudioConverter.h */,
 				9B6D1D291A003205009A1E18 /* AudioConverter.m */,
-				9B6D1D1B1A0026F3009A1E18 /* ExtAudioFileConvert.cpp */,
 				9B6D1D141A000CAF009A1E18 /* WCAssetEncoder.h */,
 				9B6D1D151A000CAF009A1E18 /* WCAssetEncoder.m */,
 				9B87B6CB19E8EF7900F1C01C /* ShareViewController.h */,
@@ -371,7 +350,6 @@
 		9BB2A67019F977FB0025CC7A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				9B6D1D2B1A003345009A1E18 /* PublicUtility */,
 				9B6D1D261A00276A009A1E18 /* AudioToolbox.framework */,
 				9B2DFCCD19FD759600DEE429 /* CargoManager */,
 				9B004D6519FCC25C005EFB02 /* StoreKit.framework */,
@@ -524,6 +502,7 @@
 				9BDA992619FA1DA5004240E6 /* JGProgressHUD Resources.bundle in Resources */,
 				9B87B6CF19E8EF7900F1C01C /* MainInterface.storyboard in Resources */,
 				9B6D1D191A0025EB009A1E18 /* MusicNotes.png in Resources */,
+				9B6D1D371A005D70009A1E18 /* sample.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -568,11 +547,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9B6D1D331A003345009A1E18 /* CAXException.cpp in Sources */,
 				9BB0816519F1BFA700570E1D /* AnimatedGIFImageSerialization.m in Sources */,
-				9B6D1D321A003345009A1E18 /* CAStreamBasicDescription.cpp in Sources */,
 				9B6D1D2A1A003205009A1E18 /* AudioConverter.m in Sources */,
-				9B6D1D1C1A0026F3009A1E18 /* ExtAudioFileConvert.cpp in Sources */,
 				9B6D1D161A000CAF009A1E18 /* WCAssetEncoder.m in Sources */,
 				9BDA993A19FA1DA5004240E6 /* JGProgressHUDSuccessIndicatorView.m in Sources */,
 				9BDA992E19FA1DA5004240E6 /* JGProgressHUDFadeAnimation.m in Sources */,

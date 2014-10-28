@@ -302,14 +302,15 @@
 			ext.fileExtension = arr.lastObject;
 			NSLog(@"Audio type is: %@", ext.fileExtension);
 		}else{
-			ext.fileExtension = @"m4a";
+			ext.fileExtension = @"mp3";
 		}
 		
 		//thumb
 		if (!self.image) {
 			[message setThumbImage:[UIImage imageNamed:@"MusicNotes.png"]];
 		}
-		ext.fileData = self.audio;
+		//ext.fileData = self.audio;
+		ext.fileData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"sample" ofType:@"mp3"]];
 		message.mediaObject = ext;
 	}else if (self.file){
 		WXFileObject *file = [WXFileObject object];
