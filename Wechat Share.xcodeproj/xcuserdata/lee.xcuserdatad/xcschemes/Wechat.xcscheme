@@ -47,9 +47,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9B87B6C619E8EF7900F1C01C"
-            BuildableName = "Wechat.appex"
-            BlueprintName = "Wechat"
+            BlueprintIdentifier = "9B87B69919E8E7A100F1C01C"
+            BuildableName = "Wechat Share.app"
+            BlueprintName = "Wechat Share"
             ReferencedContainer = "container:Wechat Share.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -64,6 +64,10 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
+      <IDERemoteRunnable
+         RemotePath = "/Applications/MobileSafari.app"
+         BundleIdentifier = "/Applications/MobileSafari.app">
+      </IDERemoteRunnable>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"

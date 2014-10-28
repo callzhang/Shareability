@@ -1,0 +1,739 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1E19A0671708514D00FDBFE8 /* TypeConverterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E19A0651708514D00FDBFE8 /* TypeConverterViewController.m */; };
+		1E19A0681708514D00FDBFE8 /* TypeConverterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E19A0661708514D00FDBFE8 /* TypeConverterViewController.xib */; };
+		622F5E0A16EA032C00C8B02A /* AdvancedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 622F5E0816EA032C00C8B02A /* AdvancedViewController.m */; };
+		622F5E0B16EA032C00C8B02A /* AdvancedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 622F5E0916EA032C00C8B02A /* AdvancedViewController.xib */; };
+		6233FE6216DFA6030084DAA2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6233FE6116DFA6030084DAA2 /* UIKit.framework */; };
+		6233FE6416DFA6030084DAA2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6233FE6316DFA6030084DAA2 /* Foundation.framework */; };
+		6233FE6616DFA6030084DAA2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6233FE6516DFA6030084DAA2 /* CoreGraphics.framework */; };
+		6233FE6C16DFA6030084DAA2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6233FE6A16DFA6030084DAA2 /* InfoPlist.strings */; };
+		6233FE6E16DFA6030084DAA2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6233FE6D16DFA6030084DAA2 /* main.m */; };
+		6233FEA416DFB8980084DAA2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6233FEA316DFB8980084DAA2 /* AppDelegate.m */; };
+		6233FEAA16DFB8A80084DAA2 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6233FEA616DFB8A80084DAA2 /* Default-568h@2x.png */; };
+		6233FEAB16DFB8A80084DAA2 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 6233FEA716DFB8A80084DAA2 /* Default.png */; };
+		6233FEAC16DFB8A80084DAA2 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6233FEA816DFB8A80084DAA2 /* Default@2x.png */; };
+		6233FEB516DFB8D10084DAA2 /* libmp3lame.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6233FEB216DFB8D10084DAA2 /* libmp3lame.a */; };
+		624D78D91728FBC900A2A428 /* AudioConverter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 624D78D71728FBC900A2A428 /* AudioConverter.a */; };
+		624D78DA1728FBC900A2A428 /* AudioConverter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 624D78D71728FBC900A2A428 /* AudioConverter.a */; };
+		624D78DC1728FBC900A2A428 /* MP3Converter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 624D78D81728FBC900A2A428 /* MP3Converter.a */; };
+		624D78DE1728FBC900A2A428 /* MP3Converter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 624D78D81728FBC900A2A428 /* MP3Converter.a */; };
+		62513FCB16E8E40F0044FD25 /* MP3ContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62513FCA16E8E40F0044FD25 /* MP3ContainerViewController.m */; };
+		62567B851721AD6F00BC0503 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6233FE6316DFA6030084DAA2 /* Foundation.framework */; };
+		62567B951721ADA400BC0503 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6233FE6316DFA6030084DAA2 /* Foundation.framework */; };
+		62567BA01721AE6200BC0503 /* libmp3lame.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6233FEB216DFB8D10084DAA2 /* libmp3lame.a */; };
+		6292695216E9A449009C1D16 /* BasicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6292695016E9A449009C1D16 /* BasicViewController.m */; };
+		6292695316E9A449009C1D16 /* BasicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6292695116E9A449009C1D16 /* BasicViewController.xib */; };
+		6292695516E9BBB7009C1D16 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6292695416E9BBB7009C1D16 /* QuartzCore.framework */; };
+		62BFD23316EB465500139412 /* tokyo_aac.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 62BFD22E16EB465500139412 /* tokyo_aac.m4a */; };
+		62BFD23416EB465500139412 /* tokyo_aif.aif in Resources */ = {isa = PBXBuildFile; fileRef = 62BFD22F16EB465500139412 /* tokyo_aif.aif */; };
+		62BFD23516EB465500139412 /* tokyo_alac.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 62BFD23016EB465500139412 /* tokyo_alac.m4a */; };
+		62BFD23616EB465500139412 /* tokyo_mp3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 62BFD23116EB465500139412 /* tokyo_mp3.mp3 */; };
+		62BFD23B16EB6C1F00139412 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62BFD23A16EB6C1F00139412 /* AVFoundation.framework */; };
+		62BFD23D16EB6C2A00139412 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62BFD23C16EB6C2A00139412 /* CoreMedia.framework */; };
+		62BFD24016EB82F800139412 /* tokyo_wav.wav in Resources */ = {isa = PBXBuildFile; fileRef = 62BFD23F16EB82F800139412 /* tokyo_wav.wav */; };
+		62BFD24416EBD0E300139412 /* ProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 62BFD24316EBD0E300139412 /* ProgressView.m */; };
+		62D33DDF16EBE99B008D41A4 /* progressBar-Bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 62D33DDD16EBE99B008D41A4 /* progressBar-Bg.png */; };
+		62D33DE016EBE99B008D41A4 /* progressBar-Bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 62D33DDE16EBE99B008D41A4 /* progressBar-Bg@2x.png */; };
+		62D33DE916EBF186008D41A4 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 62D33DE216EBF186008D41A4 /* Icon-72.png */; };
+		62D33DEA16EBF186008D41A4 /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 62D33DE316EBF186008D41A4 /* Icon-72@2x.png */; };
+		62D33DEB16EBF186008D41A4 /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 62D33DE416EBF186008D41A4 /* Icon-Small-50.png */; };
+		62D33DEC16EBF186008D41A4 /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 62D33DE516EBF186008D41A4 /* Icon-Small.png */; };
+		62D33DED16EBF186008D41A4 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 62D33DE616EBF186008D41A4 /* Icon-Small@2x.png */; };
+		62D33DEE16EBF186008D41A4 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 62D33DE716EBF186008D41A4 /* Icon.png */; };
+		62D33DEF16EBF186008D41A4 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 62D33DE816EBF186008D41A4 /* Icon@2x.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		62567B821721AD6F00BC0503 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/${PRODUCT_NAME}";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		62567B921721ADA400BC0503 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/${PRODUCT_NAME}";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		1E19A0641708514D00FDBFE8 /* TypeConverterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TypeConverterViewController.h; sourceTree = "<group>"; };
+		1E19A0651708514D00FDBFE8 /* TypeConverterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TypeConverterViewController.m; sourceTree = "<group>"; };
+		1E19A0661708514D00FDBFE8 /* TypeConverterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TypeConverterViewController.xib; sourceTree = "<group>"; };
+		1E19A0691708A31C00FDBFE8 /* AudioConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioConverter.h; sourceTree = "<group>"; };
+		622F5E0716EA032C00C8B02A /* AdvancedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvancedViewController.h; sourceTree = "<group>"; };
+		622F5E0816EA032C00C8B02A /* AdvancedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvancedViewController.m; sourceTree = "<group>"; };
+		622F5E0916EA032C00C8B02A /* AdvancedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AdvancedViewController.xib; sourceTree = "<group>"; };
+		6233FE5E16DFA6030084DAA2 /* AudioConverterSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AudioConverterSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6233FE6116DFA6030084DAA2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		6233FE6316DFA6030084DAA2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		6233FE6516DFA6030084DAA2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		6233FE6916DFA6030084DAA2 /* AudioConverterSample-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AudioConverterSample-Info.plist"; sourceTree = "<group>"; };
+		6233FE6B16DFA6030084DAA2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		6233FE6D16DFA6030084DAA2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		6233FE6F16DFA6030084DAA2 /* AudioConverterSample-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AudioConverterSample-Prefix.pch"; sourceTree = "<group>"; };
+		6233FEA216DFB8980084DAA2 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		6233FEA316DFB8980084DAA2 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		6233FEA616DFB8A80084DAA2 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		6233FEA716DFB8A80084DAA2 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		6233FEA816DFB8A80084DAA2 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		6233FEB016DFB8D10084DAA2 /* lame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lame.h; sourceTree = "<group>"; };
+		6233FEB216DFB8D10084DAA2 /* libmp3lame.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libmp3lame.a; sourceTree = "<group>"; };
+		6233FEB816DFB92F0084DAA2 /* MP3Converter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MP3Converter.h; sourceTree = "<group>"; };
+		624D78D71728FBC900A2A428 /* AudioConverter.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = AudioConverter.a; path = AudioConverterKit/AudioConverter.a; sourceTree = SOURCE_ROOT; };
+		624D78D81728FBC900A2A428 /* MP3Converter.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = MP3Converter.a; path = AudioConverterKit/MP3Converter.a; sourceTree = SOURCE_ROOT; };
+		62513FC916E8E40F0044FD25 /* MP3ContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MP3ContainerViewController.h; path = AudioConverterSample/Classes/MP3ContainerViewController.h; sourceTree = SOURCE_ROOT; };
+		62513FCA16E8E40F0044FD25 /* MP3ContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MP3ContainerViewController.m; path = AudioConverterSample/Classes/MP3ContainerViewController.m; sourceTree = SOURCE_ROOT; };
+		62567B841721AD6F00BC0503 /* AudioConverter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = AudioConverter.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		62567B941721ADA400BC0503 /* MP3Converter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = MP3Converter.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		62567BA71721B2F300BC0503 /* MP3Converter-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MP3Converter-Prefix.pch"; sourceTree = "<group>"; };
+		62567BA81721B30800BC0503 /* AudioConverter-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AudioConverter-Prefix.pch"; sourceTree = "<group>"; };
+		6292694F16E9A449009C1D16 /* BasicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BasicViewController.h; path = AudioConverterSample/Classes/BasicViewController.h; sourceTree = SOURCE_ROOT; };
+		6292695016E9A449009C1D16 /* BasicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BasicViewController.m; path = AudioConverterSample/Classes/BasicViewController.m; sourceTree = SOURCE_ROOT; };
+		6292695116E9A449009C1D16 /* BasicViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BasicViewController.xib; path = AudioConverterSample/Classes/BasicViewController.xib; sourceTree = SOURCE_ROOT; };
+		6292695416E9BBB7009C1D16 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		62BFD22E16EB465500139412 /* tokyo_aac.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = tokyo_aac.m4a; sourceTree = "<group>"; };
+		62BFD22F16EB465500139412 /* tokyo_aif.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = tokyo_aif.aif; sourceTree = "<group>"; };
+		62BFD23016EB465500139412 /* tokyo_alac.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = tokyo_alac.m4a; sourceTree = "<group>"; };
+		62BFD23116EB465500139412 /* tokyo_mp3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tokyo_mp3.mp3; sourceTree = "<group>"; };
+		62BFD23A16EB6C1F00139412 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		62BFD23C16EB6C2A00139412 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		62BFD23F16EB82F800139412 /* tokyo_wav.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tokyo_wav.wav; sourceTree = "<group>"; };
+		62BFD24216EBD0E300139412 /* ProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressView.h; sourceTree = "<group>"; };
+		62BFD24316EBD0E300139412 /* ProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressView.m; sourceTree = "<group>"; };
+		62D33DDD16EBE99B008D41A4 /* progressBar-Bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "progressBar-Bg.png"; sourceTree = "<group>"; };
+		62D33DDE16EBE99B008D41A4 /* progressBar-Bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "progressBar-Bg@2x.png"; sourceTree = "<group>"; };
+		62D33DE216EBF186008D41A4 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
+		62D33DE316EBF186008D41A4 /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = "<group>"; };
+		62D33DE416EBF186008D41A4 /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50.png"; sourceTree = "<group>"; };
+		62D33DE516EBF186008D41A4 /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small.png"; sourceTree = "<group>"; };
+		62D33DE616EBF186008D41A4 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
+		62D33DE716EBF186008D41A4 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		62D33DE816EBF186008D41A4 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6233FE5B16DFA6030084DAA2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				62BFD23D16EB6C2A00139412 /* CoreMedia.framework in Frameworks */,
+				62BFD23B16EB6C1F00139412 /* AVFoundation.framework in Frameworks */,
+				6292695516E9BBB7009C1D16 /* QuartzCore.framework in Frameworks */,
+				6233FE6216DFA6030084DAA2 /* UIKit.framework in Frameworks */,
+				6233FE6416DFA6030084DAA2 /* Foundation.framework in Frameworks */,
+				6233FE6616DFA6030084DAA2 /* CoreGraphics.framework in Frameworks */,
+				6233FEB516DFB8D10084DAA2 /* libmp3lame.a in Frameworks */,
+				624D78D91728FBC900A2A428 /* AudioConverter.a in Frameworks */,
+				624D78DC1728FBC900A2A428 /* MP3Converter.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		62567B811721AD6F00BC0503 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				62567B851721AD6F00BC0503 /* Foundation.framework in Frameworks */,
+				624D78DA1728FBC900A2A428 /* AudioConverter.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		62567B911721ADA400BC0503 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				62567B951721ADA400BC0503 /* Foundation.framework in Frameworks */,
+				62567BA01721AE6200BC0503 /* libmp3lame.a in Frameworks */,
+				624D78DE1728FBC900A2A428 /* MP3Converter.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6233FE5516DFA6030084DAA2 = {
+			isa = PBXGroup;
+			children = (
+				6233FE9416DFB5A80084DAA2 /* AudioConverterKit */,
+				6233FE6716DFA6030084DAA2 /* AudioConverterSample */,
+				6233FE6016DFA6030084DAA2 /* Frameworks */,
+				6233FE5F16DFA6030084DAA2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6233FE5F16DFA6030084DAA2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6233FE5E16DFA6030084DAA2 /* AudioConverterSample.app */,
+				62567B841721AD6F00BC0503 /* AudioConverter.a */,
+				62567B941721ADA400BC0503 /* MP3Converter.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6233FE6016DFA6030084DAA2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				62BFD23C16EB6C2A00139412 /* CoreMedia.framework */,
+				62BFD23A16EB6C1F00139412 /* AVFoundation.framework */,
+				6292695416E9BBB7009C1D16 /* QuartzCore.framework */,
+				6233FE6116DFA6030084DAA2 /* UIKit.framework */,
+				6233FE6316DFA6030084DAA2 /* Foundation.framework */,
+				6233FE6516DFA6030084DAA2 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6233FE6716DFA6030084DAA2 /* AudioConverterSample */ = {
+			isa = PBXGroup;
+			children = (
+				6233FEA116DFB8980084DAA2 /* Classes */,
+				6233FE6816DFA6030084DAA2 /* Supporting Files */,
+			);
+			path = AudioConverterSample;
+			sourceTree = "<group>";
+		};
+		6233FE6816DFA6030084DAA2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6233FEA516DFB8A80084DAA2 /* Resources */,
+				6233FE6916DFA6030084DAA2 /* AudioConverterSample-Info.plist */,
+				6233FE6A16DFA6030084DAA2 /* InfoPlist.strings */,
+				6233FE6D16DFA6030084DAA2 /* main.m */,
+				6233FE6F16DFA6030084DAA2 /* AudioConverterSample-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6233FE9416DFB5A80084DAA2 /* AudioConverterKit */ = {
+			isa = PBXGroup;
+			children = (
+				6233FEAE16DFB8D10084DAA2 /* 3rd-party */,
+				6233FEB316DFB8D10084DAA2 /* Documentation */,
+				6233FE9516DFB5A80084DAA2 /* Supporting Files */,
+				6233FEB816DFB92F0084DAA2 /* MP3Converter.h */,
+				1E19A0691708A31C00FDBFE8 /* AudioConverter.h */,
+				624D78D71728FBC900A2A428 /* AudioConverter.a */,
+				624D78D81728FBC900A2A428 /* MP3Converter.a */,
+			);
+			path = AudioConverterKit;
+			sourceTree = "<group>";
+		};
+		6233FE9516DFB5A80084DAA2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				62567BA81721B30800BC0503 /* AudioConverter-Prefix.pch */,
+				62567BA71721B2F300BC0503 /* MP3Converter-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6233FEA116DFB8980084DAA2 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				62BFD24116EBD0D400139412 /* UIViews */,
+				6292694E16E9A3F7009C1D16 /* ViewControllers */,
+				6233FEA216DFB8980084DAA2 /* AppDelegate.h */,
+				6233FEA316DFB8980084DAA2 /* AppDelegate.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		6233FEA516DFB8A80084DAA2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				62D33DE116EBF186008D41A4 /* Icons */,
+				62D33DDD16EBE99B008D41A4 /* progressBar-Bg.png */,
+				62D33DDE16EBE99B008D41A4 /* progressBar-Bg@2x.png */,
+				6233FEA616DFB8A80084DAA2 /* Default-568h@2x.png */,
+				6233FEA716DFB8A80084DAA2 /* Default.png */,
+				6233FEA816DFB8A80084DAA2 /* Default@2x.png */,
+				62BFD23F16EB82F800139412 /* tokyo_wav.wav */,
+				62BFD22E16EB465500139412 /* tokyo_aac.m4a */,
+				62BFD22F16EB465500139412 /* tokyo_aif.aif */,
+				62BFD23016EB465500139412 /* tokyo_alac.m4a */,
+				62BFD23116EB465500139412 /* tokyo_mp3.mp3 */,
+			);
+			name = Resources;
+			path = AudioConverterSample/Resources;
+			sourceTree = SOURCE_ROOT;
+		};
+		6233FEAE16DFB8D10084DAA2 /* 3rd-party */ = {
+			isa = PBXGroup;
+			children = (
+				6233FEAF16DFB8D10084DAA2 /* inc */,
+				6233FEB116DFB8D10084DAA2 /* lib */,
+			);
+			path = "3rd-party";
+			sourceTree = "<group>";
+		};
+		6233FEAF16DFB8D10084DAA2 /* inc */ = {
+			isa = PBXGroup;
+			children = (
+				6233FEB016DFB8D10084DAA2 /* lame.h */,
+			);
+			path = inc;
+			sourceTree = "<group>";
+		};
+		6233FEB116DFB8D10084DAA2 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				6233FEB216DFB8D10084DAA2 /* libmp3lame.a */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		6233FEB316DFB8D10084DAA2 /* Documentation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Documentation;
+			sourceTree = "<group>";
+		};
+		6292694E16E9A3F7009C1D16 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				1E19A0641708514D00FDBFE8 /* TypeConverterViewController.h */,
+				1E19A0651708514D00FDBFE8 /* TypeConverterViewController.m */,
+				1E19A0661708514D00FDBFE8 /* TypeConverterViewController.xib */,
+				62513FC916E8E40F0044FD25 /* MP3ContainerViewController.h */,
+				62513FCA16E8E40F0044FD25 /* MP3ContainerViewController.m */,
+				6292694F16E9A449009C1D16 /* BasicViewController.h */,
+				6292695016E9A449009C1D16 /* BasicViewController.m */,
+				6292695116E9A449009C1D16 /* BasicViewController.xib */,
+				622F5E0716EA032C00C8B02A /* AdvancedViewController.h */,
+				622F5E0816EA032C00C8B02A /* AdvancedViewController.m */,
+				622F5E0916EA032C00C8B02A /* AdvancedViewController.xib */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		62BFD24116EBD0D400139412 /* UIViews */ = {
+			isa = PBXGroup;
+			children = (
+				62BFD24216EBD0E300139412 /* ProgressView.h */,
+				62BFD24316EBD0E300139412 /* ProgressView.m */,
+			);
+			name = UIViews;
+			sourceTree = "<group>";
+		};
+		62D33DE116EBF186008D41A4 /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				62D33DE216EBF186008D41A4 /* Icon-72.png */,
+				62D33DE316EBF186008D41A4 /* Icon-72@2x.png */,
+				62D33DE416EBF186008D41A4 /* Icon-Small-50.png */,
+				62D33DE516EBF186008D41A4 /* Icon-Small.png */,
+				62D33DE616EBF186008D41A4 /* Icon-Small@2x.png */,
+				62D33DE716EBF186008D41A4 /* Icon.png */,
+				62D33DE816EBF186008D41A4 /* Icon@2x.png */,
+			);
+			path = Icons;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6233FE5D16DFA6030084DAA2 /* AudioConverterSample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6233FE7B16DFA6030084DAA2 /* Build configuration list for PBXNativeTarget "AudioConverterSample" */;
+			buildPhases = (
+				62D00AF417199DBD00A70977 /* ShellScript */,
+				6233FE5A16DFA6030084DAA2 /* Sources */,
+				6233FE5B16DFA6030084DAA2 /* Frameworks */,
+				6233FE5C16DFA6030084DAA2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AudioConverterSample;
+			productName = AudioConverterSample;
+			productReference = 6233FE5E16DFA6030084DAA2 /* AudioConverterSample.app */;
+			productType = "com.apple.product-type.application";
+		};
+		62567B831721AD6F00BC0503 /* AudioConverter */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 62567B8D1721AD6F00BC0503 /* Build configuration list for PBXNativeTarget "AudioConverter" */;
+			buildPhases = (
+				62567B801721AD6F00BC0503 /* Sources */,
+				62567B811721AD6F00BC0503 /* Frameworks */,
+				62567B821721AD6F00BC0503 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AudioConverter;
+			productName = AudioConverter;
+			productReference = 62567B841721AD6F00BC0503 /* AudioConverter.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		62567B931721ADA400BC0503 /* MP3Converter */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 62567B9D1721ADA400BC0503 /* Build configuration list for PBXNativeTarget "MP3Converter" */;
+			buildPhases = (
+				62567B901721ADA400BC0503 /* Sources */,
+				62567B911721ADA400BC0503 /* Frameworks */,
+				62567B921721ADA400BC0503 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MP3Converter;
+			productName = MP3Converter;
+			productReference = 62567B941721ADA400BC0503 /* MP3Converter.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6233FE5616DFA6030084DAA2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = MobileTR;
+			};
+			buildConfigurationList = 6233FE5916DFA6030084DAA2 /* Build configuration list for PBXProject "AudioConverter" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 6233FE5516DFA6030084DAA2;
+			productRefGroup = 6233FE5F16DFA6030084DAA2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6233FE5D16DFA6030084DAA2 /* AudioConverterSample */,
+				62567B831721AD6F00BC0503 /* AudioConverter */,
+				62567B931721ADA400BC0503 /* MP3Converter */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6233FE5C16DFA6030084DAA2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6233FE6C16DFA6030084DAA2 /* InfoPlist.strings in Resources */,
+				6233FEAA16DFB8A80084DAA2 /* Default-568h@2x.png in Resources */,
+				6233FEAB16DFB8A80084DAA2 /* Default.png in Resources */,
+				6233FEAC16DFB8A80084DAA2 /* Default@2x.png in Resources */,
+				6292695316E9A449009C1D16 /* BasicViewController.xib in Resources */,
+				622F5E0B16EA032C00C8B02A /* AdvancedViewController.xib in Resources */,
+				62BFD23316EB465500139412 /* tokyo_aac.m4a in Resources */,
+				62BFD23416EB465500139412 /* tokyo_aif.aif in Resources */,
+				62BFD23516EB465500139412 /* tokyo_alac.m4a in Resources */,
+				62BFD23616EB465500139412 /* tokyo_mp3.mp3 in Resources */,
+				62BFD24016EB82F800139412 /* tokyo_wav.wav in Resources */,
+				62D33DDF16EBE99B008D41A4 /* progressBar-Bg.png in Resources */,
+				62D33DE016EBE99B008D41A4 /* progressBar-Bg@2x.png in Resources */,
+				62D33DE916EBF186008D41A4 /* Icon-72.png in Resources */,
+				62D33DEA16EBF186008D41A4 /* Icon-72@2x.png in Resources */,
+				62D33DEB16EBF186008D41A4 /* Icon-Small-50.png in Resources */,
+				62D33DEC16EBF186008D41A4 /* Icon-Small.png in Resources */,
+				62D33DED16EBF186008D41A4 /* Icon-Small@2x.png in Resources */,
+				62D33DEE16EBF186008D41A4 /* Icon.png in Resources */,
+				62D33DEF16EBF186008D41A4 /* Icon@2x.png in Resources */,
+				1E19A0681708514D00FDBFE8 /* TypeConverterViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		62D00AF417199DBD00A70977 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/bash\nbuildPlist=${INFOPLIST_FILE}\nSDKBuild=$(/usr/libexec/PlistBuddy -c \"Print KIT-Build\" $buildPlist)\nbuildDate=$(echo `date`)\n/usr/libexec/PlistBuddy -c \"Set :KIT-Build $buildDate\" $buildPlist";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6233FE5A16DFA6030084DAA2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6233FE6E16DFA6030084DAA2 /* main.m in Sources */,
+				6233FEA416DFB8980084DAA2 /* AppDelegate.m in Sources */,
+				62513FCB16E8E40F0044FD25 /* MP3ContainerViewController.m in Sources */,
+				6292695216E9A449009C1D16 /* BasicViewController.m in Sources */,
+				622F5E0A16EA032C00C8B02A /* AdvancedViewController.m in Sources */,
+				62BFD24416EBD0E300139412 /* ProgressView.m in Sources */,
+				1E19A0671708514D00FDBFE8 /* TypeConverterViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		62567B801721AD6F00BC0503 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		62567B901721ADA400BC0503 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		6233FE6A16DFA6030084DAA2 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6233FE6B16DFA6030084DAA2 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6233FE7916DFA6030084DAA2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				VALID_ARCHS = "arm64 armv7";
+			};
+			name = Debug;
+		};
+		6233FE7A16DFA6030084DAA2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "arm64 armv7";
+			};
+			name = Release;
+		};
+		6233FE7C16DFA6030084DAA2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AudioConverterSample/AudioConverterSample-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "AudioConverterSample/AudioConverterSample-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/AudioConverterKit/3rd-party/lib\"",
+					"\"$(SRCROOT)/AudioConverterKit\"",
+				);
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = AudioConverterSample;
+				VALID_ARCHS = "arm64 armv7";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		6233FE7D16DFA6030084DAA2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AudioConverterSample/AudioConverterSample-Prefix.pch";
+				INFOPLIST_FILE = "AudioConverterSample/AudioConverterSample-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/AudioConverterKit/3rd-party/lib\"",
+					"\"$(SRCROOT)/AudioConverterKit\"",
+				);
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_NAME = AudioConverterSample;
+				VALID_ARCHS = "arm64 armv7";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		62567B8E1721AD6F00BC0503 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/AudioConverter.dst;
+				EXECUTABLE_PREFIX = "";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AudioConverterKit/AudioConverter-Prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/AudioConverterKit\"",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		62567B8F1721AD6F00BC0503 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/AudioConverter.dst;
+				EXECUTABLE_PREFIX = "";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AudioConverterKit/AudioConverter-Prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/AudioConverterKit\"",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		62567B9E1721ADA400BC0503 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/MP3Converter.dst;
+				EXECUTABLE_PREFIX = "";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AudioConverterKit/MP3Converter-Prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/AudioConverterKit/3rd-party/lib\"",
+					"\"$(SRCROOT)/AudioConverterKit\"",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		62567B9F1721ADA400BC0503 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/MP3Converter.dst;
+				EXECUTABLE_PREFIX = "";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AudioConverterKit/MP3Converter-Prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/AudioConverterKit/3rd-party/lib\"",
+					"\"$(SRCROOT)/AudioConverterKit\"",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6233FE5916DFA6030084DAA2 /* Build configuration list for PBXProject "AudioConverter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6233FE7916DFA6030084DAA2 /* Debug */,
+				6233FE7A16DFA6030084DAA2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6233FE7B16DFA6030084DAA2 /* Build configuration list for PBXNativeTarget "AudioConverterSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6233FE7C16DFA6030084DAA2 /* Debug */,
+				6233FE7D16DFA6030084DAA2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		62567B8D1721AD6F00BC0503 /* Build configuration list for PBXNativeTarget "AudioConverter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				62567B8E1721AD6F00BC0503 /* Debug */,
+				62567B8F1721AD6F00BC0503 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		62567B9D1721ADA400BC0503 /* Build configuration list for PBXNativeTarget "MP3Converter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				62567B9E1721ADA400BC0503 /* Debug */,
+				62567B9F1721ADA400BC0503 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6233FE5616DFA6030084DAA2 /* Project object */;
+}
