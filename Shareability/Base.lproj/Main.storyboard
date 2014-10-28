@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A379b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -35,6 +35,18 @@
                                             <constraint firstAttribute="width" secondItem="lFR-Te-bqR" secondAttribute="height" multiplier="320:649" id="YBF-GP-GTt"/>
                                         </constraints>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SZu-Ho-sIC">
+                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <state key="normal">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <variation key="widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="358" y="25" width="22" height="22"/>
+                                        </variation>
+                                        <connections>
+                                            <segue destination="QfE-An-CLW" kind="presentation" id="OB8-tD-nJl"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="lFR-Te-bqR" secondAttribute="trailing" constant="50" id="IzT-Xd-ymn"/>
@@ -44,11 +56,22 @@
                                     <constraint firstItem="lFR-Te-bqR" firstAttribute="leading" secondItem="cgO-ly-LT1" secondAttribute="leading" constant="50" id="guB-aR-C0F"/>
                                     <constraint firstAttribute="centerX" secondItem="lFR-Te-bqR" secondAttribute="centerX" id="x9r-QA-afS"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="subviews">
+                                        <exclude reference="SZu-Ho-sIC"/>
+                                    </mask>
+                                </variation>
                                 <variation key="heightClass=compact" ambiguous="YES">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="400"/>
                                 </variation>
                                 <variation key="heightClass=regular" ambiguous="YES">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
+                                </variation>
+                                <variation key="widthClass=compact" ambiguous="YES">
+                                    <rect key="frame" x="0.0" y="0.0" width="400" height="600"/>
+                                    <mask key="subviews">
+                                        <include reference="SZu-Ho-sIC"/>
+                                    </mask>
                                 </variation>
                             </scrollView>
                         </subviews>
@@ -63,10 +86,125 @@
                             <constraint firstItem="cgO-ly-LT1" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="ur0-US-wnq"/>
                         </constraints>
                     </view>
+                    <nil key="simulatedStatusBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="402.5" y="502"/>
+        </scene>
+        <!--Unlock View Controller-->
+        <scene sceneID="seg-0x-1s0">
+            <objects>
+                <viewController id="QfE-An-CLW" customClass="UnlockViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="FXB-U9-riV"/>
+                        <viewControllerLayoutGuide type="bottom" id="8Jy-rF-Xsb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="q3g-jI-vPC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hli-Uq-Aut">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Buy">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="buy:" destination="QfE-An-CLW" eventType="touchUpInside" id="2Gl-tR-Ep7"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="frF-BS-s2g">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Restore">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="restore:" destination="QfE-An-CLW" eventType="touchUpInside" id="3Iq-QO-iov"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unlock all features " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FnN-qs-rp7" userLabel="label">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o04-gC-wps">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="179" y="53" width="47" height="21"/>
+                                </variation>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UYz-aJ-wag">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <mutableString key="text">Wechat share is all about sharing content to Wechat app. You can share text, website, image, GIF animation, music and video clips to wechat right at the context, instead of open it in Wechat app. Current supported share: 1) Share website from web browser 2) Share image from photo app 3) Share GIF animation from photo app 4) Share movie clip from photo app  Please note, sharing from other apps has not been tested. In most of the cases it should work, but the ability to share content depends on if the app support iOS 8 sharing extension.</mutableString>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="96" width="368" height="224"/>
+                                </variation>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="8Jy-rF-Xsb" firstAttribute="top" secondItem="Hli-Uq-Aut" secondAttribute="bottom" constant="100" id="13J-pG-So5"/>
+                            <constraint firstItem="FnN-qs-rp7" firstAttribute="trailing" secondItem="q3g-jI-vPC" secondAttribute="trailingMargin" constant="10" id="1hA-BI-cWj"/>
+                            <constraint firstItem="frF-BS-s2g" firstAttribute="top" secondItem="FnN-qs-rp7" secondAttribute="bottom" constant="50" id="FLu-k8-uY5"/>
+                            <constraint firstItem="8Jy-rF-Xsb" firstAttribute="top" secondItem="frF-BS-s2g" secondAttribute="bottom" constant="100" id="Mha-cv-Iav"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="frF-BS-s2g" secondAttribute="trailing" constant="100" id="VOp-O1-CkD"/>
+                            <constraint firstItem="Hli-Uq-Aut" firstAttribute="leading" secondItem="q3g-jI-vPC" secondAttribute="leadingMargin" constant="100" id="XKb-2M-P1O"/>
+                            <constraint firstItem="FnN-qs-rp7" firstAttribute="leading" secondItem="q3g-jI-vPC" secondAttribute="leadingMargin" constant="10" id="YkL-vg-ZJO"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="Hli-Uq-Aut"/>
+                                <exclude reference="frF-BS-s2g"/>
+                                <exclude reference="FnN-qs-rp7"/>
+                                <exclude reference="o04-gC-wps"/>
+                                <exclude reference="UYz-aJ-wag"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="1hA-BI-cWj"/>
+                                <exclude reference="YkL-vg-ZJO"/>
+                                <exclude reference="XKb-2M-P1O"/>
+                                <exclude reference="FLu-k8-uY5"/>
+                                <exclude reference="VOp-O1-CkD"/>
+                                <exclude reference="13J-pG-So5"/>
+                                <exclude reference="Mha-cv-Iav"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="Hli-Uq-Aut"/>
+                                <include reference="frF-BS-s2g"/>
+                                <include reference="FnN-qs-rp7"/>
+                                <include reference="o04-gC-wps"/>
+                                <include reference="UYz-aJ-wag"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="1hA-BI-cWj"/>
+                                <include reference="YkL-vg-ZJO"/>
+                                <include reference="XKb-2M-P1O"/>
+                                <include reference="FLu-k8-uY5"/>
+                                <include reference="VOp-O1-CkD"/>
+                                <include reference="13J-pG-So5"/>
+                                <include reference="Mha-cv-Iav"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <connections>
+                        <outlet property="buy" destination="Hli-Uq-Aut" id="AO0-Ll-Y27"/>
+                        <outlet property="detail" destination="FnN-qs-rp7" id="OxE-QJ-E3D"/>
+                        <outlet property="restore" destination="frF-BS-s2g" id="MYU-NY-HMN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kkl-lu-yJb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1237.5" y="502"/>
         </scene>
     </scenes>
     <resources>
