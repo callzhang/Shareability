@@ -14,12 +14,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "JGProgressHUD.h"
 // standard includes
-#include <AudioToolbox/AudioToolbox.h>
-
-// helpers
-#include "CAXException.h"
-#include "CAStreamBasicDescription.h"
-#include <pthread.h>
+#import <AudioToolbox/AudioToolbox.h>
 
 
 @interface ShareViewController ()
@@ -210,22 +205,22 @@
 				[provider loadItemForTypeIdentifier:(NSString *)kUTTypeAudio options:nil completionHandler:^(NSData *item, NSError *error) {
 					if (self.url) {
 						NSArray *arr = [self.url.absoluteString componentsSeparatedByString:@"."];
-						self.textView.text = arr[arr.count - 2];
+						self.title = arr[arr.count - 2];
 						NSLog(@"Audio type is: %@", arr.lastObject);
-						NSLog(@"Start convert");
-						NSString *destinationFilePath = [NSTemporaryDirectory() stringByAppendingString:@"/audio.wav"];
-						CFURLRef destinationURL = CFURLCreateWithFileSystemPath(kCFAllocatorDefault, (CFStringRef)destinationFilePath, kCFURLPOSIXPathStyle, false);
-						OSStatus error = DoConvertFile(self.url, destinationURL, kAudioFormatLinearPCM, 0);
-						if (error) {
-							printf("DoConvertFile failed! %d\n", (int)error);
-						} else {
-							self.url = [NSURL URLWithString:destinationFilePath];
-							self.audio = [NSData dataWithContentsOfFile:destinationFilePath];
-						}
-						// delete output file if it exists
-						if ([[NSFileManager defaultManager] fileExistsAtPath:destinationFilePath]) {
-							[[NSFileManager defaultManager] removeItemAtPath:destinationFilePath error:nil];
-						}
+//						NSLog(@"Start convert");
+//						NSString *destinationFilePath = [NSTemporaryDirectory() stringByAppendingString:@"/audio.wav"];
+//						CFURLRef destinationURL = CFURLCreateWithFileSystemPath(kCFAllocatorDefault, (CFStringRef)destinationFilePath, kCFURLPOSIXPathStyle, false);
+//						OSStatus error = DoConvertFile(self.url, destinationURL, kAudioFormatLinearPCM, 0);
+//						if (error) {
+//							printf("DoConvertFile failed! %d\n", (int)error);
+//						} else {
+//							self.url = [NSURL URLWithString:destinationFilePath];
+//							self.audio = [NSData dataWithContentsOfFile:destinationFilePath];
+//						}
+//						// delete output file if it exists
+//						if ([[NSFileManager defaultManager] fileExistsAtPath:destinationFilePath]) {
+//							[[NSFileManager defaultManager] removeItemAtPath:destinationFilePath error:nil];
+//						}
 					}
 					self.audio = item;
 					NSLog(@"Get audio: %ld bytes", item.length);
@@ -309,8 +304,9 @@
 		if (!self.image) {
 			[message setThumbImage:[UIImage imageNamed:@"MusicNotes.png"]];
 		}
-		//ext.fileData = self.audio;
-		ext.fileData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"sample" ofType:@"mp3"]];
+//		
+//		ext.fileExtension = @"mp3";
+//		ext.fileData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"sample" ofType:@"mp3"]];
 		message.mediaObject = ext;
 	}else if (self.file){
 		WXFileObject *file = [WXFileObject object];

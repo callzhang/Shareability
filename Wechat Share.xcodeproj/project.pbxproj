@@ -17,7 +17,6 @@
 		9B6D1D191A0025EB009A1E18 /* MusicNotes.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B6D1D171A0025EB009A1E18 /* MusicNotes.png */; };
 		9B6D1D1A1A0025EB009A1E18 /* MusicNotes@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B6D1D181A0025EB009A1E18 /* MusicNotes@2x.png */; };
 		9B6D1D271A00276A009A1E18 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B6D1D261A00276A009A1E18 /* AudioToolbox.framework */; };
-		9B6D1D2A1A003205009A1E18 /* AudioConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B6D1D291A003205009A1E18 /* AudioConverter.m */; };
 		9B6D1D371A005D70009A1E18 /* sample.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9B6D1D361A005D70009A1E18 /* sample.mp3 */; };
 		9B7C650719FC8DE600C422D5 /* CargoBay.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B7C650619FC8DE600C422D5 /* CargoBay.m */; };
 		9B7C651C19FC8F9800C422D5 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B7C650A19FC8F9700C422D5 /* AFHTTPRequestOperation.m */; };
@@ -35,7 +34,7 @@
 		9B87B6A919E8E7A100F1C01C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B87B6A719E8E7A100F1C01C /* Main.storyboard */; };
 		9B87B6AB19E8E7A100F1C01C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B87B6AA19E8E7A100F1C01C /* Images.xcassets */; };
 		9B87B6AE19E8E7A100F1C01C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B87B6AC19E8E7A100F1C01C /* LaunchScreen.xib */; };
-		9B87B6CD19E8EF7900F1C01C /* ShareViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9B87B6CC19E8EF7900F1C01C /* ShareViewController.mm */; };
+		9B87B6CD19E8EF7900F1C01C /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B87B6CC19E8EF7900F1C01C /* ShareViewController.m */; };
 		9B87B6CF19E8EF7900F1C01C /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B87B6CE19E8EF7900F1C01C /* MainInterface.storyboard */; };
 		9B87B6D219E8EF7900F1C01C /* Wechat.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 9B87B6C719E8EF7900F1C01C /* Wechat.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		9B89750519EF06D0004D75F3 /* ConfigTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B89750419EF06D0004D75F3 /* ConfigTableViewController.m */; };
@@ -150,7 +149,7 @@
 		9B87B6C719E8EF7900F1C01C /* Wechat.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Wechat.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B87B6CA19E8EF7900F1C01C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9B87B6CB19E8EF7900F1C01C /* ShareViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShareViewController.h; sourceTree = "<group>"; };
-		9B87B6CC19E8EF7900F1C01C /* ShareViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ShareViewController.mm; sourceTree = "<group>"; };
+		9B87B6CC19E8EF7900F1C01C /* ShareViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShareViewController.m; sourceTree = "<group>"; };
 		9B87B6CE19E8EF7900F1C01C /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
 		9B89750319EF06D0004D75F3 /* ConfigTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigTableViewController.h; sourceTree = "<group>"; };
 		9B89750419EF06D0004D75F3 /* ConfigTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigTableViewController.m; sourceTree = "<group>"; };
@@ -321,7 +320,7 @@
 				9B6D1D141A000CAF009A1E18 /* WCAssetEncoder.h */,
 				9B6D1D151A000CAF009A1E18 /* WCAssetEncoder.m */,
 				9B87B6CB19E8EF7900F1C01C /* ShareViewController.h */,
-				9B87B6CC19E8EF7900F1C01C /* ShareViewController.mm */,
+				9B87B6CC19E8EF7900F1C01C /* ShareViewController.m */,
 				9B89750319EF06D0004D75F3 /* ConfigTableViewController.h */,
 				9B89750419EF06D0004D75F3 /* ConfigTableViewController.m */,
 				9B87B6CE19E8EF7900F1C01C /* MainInterface.storyboard */,
@@ -548,14 +547,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				9BB0816519F1BFA700570E1D /* AnimatedGIFImageSerialization.m in Sources */,
-				9B6D1D2A1A003205009A1E18 /* AudioConverter.m in Sources */,
 				9B6D1D161A000CAF009A1E18 /* WCAssetEncoder.m in Sources */,
 				9BDA993A19FA1DA5004240E6 /* JGProgressHUDSuccessIndicatorView.m in Sources */,
 				9BDA992E19FA1DA5004240E6 /* JGProgressHUDFadeAnimation.m in Sources */,
 				9BDA993419FA1DA5004240E6 /* JGProgressHUDIndicatorView.m in Sources */,
 				9BDA992819FA1DA5004240E6 /* JGProgressHUD.m in Sources */,
 				9BDA993819FA1DA5004240E6 /* JGProgressHUDRingIndicatorView.m in Sources */,
-				9B87B6CD19E8EF7900F1C01C /* ShareViewController.mm in Sources */,
+				9B87B6CD19E8EF7900F1C01C /* ShareViewController.m in Sources */,
 				9BDA993619FA1DA5004240E6 /* JGProgressHUDPieIndicatorView.m in Sources */,
 				9BDA992A19FA1DA5004240E6 /* JGProgressHUDAnimation.m in Sources */,
 				9B89750519EF06D0004D75F3 /* ConfigTableViewController.m in Sources */,
