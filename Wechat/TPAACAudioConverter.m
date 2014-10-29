@@ -208,7 +208,7 @@ static inline BOOL _checkResultLite(OSStatus result, const char *operation, cons
     }
 	
 	if (self.processMp3) {
-		[TPAACAudioConverter convertToMp3From:self.tempPath To:self.destination];
+		[self convertToMp3From:self.tempPath To:self.destination];
 	}else{
 		[[NSFileManager defaultManager] copyItemAtPath:self.tempPath toPath:self.destination error:NULL];
 		[[NSFileManager defaultManager] removeItemAtPath:self.tempPath error:NULL];
@@ -494,7 +494,7 @@ static inline BOOL _checkResultLite(OSStatus result, const char *operation, cons
 
 
 #pragma mark - convert to MP3
-+ (void) convertToMp3From:(NSString *)input To:(NSString *)output
+- (void) convertToMp3From:(NSString *)input To:(NSString *)output
 {
 	
 	@try {
@@ -539,6 +539,7 @@ static inline BOOL _checkResultLite(OSStatus result, const char *operation, cons
 		NSDictionary * attributes = [filemanager attributesOfItemAtPath:output error:nil];
 		float fileSize =  [[attributes objectForKey:NSFileSize] intValue];
 		NSLog(@"File size: %.1f MB", fileSize/1024/1024);
+		[_delegate AACAudioConverterDidFinishConversion:self];
 	}
 }
 
