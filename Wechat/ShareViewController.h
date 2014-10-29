@@ -10,9 +10,10 @@
 #import <Social/Social.h>
 #import <Foundation/Foundation.h>
 #import "ConfigTableViewController.h"
+#import "TPAACAudioConverter.h"
 
 #define selections		@[@"Wechat - Send to conversation", @"Wechat - Post to moments", @"Wechat - Add to favorite"]
 
-@interface ShareViewController : SLComposeServiceViewController<ConfigTableViewControllerDelegate>
+@interface ShareViewController : SLComposeServiceViewController<ConfigTableViewControllerDelegate, TPAACAudioConverterDelegate>
 
 @end

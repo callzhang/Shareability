@@ -15,17 +15,31 @@
 #import "JGProgressHUD.h"
 // standard includes
 #import <AudioToolbox/AudioToolbox.h>
+#import "TPAACAudioConverter.h"
+
+enum{
+	audio,
+	video,
+	file,
+	image,
+	emotion,
+	text,
+	website
+};
 
 
 @interface ShareViewController ()
 @property (nonatomic) NSURL *url;
 @property (nonatomic) NSString *content;
 @property (nonatomic) UIImage *image;
+@property (nonatomic) NSData *emotion;
 @property (nonatomic) NSString *text;
 @property (nonatomic) NSData *video;
 @property (nonatomic) NSData *audio;
 @property (nonatomic) NSData *file;
 @property (nonatomic) SLComposeSheetConfigurationItem *selected;
+@property (nonatomic) NSInteger type;
+@property (nonatomic) UIAlertController *alert;
 @end
 
 @implementation ShareViewController
@@ -65,28 +79,12 @@
 	}
 	
 	if (!sizeValid) {
-		NSLog(@"Too large");
-//		JGProgressHUD *hud = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleDark];
-//		hud.textLabel.text = @"Too large";
-//		[hud showInView:self.view];
-//		[hud dismissAfterDelay:3.0];
-//		[self.view setNeedsDisplay];
-	
-		UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Alert" message:@"Not valid" preferredStyle:UIAlertControllerStyleAlert];
-		UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-			//
-		}];
-		[alert addAction:action];
-		[self presentViewController:alert animated:YES completion:nil];
+		[self showAlert:@"File is too large" withButton:YES];
 	}
 	
 	
 	
     BOOL valid = sizeValid && charValid;
-	if (!valid) {
-		NSLog(@"Not valid");
-		
-	}
 	return valid;
 }
 
@@ -99,46 +97,53 @@
 		NSLog(@"checking for input item: %@", item);
 		for (NSItemProvider *provider in item.attachments) {
 			NSLog(@"checking for ItemProvidor: %@", provider);
-			if ([provider hasItemConformingToTypeIdentifier:(NSString *)kUTTypePropertyList]) {
-				[provider loadItemForTypeIdentifier:(NSString *)kUTTypePropertyList
-											options:nil
-								  completionHandler:^(NSDictionary *item, NSError *error){
-					 NSLog(@"get property list from the host app: %@", item);
-				 }];
-			}
 			
+			//website
 			if ([provider hasItemConformingToTypeIdentifier:( NSString *)kUTTypeURL]) {
-				[provider loadItemForTypeIdentifier:( NSString *)kUTTypeURL options:nil completionHandler:^(NSURL *item, NSError *error) {
-					self.url = item;
+				[provider loadItemForTypeIdentifier:( NSString *)kUTTypeURL options:nil completionHandler:^(NSURL *url, NSError *error) {
+					self.url = url;
+					if (item.attachments.count == 1) {
+						self.type = website;
+					}else{
+						NSLog(@"Got multiple attachments, meaning it is not website");
+					}
+					
 					NSLog(@"Get url: %@", item);
 				}];
 			}
 			
+			//image
 			if ([provider hasItemConformingToTypeIdentifier:( NSString *)kUTTypeImage]) {
 				[provider loadItemForTypeIdentifier:( NSString *)kUTTypeImage options:nil completionHandler:^(UIImage *item, NSError *error) {
 					self.image = item;
 					if (item.duration > 0) {
-						NSLog(@"Get GIF");
+						NSLog(@"Get GIF emotion");
+						self.type = emotion;
+						[provider loadItemForTypeIdentifier:( NSString *)kUTTypeImage options:nil completionHandler:^(NSData *data, NSError *error) {
+							self.emotion = data;
+						}];
+					}else{
+						NSLog(@"Get image");
+						self.type = image;
 					}
-					NSLog(@"Get image");
+					
 				}];
 			}
 			
+			//text
 			if ([provider hasItemConformingToTypeIdentifier:( NSString *)kUTTypeText]) {
 				[provider loadItemForTypeIdentifier:( NSString *)kUTTypeText options:nil completionHandler:^(NSString *item, NSError *error) {
 					self.text = item;
+					self.type = text;
 					NSLog(@"Get text: %@", item);
 				}];
 			}
 			
-			if ([provider hasItemConformingToTypeIdentifier:(NSString *)kUTTypeVideo]) {
+			//video
+			if ([provider hasItemConformingToTypeIdentifier:(NSString *)kUTTypeVideo] || [provider hasItemConformingToTypeIdentifier:(NSString *)kUTTypeMovie]) {
 				[provider loadItemForTypeIdentifier:(NSString *)kUTTypeVideo options:nil completionHandler:^(NSData *item, NSError *error) {
 					self.video = item;
-					NSLog(@"Get video: %luMB", item.length/1048576);
-				}];
-			}else if ([provider hasItemConformingToTypeIdentifier:(NSString *)kUTTypeMovie]) {
-				[provider loadItemForTypeIdentifier:(NSString *)kUTTypeMovie options:nil completionHandler:^(NSData *item, NSError *error) {
-					self.video = item;
+					self.type = video;
 					[self validateContent];
 					NSLog(@"Get movie: %luMB", item.length/1048576);
 					
@@ -194,48 +199,46 @@
 							[fileManager removeItemAtPath:path error:NULL];
 							[fileManager removeItemAtURL:outputURL error:NULL];
 							
-							//validate
-							[self validateContent];
 						 }];
 					}
 				}];
 			}
 			
+			//audio
 			if ([provider hasItemConformingToTypeIdentifier:(NSString *)kUTTypeAudio]) {
 				[provider loadItemForTypeIdentifier:(NSString *)kUTTypeAudio options:nil completionHandler:^(NSData *item, NSError *error) {
-					if (self.url) {
-						NSArray *arr = [self.url.absoluteString componentsSeparatedByString:@"."];
-						self.title = arr[arr.count - 2];
-						NSLog(@"Audio type is: %@", arr.lastObject);
-//						NSLog(@"Start convert");
-//						NSString *destinationFilePath = [NSTemporaryDirectory() stringByAppendingString:@"/audio.wav"];
-//						CFURLRef destinationURL = CFURLCreateWithFileSystemPath(kCFAllocatorDefault, (CFStringRef)destinationFilePath, kCFURLPOSIXPathStyle, false);
-//						OSStatus error = DoConvertFile(self.url, destinationURL, kAudioFormatLinearPCM, 0);
-//						if (error) {
-//							printf("DoConvertFile failed! %d\n", (int)error);
-//						} else {
-//							self.url = [NSURL URLWithString:destinationFilePath];
-//							self.audio = [NSData dataWithContentsOfFile:destinationFilePath];
-//						}
-//						// delete output file if it exists
-//						if ([[NSFileManager defaultManager] fileExistsAtPath:destinationFilePath]) {
-//							[[NSFileManager defaultManager] removeItemAtPath:destinationFilePath error:nil];
-//						}
-					}
 					self.audio = item;
+					self.type = audio;
+					NSString *tempPath = [NSTemporaryDirectory() stringByAppendingString:@"tempAudio"];
+					[[NSFileManager defaultManager] createFileAtPath:tempPath contents:item attributes:nil];
+					
+					//convert
+					[self showAlert:@"Processing audio" withButton:NO];
+					TPAACAudioConverter *converter = [[TPAACAudioConverter alloc] init];
+					[converter convertWithDelegate:self
+											 Input:tempPath
+											Output:[NSTemporaryDirectory() stringByAppendingString:@"output.mp3"]];
+					
 					NSLog(@"Get audio: %ld bytes", item.length);
 
 				}];
 			}
 			
+			//file
 			if ([provider hasItemConformingToTypeIdentifier:(NSString *)kUTTypeFileURL]) {
 				[provider loadItemForTypeIdentifier:(NSString *)kUTTypeFileURL options:nil completionHandler:^(NSURL *item, NSError *error) {
 					self.file = [NSData dataWithContentsOfURL:item];
+					self.type = file;
+					NSArray *arr = [item.absoluteString componentsSeparatedByString:@"."];
+					arr = [arr[arr.count - 2] componentsSeparatedByString:@"/"];
+					self.title = [arr.lastObject stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+					NSLog(@"Audio type is: %@", arr.lastObject);
 					NSLog(@"Get file: %@", item);
 				}];
 			}
 			
-			
+			//validate
+			[self validateContent];
 		}
 	}
 	
@@ -249,16 +252,8 @@
     // This is called after the user selects Post. Do the upload of contentText and/or NSExtensionContext attachments.
     // Perform the post operation.
     // When the operation is complete (probably asynchronously), the Share extension should notify the success or failure, as well as the items that were actually shared.
-    NSExtensionContext *context = self.extensionContext;
-    NSArray *items = context.inputItems;
-    NSExtensionItem *inputItem = items.firstObject;
-    //NSItemProvider *itemProvider = inputItem.attachments.firstObject;
-
-	//get image
-    if (!self.image) {
-        self.image = [self getImageFromSubviews:self.view];
-    }
 	
+	NSLog(@"Sending message type: %ld", (long)self.type);
 	
     //send msg
 	//conversation
@@ -266,6 +261,10 @@
 	message.title = self.title;
 	message.description = [self.contentText stringByAppendingString:@"\n(from Shareability)"];
 	
+	//get image
+	if (!self.image) {
+		self.image = [self getImageFromSubviews:self.view];
+	}
 	//thumbnail
 	if (self.image) {
 		NSInteger thumbSize = 100;
@@ -284,53 +283,43 @@
 	req.text = self.contentText;
 	
 	//media
-	if (self.video){
+	if (self.type == video){
 		WXFileObject *ext = [WXFileObject object];
 		ext.fileExtension = @"mov";
 		ext.fileData = self.video;
 		message.mediaObject = ext;
 		
-	}else if (self.audio){
+	}else if (self.type == audio){
 		WXFileObject *ext = [WXFileObject object];
-		if (self.url) {
-			NSArray *arr = [self.url.absoluteString componentsSeparatedByString:@"."];
-			ext.fileExtension = arr.lastObject;
-			NSLog(@"Audio type is: %@", ext.fileExtension);
-		}else{
-			ext.fileExtension = @"mp3";
-		}
-		
+		ext.fileExtension = @"mp3";
+		ext.fileData = self.audio;
 		//thumb
-		if (!self.image) {
+		if (!message.thumbData) {
 			[message setThumbImage:[UIImage imageNamed:@"MusicNotes.png"]];
 		}
-//		
-//		ext.fileExtension = @"mp3";
-//		ext.fileData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"sample" ofType:@"mp3"]];
 		message.mediaObject = ext;
-	}else if (self.file){
+	}else if (self.type == file){
 		WXFileObject *file = [WXFileObject object];
 		file.fileExtension = nil;
 		file.fileData = self.file;
 		message.mediaObject = file;
-	}else if (self.image){
-		if (self.image.duration > 0) {
-			//GIF
-			WXEmoticonObject *emo = [WXEmoticonObject object];
-			emo.emoticonData = [AnimatedGIFImageSerialization animatedGIFDataWithImage:self.image duration:self.image.duration loopCount:0 error:nil];
-			message.mediaObject = emo;
-		}else{
-			WXImageObject *ext = [WXImageObject object];
-			UIImage *img = [self imageWithImage:self.image scaledToSize:CGSizeMake(2000, 2000)];
-			ext.imageData = UIImageJPEGRepresentation(img, 0.7);
-			message.mediaObject = ext;
-		}
+	}else if (self.type == emotion){
+		//GIF
+		WXEmoticonObject *emo = [WXEmoticonObject object];
+		emo.emoticonData = [AnimatedGIFImageSerialization animatedGIFDataWithImage:self.image duration:self.image.duration loopCount:0 error:nil];
+		message.mediaObject = emo;
+	
+	}else if(self.type == image){
+		WXImageObject *ext = [WXImageObject object];
+		UIImage *img = [self imageWithImage:self.image scaledToSize:CGSizeMake(2000, 2000)];
+		ext.imageData = UIImageJPEGRepresentation(img, 0.7);
+		message.mediaObject = ext;
 		
-	}else if (self.url) {
+	}else if (self.type == website) {
 		WXWebpageObject *ext = [WXWebpageObject object];
 		ext.webpageUrl = self.url.absoluteString;
 		message.mediaObject = ext;
-	}else if(self.text){
+	}else if(self.type == text){
 		req.message = nil;
 		req.text = self.text;
 		req.bText = YES;
@@ -362,8 +351,12 @@
 		NSLog(@"Failed to send request");
 	}
 	
-        
+	
+	
 	//complete
+	NSExtensionContext *context = self.extensionContext;
+	NSArray *items = context.inputItems;
+	NSExtensionItem *inputItem = items.firstObject;
 	NSExtensionItem *outputItem = [inputItem copy];
 	outputItem.attributedContentText = [[NSAttributedString alloc] initWithString:self.contentText attributes:nil];
 	// Complete this implementation by setting the appropriate value on the output item.
@@ -453,6 +446,49 @@
 	UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
 	UIGraphicsEndImageContext();
 	return newImage;
+}
+
+
+#pragma mark - Helpter
+- (void)showAlert:(NSString *)alert withButton:(BOOL)show{
+	dispatch_async(dispatch_get_main_queue(), ^{
+		if (_alert) {
+			[self dismissAlert];
+		}
+		NSLog(@"Alert: %@", alert);
+		_alert = [UIAlertController alertControllerWithTitle:@"Alert" message:alert preferredStyle:UIAlertControllerStyleAlert];
+		if (show) {
+			UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
+			[_alert addAction:action];
+		}
+		[self presentViewController:_alert animated:YES completion:nil];
+	});
+}
+
+- (void)dismissAlert{
+	dispatch_async(dispatch_get_main_queue(), ^{
+		if (self.presentedViewController) {
+			[self dismissViewControllerAnimated:YES completion:nil];
+		}
+	});
+	
+}
+
+#pragma mark - Converter delegate
+- (void)AACAudioConverterDidFinishConversion:(TPAACAudioConverter *)converter{
+	NSData *mp3 = [NSData dataWithContentsOfFile:converter.destination];
+	self.audio = mp3;
+	[self dismissAlert];
+	NSLog(@"processing succeed");
+}
+
+- (void)AACAudioConverter:(TPAACAudioConverter *)converter didMakeProgress:(CGFloat)progress{
+	NSLog(@"processing %.1f%%", progress);
+}
+
+- (void)AACAudioConverter:(TPAACAudioConverter *)converter didFailWithError:(NSError *)error{
+	[self dismissAlert];
+	[self showAlert:[NSString stringWithFormat:@"Processing audio failed with error:%@", error] withButton:YES];
 }
 
 @end

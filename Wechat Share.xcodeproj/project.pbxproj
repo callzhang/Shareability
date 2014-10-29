@@ -41,6 +41,8 @@
 		9BB0816419F1BFA700570E1D /* AnimatedGIFImageSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB0816319F1BFA700570E1D /* AnimatedGIFImageSerialization.m */; };
 		9BB0816519F1BFA700570E1D /* AnimatedGIFImageSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB0816319F1BFA700570E1D /* AnimatedGIFImageSerialization.m */; };
 		9BB0816719F581E100570E1D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BB0816619F581E100570E1D /* AVFoundation.framework */; };
+		9BB367C31A01887000589D0E /* TPAACAudioConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB367C21A01887000589D0E /* TPAACAudioConverter.m */; };
+		9BB367C61A01887F00589D0E /* libmp3lame.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BB367C51A01887F00589D0E /* libmp3lame.a */; };
 		9BDA98C019FA1CDE004240E6 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BDA98BF19FA1CDE004240E6 /* libWeChatSDK.a */; };
 		9BDA98C119FA1CDE004240E6 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BDA98BF19FA1CDE004240E6 /* libWeChatSDK.a */; };
 		9BDA992519FA1DA5004240E6 /* JGProgressHUD Resources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9BDA991019FA1DA5004240E6 /* JGProgressHUD Resources.bundle */; };
@@ -156,6 +158,10 @@
 		9BB0816219F1BFA700570E1D /* AnimatedGIFImageSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedGIFImageSerialization.h; sourceTree = "<group>"; };
 		9BB0816319F1BFA700570E1D /* AnimatedGIFImageSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimatedGIFImageSerialization.m; sourceTree = "<group>"; };
 		9BB0816619F581E100570E1D /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		9BB367C11A01887000589D0E /* TPAACAudioConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPAACAudioConverter.h; sourceTree = "<group>"; };
+		9BB367C21A01887000589D0E /* TPAACAudioConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPAACAudioConverter.m; sourceTree = "<group>"; };
+		9BB367C41A01887F00589D0E /* lame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lame.h; sourceTree = "<group>"; };
+		9BB367C51A01887F00589D0E /* libmp3lame.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libmp3lame.a; sourceTree = "<group>"; };
 		9BDA98BF19FA1CDE004240E6 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
 		9BDA991019FA1DA5004240E6 /* JGProgressHUD Resources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = "JGProgressHUD Resources.bundle"; sourceTree = "<group>"; };
 		9BDA991119FA1DA5004240E6 /* JGProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGProgressHUD.h; sourceTree = "<group>"; };
@@ -200,6 +206,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B6D1D271A00276A009A1E18 /* AudioToolbox.framework in Frameworks */,
+				9BB367C61A01887F00589D0E /* libmp3lame.a in Frameworks */,
 				9B134FBF19FFEE7100A6FB32 /* AVFoundation.framework in Frameworks */,
 				9BDA98C119FA1CDE004240E6 /* libWeChatSDK.a in Frameworks */,
 			);
@@ -314,6 +321,7 @@
 		9B87B6C819E8EF7900F1C01C /* Wechat */ = {
 			isa = PBXGroup;
 			children = (
+				9BB367C01A01886600589D0E /* components */,
 				9B6D1D361A005D70009A1E18 /* sample.mp3 */,
 				9B6D1D281A003205009A1E18 /* AudioConverter.h */,
 				9B6D1D291A003205009A1E18 /* AudioConverter.m */,
@@ -360,6 +368,17 @@
 				9BDBA71819EA202300EF194D /* SDKExport */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9BB367C01A01886600589D0E /* components */ = {
+			isa = PBXGroup;
+			children = (
+				9BB367C11A01887000589D0E /* TPAACAudioConverter.h */,
+				9BB367C21A01887000589D0E /* TPAACAudioConverter.m */,
+				9BB367C41A01887F00589D0E /* lame.h */,
+				9BB367C51A01887F00589D0E /* libmp3lame.a */,
+			);
+			name = components;
 			sourceTree = "<group>";
 		};
 		9BDA990F19FA1DA5004240E6 /* JGProgressHUD */ = {
@@ -556,6 +575,7 @@
 				9B87B6CD19E8EF7900F1C01C /* ShareViewController.m in Sources */,
 				9BDA993619FA1DA5004240E6 /* JGProgressHUDPieIndicatorView.m in Sources */,
 				9BDA992A19FA1DA5004240E6 /* JGProgressHUDAnimation.m in Sources */,
+				9BB367C31A01887000589D0E /* TPAACAudioConverter.m in Sources */,
 				9B89750519EF06D0004D75F3 /* ConfigTableViewController.m in Sources */,
 				9BDA993019FA1DA5004240E6 /* JGProgressHUDFadeZoomAnimation.m in Sources */,
 				9BDA992C19FA1DA5004240E6 /* JGProgressHUDErrorIndicatorView.m in Sources */,
@@ -751,6 +771,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/SDKExport",
+					"$(PROJECT_DIR)/Wechat",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -772,6 +793,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/SDKExport",
+					"$(PROJECT_DIR)/Wechat",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
