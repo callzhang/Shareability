@@ -284,7 +284,6 @@ static inline BOOL _checkResultLite(OSStatus result, const char *operation, cons
     destinationFormat.mFormatID = kAudioFormatLinearPCM;
     UInt32 size = sizeof(destinationFormat);
 	if (destinationFormat.mFormatID == kAudioFormatLinearPCM) {
-        UInt16 channel = sourceFormat.mChannelsPerFrame;
 		destinationFormat.mSampleRate = sourceFormat.mSampleRate;
 		destinationFormat.mChannelsPerFrame = sourceFormat.mChannelsPerFrame;
 		destinationFormat.mBitsPerChannel = 16;

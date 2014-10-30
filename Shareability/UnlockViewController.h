@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *detail;
 - (IBAction)buy:(id)sender;
 - (IBAction)restore:(id)sender;
+- (IBAction)close:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *buy;
 @property (weak, nonatomic) IBOutlet UIButton *restore;
 

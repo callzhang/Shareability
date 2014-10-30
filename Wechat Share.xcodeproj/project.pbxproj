@@ -12,12 +12,10 @@
 		9B134FBF19FFEE7100A6FB32 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BB0816619F581E100570E1D /* AVFoundation.framework */; };
 		9B2DFCD219FD759600DEE429 /* CargoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B2DFCCF19FD759600DEE429 /* CargoManager.m */; };
 		9B2DFCD319FD759600DEE429 /* CargoManagerLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9B2DFCD019FD759600DEE429 /* CargoManagerLocalizable.strings */; };
-		9B2DFCD619FD75D600DEE429 /* UnlockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B2DFCD519FD75D600DEE429 /* UnlockViewController.m */; };
-		9B6D1D161A000CAF009A1E18 /* WCAssetEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B6D1D151A000CAF009A1E18 /* WCAssetEncoder.m */; };
+		9B4670CA1A02DE8C00BA3E13 /* UnlockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B4670C91A02DE8C00BA3E13 /* UnlockViewController.m */; };
 		9B6D1D191A0025EB009A1E18 /* MusicNotes.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B6D1D171A0025EB009A1E18 /* MusicNotes.png */; };
 		9B6D1D1A1A0025EB009A1E18 /* MusicNotes@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B6D1D181A0025EB009A1E18 /* MusicNotes@2x.png */; };
 		9B6D1D271A00276A009A1E18 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B6D1D261A00276A009A1E18 /* AudioToolbox.framework */; };
-		9B6D1D371A005D70009A1E18 /* sample.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9B6D1D361A005D70009A1E18 /* sample.mp3 */; };
 		9B7C650719FC8DE600C422D5 /* CargoBay.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B7C650619FC8DE600C422D5 /* CargoBay.m */; };
 		9B7C651C19FC8F9800C422D5 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B7C650A19FC8F9700C422D5 /* AFHTTPRequestOperation.m */; };
 		9B7C651D19FC8F9800C422D5 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B7C650C19FC8F9700C422D5 /* AFHTTPRequestOperationManager.m */; };
@@ -46,6 +44,21 @@
 		9BDA98C019FA1CDE004240E6 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BDA98BF19FA1CDE004240E6 /* libWeChatSDK.a */; };
 		9BDA98C119FA1CDE004240E6 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BDA98BF19FA1CDE004240E6 /* libWeChatSDK.a */; };
 		9BDBA73E19EB976500EF194D /* SendMsgToWechatMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BDBA73D19EB976500EF194D /* SendMsgToWechatMgr.m */; };
+		9BFBA9511A02E45A00E2B765 /* JGProgressHUD Resources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9BFBA93C1A02E45A00E2B765 /* JGProgressHUD Resources.bundle */; };
+		9BFBA9521A02E45A00E2B765 /* JGProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFBA93E1A02E45A00E2B765 /* JGProgressHUD.m */; };
+		9BFBA9531A02E45A00E2B765 /* JGProgressHUDAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFBA9401A02E45A00E2B765 /* JGProgressHUDAnimation.m */; };
+		9BFBA9541A02E45A00E2B765 /* JGProgressHUDErrorIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFBA9421A02E45A00E2B765 /* JGProgressHUDErrorIndicatorView.m */; };
+		9BFBA9551A02E45A00E2B765 /* JGProgressHUDFadeAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFBA9441A02E45A00E2B765 /* JGProgressHUDFadeAnimation.m */; };
+		9BFBA9561A02E45A00E2B765 /* JGProgressHUDFadeZoomAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFBA9461A02E45A00E2B765 /* JGProgressHUDFadeZoomAnimation.m */; };
+		9BFBA9571A02E45A00E2B765 /* JGProgressHUDIndeterminateIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFBA9481A02E45A00E2B765 /* JGProgressHUDIndeterminateIndicatorView.m */; };
+		9BFBA9581A02E45A00E2B765 /* JGProgressHUDIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFBA94A1A02E45A00E2B765 /* JGProgressHUDIndicatorView.m */; };
+		9BFBA9591A02E45A00E2B765 /* JGProgressHUDPieIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFBA94C1A02E45A00E2B765 /* JGProgressHUDPieIndicatorView.m */; };
+		9BFBA95A1A02E45A00E2B765 /* JGProgressHUDRingIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFBA94E1A02E45A00E2B765 /* JGProgressHUDRingIndicatorView.m */; };
+		9BFBA95B1A02E45A00E2B765 /* JGProgressHUDSuccessIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFBA9501A02E45A00E2B765 /* JGProgressHUDSuccessIndicatorView.m */; };
+		9BFBA95F1A02F03F00E2B765 /* KASlideShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFBA95E1A02F03F00E2B765 /* KASlideShow.m */; };
+		9BFBA9631A02F7C100E2B765 /* 1.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 9BFBA9601A02F7C100E2B765 /* 1.PNG */; };
+		9BFBA9641A02F7C100E2B765 /* 2.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 9BFBA9611A02F7C100E2B765 /* 2.PNG */; };
+		9BFBA9651A02F7C100E2B765 /* 3.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 9BFBA9621A02F7C100E2B765 /* 3.PNG */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,13 +100,11 @@
 		9B2DFCD119FD759600DEE429 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/CargoManagerLocalizable.strings; sourceTree = "<group>"; };
 		9B2DFCD419FD75D600DEE429 /* UnlockViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UnlockViewController.h; path = Shareability/UnlockViewController.h; sourceTree = SOURCE_ROOT; };
 		9B2DFCD519FD75D600DEE429 /* UnlockViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UnlockViewController.m; path = Shareability/UnlockViewController.m; sourceTree = SOURCE_ROOT; };
-		9B6D1D141A000CAF009A1E18 /* WCAssetEncoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCAssetEncoder.h; sourceTree = "<group>"; };
-		9B6D1D151A000CAF009A1E18 /* WCAssetEncoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCAssetEncoder.m; sourceTree = "<group>"; };
+		9B4670C81A02DE8C00BA3E13 /* UnlockViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnlockViewController.h; sourceTree = "<group>"; };
+		9B4670C91A02DE8C00BA3E13 /* UnlockViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnlockViewController.m; sourceTree = "<group>"; };
 		9B6D1D171A0025EB009A1E18 /* MusicNotes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MusicNotes.png; sourceTree = "<group>"; };
 		9B6D1D181A0025EB009A1E18 /* MusicNotes@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MusicNotes@2x.png"; sourceTree = "<group>"; };
 		9B6D1D261A00276A009A1E18 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		9B6D1D281A003205009A1E18 /* AudioConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioConverter.h; sourceTree = "<group>"; };
-		9B6D1D291A003205009A1E18 /* AudioConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioConverter.m; sourceTree = "<group>"; };
 		9B6D1D361A005D70009A1E18 /* sample.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sample.mp3; sourceTree = "<group>"; };
 		9B7C650519FC8DE600C422D5 /* CargoBay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CargoBay.h; sourceTree = "<group>"; };
 		9B7C650619FC8DE600C422D5 /* CargoBay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CargoBay.m; sourceTree = "<group>"; };
@@ -147,6 +158,32 @@
 		9BDBA71B19EA202300EF194D /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
 		9BDBA73C19EB976500EF194D /* SendMsgToWechatMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendMsgToWechatMgr.h; sourceTree = "<group>"; };
 		9BDBA73D19EB976500EF194D /* SendMsgToWechatMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendMsgToWechatMgr.m; sourceTree = "<group>"; };
+		9BFBA93C1A02E45A00E2B765 /* JGProgressHUD Resources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = "JGProgressHUD Resources.bundle"; sourceTree = "<group>"; };
+		9BFBA93D1A02E45A00E2B765 /* JGProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGProgressHUD.h; sourceTree = "<group>"; };
+		9BFBA93E1A02E45A00E2B765 /* JGProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGProgressHUD.m; sourceTree = "<group>"; };
+		9BFBA93F1A02E45A00E2B765 /* JGProgressHUDAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGProgressHUDAnimation.h; sourceTree = "<group>"; };
+		9BFBA9401A02E45A00E2B765 /* JGProgressHUDAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGProgressHUDAnimation.m; sourceTree = "<group>"; };
+		9BFBA9411A02E45A00E2B765 /* JGProgressHUDErrorIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGProgressHUDErrorIndicatorView.h; sourceTree = "<group>"; };
+		9BFBA9421A02E45A00E2B765 /* JGProgressHUDErrorIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGProgressHUDErrorIndicatorView.m; sourceTree = "<group>"; };
+		9BFBA9431A02E45A00E2B765 /* JGProgressHUDFadeAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGProgressHUDFadeAnimation.h; sourceTree = "<group>"; };
+		9BFBA9441A02E45A00E2B765 /* JGProgressHUDFadeAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGProgressHUDFadeAnimation.m; sourceTree = "<group>"; };
+		9BFBA9451A02E45A00E2B765 /* JGProgressHUDFadeZoomAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGProgressHUDFadeZoomAnimation.h; sourceTree = "<group>"; };
+		9BFBA9461A02E45A00E2B765 /* JGProgressHUDFadeZoomAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGProgressHUDFadeZoomAnimation.m; sourceTree = "<group>"; };
+		9BFBA9471A02E45A00E2B765 /* JGProgressHUDIndeterminateIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGProgressHUDIndeterminateIndicatorView.h; sourceTree = "<group>"; };
+		9BFBA9481A02E45A00E2B765 /* JGProgressHUDIndeterminateIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGProgressHUDIndeterminateIndicatorView.m; sourceTree = "<group>"; };
+		9BFBA9491A02E45A00E2B765 /* JGProgressHUDIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGProgressHUDIndicatorView.h; sourceTree = "<group>"; };
+		9BFBA94A1A02E45A00E2B765 /* JGProgressHUDIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGProgressHUDIndicatorView.m; sourceTree = "<group>"; };
+		9BFBA94B1A02E45A00E2B765 /* JGProgressHUDPieIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGProgressHUDPieIndicatorView.h; sourceTree = "<group>"; };
+		9BFBA94C1A02E45A00E2B765 /* JGProgressHUDPieIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGProgressHUDPieIndicatorView.m; sourceTree = "<group>"; };
+		9BFBA94D1A02E45A00E2B765 /* JGProgressHUDRingIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGProgressHUDRingIndicatorView.h; sourceTree = "<group>"; };
+		9BFBA94E1A02E45A00E2B765 /* JGProgressHUDRingIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGProgressHUDRingIndicatorView.m; sourceTree = "<group>"; };
+		9BFBA94F1A02E45A00E2B765 /* JGProgressHUDSuccessIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGProgressHUDSuccessIndicatorView.h; sourceTree = "<group>"; };
+		9BFBA9501A02E45A00E2B765 /* JGProgressHUDSuccessIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGProgressHUDSuccessIndicatorView.m; sourceTree = "<group>"; };
+		9BFBA95D1A02F03F00E2B765 /* KASlideShow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KASlideShow.h; sourceTree = "<group>"; };
+		9BFBA95E1A02F03F00E2B765 /* KASlideShow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KASlideShow.m; sourceTree = "<group>"; };
+		9BFBA9601A02F7C100E2B765 /* 1.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 1.PNG; path = images/Screenshots/1.PNG; sourceTree = "<group>"; };
+		9BFBA9611A02F7C100E2B765 /* 2.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 2.PNG; path = images/Screenshots/2.PNG; sourceTree = "<group>"; };
+		9BFBA9621A02F7C100E2B765 /* 3.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 3.PNG; path = images/Screenshots/3.PNG; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +214,9 @@
 		9B1B255419FDB49100CC3037 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9BFBA9601A02F7C100E2B765 /* 1.PNG */,
+				9BFBA9611A02F7C100E2B765 /* 2.PNG */,
+				9BFBA9621A02F7C100E2B765 /* 3.PNG */,
 				9B6D1D171A0025EB009A1E18 /* MusicNotes.png */,
 				9B6D1D181A0025EB009A1E18 /* MusicNotes@2x.png */,
 				9B134FBD19FFED3900A6FB32 /* Wechat Share silent 2.mp4 */,
@@ -261,6 +301,8 @@
 				9BDBA73D19EB976500EF194D /* SendMsgToWechatMgr.m */,
 				9B87B6A419E8E7A100F1C01C /* ViewController.h */,
 				9B87B6A519E8E7A100F1C01C /* ViewController.m */,
+				9B4670C81A02DE8C00BA3E13 /* UnlockViewController.h */,
+				9B4670C91A02DE8C00BA3E13 /* UnlockViewController.m */,
 				9B87B6A719E8E7A100F1C01C /* Main.storyboard */,
 				9B87B6AA19E8E7A100F1C01C /* Images.xcassets */,
 				9B87B6AC19E8E7A100F1C01C /* LaunchScreen.xib */,
@@ -284,10 +326,6 @@
 				9B9827DE1A02C01F0037C0D9 /* Wechat.entitlements */,
 				9BB367C01A01886600589D0E /* components */,
 				9B6D1D361A005D70009A1E18 /* sample.mp3 */,
-				9B6D1D281A003205009A1E18 /* AudioConverter.h */,
-				9B6D1D291A003205009A1E18 /* AudioConverter.m */,
-				9B6D1D141A000CAF009A1E18 /* WCAssetEncoder.h */,
-				9B6D1D151A000CAF009A1E18 /* WCAssetEncoder.m */,
 				9B87B6CB19E8EF7900F1C01C /* ShareViewController.h */,
 				9B87B6CC19E8EF7900F1C01C /* ShareViewController.m */,
 				9B89750319EF06D0004D75F3 /* ConfigTableViewController.h */,
@@ -318,6 +356,8 @@
 		9BB2A67019F977FB0025CC7A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9BFBA95C1A02F02100E2B765 /* KASlideShow */,
+				9BFBA93B1A02E45A00E2B765 /* JGProgressHUD */,
 				9B6D1D261A00276A009A1E18 /* AudioToolbox.framework */,
 				9B2DFCCD19FD759600DEE429 /* CargoManager */,
 				9B004D6519FCC25C005EFB02 /* StoreKit.framework */,
@@ -349,6 +389,44 @@
 				9BDBA71B19EA202300EF194D /* WXApiObject.h */,
 			);
 			path = SDKExport;
+			sourceTree = "<group>";
+		};
+		9BFBA93B1A02E45A00E2B765 /* JGProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				9BFBA93C1A02E45A00E2B765 /* JGProgressHUD Resources.bundle */,
+				9BFBA93D1A02E45A00E2B765 /* JGProgressHUD.h */,
+				9BFBA93E1A02E45A00E2B765 /* JGProgressHUD.m */,
+				9BFBA93F1A02E45A00E2B765 /* JGProgressHUDAnimation.h */,
+				9BFBA9401A02E45A00E2B765 /* JGProgressHUDAnimation.m */,
+				9BFBA9411A02E45A00E2B765 /* JGProgressHUDErrorIndicatorView.h */,
+				9BFBA9421A02E45A00E2B765 /* JGProgressHUDErrorIndicatorView.m */,
+				9BFBA9431A02E45A00E2B765 /* JGProgressHUDFadeAnimation.h */,
+				9BFBA9441A02E45A00E2B765 /* JGProgressHUDFadeAnimation.m */,
+				9BFBA9451A02E45A00E2B765 /* JGProgressHUDFadeZoomAnimation.h */,
+				9BFBA9461A02E45A00E2B765 /* JGProgressHUDFadeZoomAnimation.m */,
+				9BFBA9471A02E45A00E2B765 /* JGProgressHUDIndeterminateIndicatorView.h */,
+				9BFBA9481A02E45A00E2B765 /* JGProgressHUDIndeterminateIndicatorView.m */,
+				9BFBA9491A02E45A00E2B765 /* JGProgressHUDIndicatorView.h */,
+				9BFBA94A1A02E45A00E2B765 /* JGProgressHUDIndicatorView.m */,
+				9BFBA94B1A02E45A00E2B765 /* JGProgressHUDPieIndicatorView.h */,
+				9BFBA94C1A02E45A00E2B765 /* JGProgressHUDPieIndicatorView.m */,
+				9BFBA94D1A02E45A00E2B765 /* JGProgressHUDRingIndicatorView.h */,
+				9BFBA94E1A02E45A00E2B765 /* JGProgressHUDRingIndicatorView.m */,
+				9BFBA94F1A02E45A00E2B765 /* JGProgressHUDSuccessIndicatorView.h */,
+				9BFBA9501A02E45A00E2B765 /* JGProgressHUDSuccessIndicatorView.m */,
+			);
+			name = JGProgressHUD;
+			path = Shareability/JGProgressHUD;
+			sourceTree = "<group>";
+		};
+		9BFBA95C1A02F02100E2B765 /* KASlideShow */ = {
+			isa = PBXGroup;
+			children = (
+				9BFBA95D1A02F03F00E2B765 /* KASlideShow.h */,
+				9BFBA95E1A02F03F00E2B765 /* KASlideShow.m */,
+			);
+			name = KASlideShow;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -444,8 +522,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9BFBA9651A02F7C100E2B765 /* 3.PNG in Resources */,
 				9B2DFCD319FD759600DEE429 /* CargoManagerLocalizable.strings in Resources */,
 				9B134FBE19FFED3900A6FB32 /* Wechat Share silent 2.mp4 in Resources */,
+				9BFBA9641A02F7C100E2B765 /* 2.PNG in Resources */,
+				9BFBA9631A02F7C100E2B765 /* 1.PNG in Resources */,
+				9BFBA9511A02E45A00E2B765 /* JGProgressHUD Resources.bundle in Resources */,
 				9B87B6A919E8E7A100F1C01C /* Main.storyboard in Resources */,
 				9B87B6AE19E8E7A100F1C01C /* LaunchScreen.xib in Resources */,
 				9B87B6AB19E8E7A100F1C01C /* Images.xcassets in Resources */,
@@ -459,7 +541,6 @@
 				9B6D1D1A1A0025EB009A1E18 /* MusicNotes@2x.png in Resources */,
 				9B87B6CF19E8EF7900F1C01C /* MainInterface.storyboard in Resources */,
 				9B6D1D191A0025EB009A1E18 /* MusicNotes.png in Resources */,
-				9B6D1D371A005D70009A1E18 /* sample.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -471,21 +552,32 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B87B6A619E8E7A100F1C01C /* ViewController.m in Sources */,
+				9BFBA95A1A02E45A00E2B765 /* JGProgressHUDRingIndicatorView.m in Sources */,
 				9B7C652019FC8F9800C422D5 /* AFSecurityPolicy.m in Sources */,
+				9BFBA9581A02E45A00E2B765 /* JGProgressHUDIndicatorView.m in Sources */,
 				9B7C651D19FC8F9800C422D5 /* AFHTTPRequestOperationManager.m in Sources */,
 				9B7C651C19FC8F9800C422D5 /* AFHTTPRequestOperation.m in Sources */,
+				9BFBA95B1A02E45A00E2B765 /* JGProgressHUDSuccessIndicatorView.m in Sources */,
 				9BDBA73E19EB976500EF194D /* SendMsgToWechatMgr.m in Sources */,
+				9BFBA9541A02E45A00E2B765 /* JGProgressHUDErrorIndicatorView.m in Sources */,
 				9B7C651E19FC8F9800C422D5 /* AFHTTPSessionManager.m in Sources */,
 				9B87B6A319E8E7A100F1C01C /* AppDelegate.m in Sources */,
+				9BFBA9551A02E45A00E2B765 /* JGProgressHUDFadeAnimation.m in Sources */,
 				9B7C652119FC8F9800C422D5 /* AFURLConnectionOperation.m in Sources */,
+				9BFBA9561A02E45A00E2B765 /* JGProgressHUDFadeZoomAnimation.m in Sources */,
+				9B4670CA1A02DE8C00BA3E13 /* UnlockViewController.m in Sources */,
+				9BFBA9591A02E45A00E2B765 /* JGProgressHUDPieIndicatorView.m in Sources */,
 				9B7C652219FC8F9800C422D5 /* AFURLRequestSerialization.m in Sources */,
 				9B7C652419FC8F9800C422D5 /* AFURLSessionManager.m in Sources */,
-				9B2DFCD619FD75D600DEE429 /* UnlockViewController.m in Sources */,
+				9BFBA9521A02E45A00E2B765 /* JGProgressHUD.m in Sources */,
 				9B7C652319FC8F9800C422D5 /* AFURLResponseSerialization.m in Sources */,
 				9B7C650719FC8DE600C422D5 /* CargoBay.m in Sources */,
 				9B87B6A019E8E7A100F1C01C /* main.m in Sources */,
 				9B7C651F19FC8F9800C422D5 /* AFNetworkReachabilityManager.m in Sources */,
+				9BFBA9571A02E45A00E2B765 /* JGProgressHUDIndeterminateIndicatorView.m in Sources */,
 				9B2DFCD219FD759600DEE429 /* CargoManager.m in Sources */,
+				9BFBA9531A02E45A00E2B765 /* JGProgressHUDAnimation.m in Sources */,
+				9BFBA95F1A02F03F00E2B765 /* KASlideShow.m in Sources */,
 				9BB0816419F1BFA700570E1D /* AnimatedGIFImageSerialization.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -495,7 +587,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9BB0816519F1BFA700570E1D /* AnimatedGIFImageSerialization.m in Sources */,
-				9B6D1D161A000CAF009A1E18 /* WCAssetEncoder.m in Sources */,
 				9B87B6CD19E8EF7900F1C01C /* ShareViewController.m in Sources */,
 				9BB367C31A01887000589D0E /* TPAACAudioConverter.m in Sources */,
 				9B89750519EF06D0004D75F3 /* ConfigTableViewController.m in Sources */,

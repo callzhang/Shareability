@@ -26,6 +26,14 @@
     self.unlockViewController = [[UnlockViewController alloc] initWithNibName:nil bundle:nil];
     [CargoManager sharedManager].contentDelegate = self.unlockViewController;
     [[CargoManager sharedManager] loadStore];
+	
+	//slideshow
+	self.slideShow.delay = 3.0;
+	self.slideShow.transitionDuration = 1;
+	self.slideShow.transitionType = KASlideShowTransitionFade;
+	self.slideShow.imagesContentMode = UIViewContentModeScaleAspectFill;
+	[self.slideShow addImagesFromResources:@[@"1.png", @"2.png", @"3.png"]];
+	[self.slideShow start];
 }
 
 - (void)didReceiveMemoryWarning {

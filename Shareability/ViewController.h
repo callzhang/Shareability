@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "KASlideShow.h"
 
 @interface ViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet KASlideShow *slideShow;
 
 @end
 

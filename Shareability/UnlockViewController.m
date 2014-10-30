@@ -74,4 +74,9 @@ NSString *const unlockID = @"com.leizh.wechatshare.unlock";
 
 - (IBAction)restore:(id)sender {
 }
+
+- (IBAction)close:(id)sender {
+	self.presentingViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+	[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
+}
 @end
