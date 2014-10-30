@@ -140,11 +140,11 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UYz-aJ-wag">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <mutableString key="text">Wechat share is all about sharing content to Wechat app. You can share text, website, image, GIF animation, music and video clips to wechat right at the context, instead of open it in Wechat app. Current supported share: 1) Share website from web browser 2) Share image from photo app 3) Share GIF animation from photo app 4) Share movie clip from photo app  Please note, sharing from other apps has not been tested. In most of the cases it should work, but the ability to share content depends on if the app support iOS 8 sharing extension.</mutableString>
+                                <string key="text">Wechat share is all about sharing content to Wechat app. You can share text, website, image, GIF animation, music and video clips to wechat right at the context, instead of open it in Wechat app. Current supported share: 1) Share website from web browser 2) Share image from photo app 3) Share GIF animation from photo app 4) Share movie clip from photo app  Please note, sharing from other apps has not been tested. In most of the cases it should work, but the ability to share content depends on if the app support iOS 8 sharing extension.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="16" y="96" width="368" height="224"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="0.0" height="0.0"/>
                                 </variation>
                             </textView>
                         </subviews>
@@ -167,13 +167,13 @@
                                 <exclude reference="UYz-aJ-wag"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="13J-pG-So5"/>
+                                <exclude reference="Mha-cv-Iav"/>
                                 <exclude reference="1hA-BI-cWj"/>
                                 <exclude reference="YkL-vg-ZJO"/>
                                 <exclude reference="XKb-2M-P1O"/>
                                 <exclude reference="FLu-k8-uY5"/>
                                 <exclude reference="VOp-O1-CkD"/>
-                                <exclude reference="13J-pG-So5"/>
-                                <exclude reference="Mha-cv-Iav"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -185,13 +185,13 @@
                                 <include reference="UYz-aJ-wag"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="13J-pG-So5"/>
+                                <include reference="Mha-cv-Iav"/>
                                 <include reference="1hA-BI-cWj"/>
                                 <include reference="YkL-vg-ZJO"/>
                                 <include reference="XKb-2M-P1O"/>
                                 <include reference="FLu-k8-uY5"/>
                                 <include reference="VOp-O1-CkD"/>
-                                <include reference="13J-pG-So5"/>
-                                <include reference="Mha-cv-Iav"/>
                             </mask>
                         </variation>
                     </view>

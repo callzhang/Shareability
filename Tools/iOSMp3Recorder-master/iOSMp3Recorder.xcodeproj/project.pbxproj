@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9B6D1D351A004881009A1E18 /* test.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9B6D1D341A004881009A1E18 /* test.m4a */; };
+		9BACFE951A020B11009173C8 /* test.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9BACFE941A020B11009173C8 /* test.wav */; };
 		ADEC9BAB166EAD8100A4A2CC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADEC9BAA166EAD8100A4A2CC /* UIKit.framework */; };
 		ADEC9BAD166EAD8100A4A2CC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADEC9BAC166EAD8100A4A2CC /* Foundation.framework */; };
 		ADEC9BAF166EAD8100A4A2CC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADEC9BAE166EAD8100A4A2CC /* CoreGraphics.framework */; };
@@ -26,6 +27,7 @@
 
 /* Begin PBXFileReference section */
 		9B6D1D341A004881009A1E18 /* test.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.m4a; sourceTree = "<group>"; };
+		9BACFE941A020B11009173C8 /* test.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = test.wav; sourceTree = "<group>"; };
 		ADEC9BA6166EAD8100A4A2CC /* iOSMp3Recorder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSMp3Recorder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADEC9BAA166EAD8100A4A2CC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		ADEC9BAC166EAD8100A4A2CC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -98,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				9B6D1D341A004881009A1E18 /* test.m4a */,
+				9BACFE941A020B11009173C8 /* test.wav */,
 				ADEC9BCE166EAFB800A4A2CC /* lame */,
 				ADEC9BB9166EAD8100A4A2CC /* TXXAppDelegate.h */,
 				ADEC9BBA166EAD8100A4A2CC /* TXXAppDelegate.m */,
@@ -188,6 +191,7 @@
 				ADEC9BBD166EAD8100A4A2CC /* Default.png in Resources */,
 				ADEC9BBF166EAD8100A4A2CC /* Default@2x.png in Resources */,
 				ADEC9BC1166EAD8100A4A2CC /* Default-568h@2x.png in Resources */,
+				9BACFE951A020B11009173C8 /* test.wav in Resources */,
 				9B6D1D351A004881009A1E18 /* test.m4a in Resources */,
 				ADEC9BC7166EAD8100A4A2CC /* TXXViewController.xib in Resources */,
 			);

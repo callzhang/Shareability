@@ -121,7 +121,7 @@
 - (void) toMp3
 {
 	//NSString *cafFilePath =[NSTemporaryDirectory() stringByAppendingString:@"RecordedFile"];
-	NSString *cafFilePath = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"m4a"];
+	NSString *cafFilePath = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"wav"];
     
     NSString *mp3FileName = @"Mp3File";
     mp3FileName = [mp3FileName stringByAppendingString:@".mp3"];

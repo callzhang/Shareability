@@ -12,7 +12,6 @@
 #import "WXApiObject.h"
 #import "AnimatedGIFImageSerialization.h"
 #import <AVFoundation/AVFoundation.h>
-#import "JGProgressHUD.h"
 // standard includes
 #import <AudioToolbox/AudioToolbox.h>
 #import "TPAACAudioConverter.h"
@@ -148,9 +147,7 @@ enum{
 					NSLog(@"Get movie: %luMB", item.length/1048576);
 					
 					if (self.video.length/1048576 > 10) {
-						JGProgressHUD *hud = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleDark];
-						hud.textLabel.text = @"Transcoding";
-                        [hud showInView:self.view];
+                        [self showAlert:@"Processing video" withButton:NO];
 						//resize
 						NSString *path = [NSTemporaryDirectory() stringByAppendingString:@"videoTempFile.mov"];
 						NSParameterAssert([item writeToFile:path atomically:NO]);
@@ -168,9 +165,7 @@ enum{
 							 switch ([session status]) {
 								 case AVAssetExportSessionStatusFailed:
 									 NSLog(@"Failed with error: %@", session.error.description);
-									 hud.indicatorView = nil;
-									 hud.textLabel.text = @"Failed";
-									 [hud dismissAfterDelay:3];
+                                     [self showAlert:@"Failed processing video" withButton:YES];
 									 break;
 								 case AVAssetExportSessionStatusCancelled:
 									 NSLog(@"User cancelled");
@@ -180,14 +175,9 @@ enum{
 									 if (data.length/1048576 > 10) {
 										 NSLog(@"Too large");
 										 //too large
-										 hud.indicatorView = nil;
-										 hud.textLabel.text = @"Too large!";
-										 [hud dismissAfterDelay:3];
+                                         [self showAlert:@"File is too large" withButton:YES];
 									 }else{
 										 NSLog(@"Finished");
-										 hud.indicatorView = nil;
-										 hud.textLabel.text = @"Finished";
-										 [hud dismissAfterDelay:1.5];
 									 }
 									 self.video = data;
 								 }
