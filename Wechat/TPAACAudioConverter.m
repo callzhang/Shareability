@@ -273,10 +273,11 @@ static inline BOOL _checkResultLite(OSStatus result, const char *operation, cons
     destinationFormat.mFormatID = kAudioFormatLinearPCM;
     UInt32 size = sizeof(destinationFormat);
 	if (destinationFormat.mFormatID == kAudioFormatLinearPCM) {
+        UInt16 channel = sourceFormat.mChannelsPerFrame;
 		destinationFormat.mSampleRate = sourceFormat.mSampleRate;
 		destinationFormat.mChannelsPerFrame = sourceFormat.mChannelsPerFrame;
-		destinationFormat.mBitsPerChannel = 8 * 2;
-		destinationFormat.mBytesPerPacket = destinationFormat.mBytesPerFrame = 2 * sourceFormat.mChannelsPerFrame;
+		destinationFormat.mBitsPerChannel = 8 * channel;
+		destinationFormat.mBytesPerPacket = destinationFormat.mBytesPerFrame = channel * sourceFormat.mChannelsPerFrame;
 		destinationFormat.mFramesPerPacket = 1;
 		destinationFormat.mFormatFlags = kAudioFormatFlagsCanonical; //kLinearPCMFormatFlagIsPacked | kLinearPCMFormatFlagIsSignedInteger; // little-endian
 	}
@@ -423,6 +424,7 @@ static inline BOOL _checkResultLite(OSStatus result, const char *operation, cons
             return;
         }
         
+        //================= Write the audio file ==============
         OSStatus status = ExtAudioFileWrite(destinationFile, numFrames, &fillBufList);
         
         if ( status == kExtAudioFileError_CodecUnavailableInputConsumed) {
