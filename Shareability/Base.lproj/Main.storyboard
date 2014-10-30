@@ -40,20 +40,8 @@
                                             <constraint firstAttribute="width" constant="513" id="sUY-lq-gRk"/>
                                         </constraints>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SZu-Ho-sIC">
-                                        <rect key="frame" x="-71" y="-67" width="22" height="22"/>
-                                        <state key="normal">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <variation key="widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="348" y="-52" width="22" height="22"/>
-                                        </variation>
-                                        <connections>
-                                            <segue destination="QfE-An-CLW" kind="presentation" modalTransitionStyle="flipHorizontal" id="OB8-tD-nJl"/>
-                                        </connections>
-                                    </button>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="61t-WN-hsm" customClass="KASlideShow">
-                                        <rect key="frame" x="44" y="-102" width="287" height="509"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="61t-WN-hsm" customClass="KASlideShow">
+                                        <rect key="frame" x="44" y="-100" width="287" height="509"/>
                                         <color key="backgroundColor" red="0.77254909279999995" green="0.84313732389999996" blue="0.066666670139999995" alpha="1" colorSpace="deviceRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="509" id="41q-5A-2J1"/>
@@ -62,12 +50,10 @@
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="SZu-Ho-sIC" secondAttribute="bottom" constant="45" id="L0Y-rT-dF8"/>
                                     <constraint firstAttribute="centerX" secondItem="61t-WN-hsm" secondAttribute="centerX" id="NEf-T4-vYi"/>
                                     <constraint firstItem="lFR-Te-bqR" firstAttribute="top" secondItem="cgO-ly-LT1" secondAttribute="top" constant="-180" id="Qln-xm-XDE"/>
                                     <constraint firstAttribute="centerY" secondItem="ATg-Tl-eHu" secondAttribute="centerY" constant="-170" id="TuN-ga-GKV"/>
                                     <constraint firstAttribute="centerX" secondItem="ATg-Tl-eHu" secondAttribute="centerX" id="WZN-ml-FGE"/>
-                                    <constraint firstAttribute="trailing" secondItem="SZu-Ho-sIC" secondAttribute="trailing" constant="49" id="fUW-bM-qVz"/>
                                     <constraint firstAttribute="centerX" secondItem="lFR-Te-bqR" secondAttribute="centerX" id="ocd-R4-6bQ"/>
                                     <constraint firstItem="61t-WN-hsm" firstAttribute="top" secondItem="cgO-ly-LT1" secondAttribute="top" constant="-100" id="ybG-YS-Axd"/>
                                 </constraints>
@@ -81,13 +67,28 @@
                                     <rect key="frame" x="0.0" y="0.0" width="400" height="600"/>
                                 </variation>
                             </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SZu-Ho-sIC">
+                                <rect key="frame" x="320" y="620" width="22" height="22"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="348" y="-52" width="22" height="22"/>
+                                </variation>
+                                <connections>
+                                    <segue destination="QfE-An-CLW" kind="presentation" modalTransitionStyle="flipHorizontal" id="OB8-tD-nJl"/>
+                                </connections>
+                            </button>
                         </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="cgO-ly-LT1" secondAttribute="trailing" id="8hr-xK-SEx"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="SZu-Ho-sIC" secondAttribute="trailing" constant="20" id="AZZ-XD-cEX"/>
                             <constraint firstItem="FDa-jo-wEf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="12" id="D7a-Js-tcr"/>
                             <constraint firstItem="cgO-ly-LT1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="GXk-ai-zyn"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="FDa-jo-wEf" secondAttribute="bottom" constant="100" id="m3X-xa-qxS"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="bottom" secondItem="cgO-ly-LT1" secondAttribute="bottom" id="ocm-eA-mYA"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="SZu-Ho-sIC" secondAttribute="bottom" constant="25" id="rKM-SG-Qi8"/>
                             <constraint firstAttribute="trailingMargin" secondItem="FDa-jo-wEf" secondAttribute="trailing" constant="12" id="sq2-aT-jps"/>
                             <constraint firstItem="cgO-ly-LT1" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="ur0-US-wnq"/>
                         </constraints>
