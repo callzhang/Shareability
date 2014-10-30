@@ -164,6 +164,11 @@
 				CLASSPREFIX = TXX;
 				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = "xiaoxuan Tang";
+				TargetAttributes = {
+					ADEC9BA5166EAD8100A4A2CC = {
+						DevelopmentTeam = SDR7T9YB58;
+					};
+				};
 			};
 			buildConfigurationList = ADEC9BA0166EAD8100A4A2CC /* Build configuration list for PBXProject "iOSMp3Recorder" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -283,6 +288,8 @@
 		ADEC9BCB166EAD8100A4A2CC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iOSMp3Recorder/iOSMp3Recorder-Prefix.pch";
 				INFOPLIST_FILE = "iOSMp3Recorder/iOSMp3Recorder-Info.plist";
@@ -292,6 +299,7 @@
 					"\"$(SRCROOT)/iOSMp3Recorder\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				VALID_ARCHS = "arm64 armv7";
 				WRAPPER_EXTENSION = app;
 			};
@@ -300,6 +308,8 @@
 		ADEC9BCC166EAD8100A4A2CC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iOSMp3Recorder/iOSMp3Recorder-Prefix.pch";
 				INFOPLIST_FILE = "iOSMp3Recorder/iOSMp3Recorder-Info.plist";
@@ -309,6 +319,7 @@
 					"\"$(SRCROOT)/iOSMp3Recorder\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				VALID_ARCHS = "arm64 armv7";
 				WRAPPER_EXTENSION = app;
 			};

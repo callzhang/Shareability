@@ -486,4 +486,26 @@ enum{
 	[self showAlert:[NSString stringWithFormat:@"Processing audio failed with error:%@", error] withButton:YES];
 }
 
+//- (void)emailConverted{
+//	
+//	MFMailComposeViewController *mailController = [[MFMailComposeViewController alloc] init];
+//	mailController.mailComposeDelegate = self;
+//	[mailController setSubject:NSLocalizedString(@"Recording", @"")];
+//	[mailController addAttachmentData:self.audio
+//							 mimeType:@"audio/L24"
+//							 fileName:@"audio.caf"];
+//	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//		
+//		[self presentViewController:mailController animated:YES completion:NULL];
+//	});
+//}
+//
+//-(void)mailComposeController:(MFMailComposeViewController *)controller
+//		 didFinishWithResult:(MFMailComposeResult)result
+//					   error:(NSError *)error{
+//	
+//	[self dismissViewControllerAnimated:YES completion:NULL];
+//	
+//}
+
 @end

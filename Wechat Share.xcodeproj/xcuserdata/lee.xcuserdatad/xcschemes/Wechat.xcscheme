@@ -65,8 +65,8 @@
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
       <IDERemoteRunnable
-         RemotePath = "/Applications/MobileSafari.app"
-         BundleIdentifier = "/Applications/MobileSafari.app">
+         RemotePath = "/Applications/VoiceMemos.app"
+         BundleIdentifier = "/Applications/VoiceMemos.app">
       </IDERemoteRunnable>
       <MacroExpansion>
          <BuildableReference
@@ -79,6 +79,10 @@
       </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
+      <IDERemoteRunnable
+         RemotePath = "/Applications/MobileSafari.app"
+         BundleIdentifier = "/Applications/MobileSafari.app">
+      </IDERemoteRunnable>
       <IDERemoteRunnable
          RemotePath = "/Applications/MobileSlideShow.app"
          BundleIdentifier = "/Applications/MobileSlideShow.app">

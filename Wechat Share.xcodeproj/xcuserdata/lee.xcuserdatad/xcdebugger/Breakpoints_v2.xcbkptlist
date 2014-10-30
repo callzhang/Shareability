@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Wechat/TPAACAudioConverter.m"
-            timestampString = "436314057.029759"
+            timestampString = "436388479.739293"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "236"
-            endingLineNumber = "236"
+            startingLineNumber = "247"
+            endingLineNumber = "247"
             landmarkName = "-processing"
             landmarkType = "5">
          </BreakpointContent>
@@ -22,16 +22,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Wechat/TPAACAudioConverter.m"
-            timestampString = "436344760.857619"
+            timestampString = "436388539.582499"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "279"
-            endingLineNumber = "279"
-            landmarkName = "-processing"
+            startingLineNumber = "216"
+            endingLineNumber = "216"
+            landmarkName = "-reportCompletion"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -207,6 +207,16 @@ static inline BOOL _checkResultLite(OSStatus result, const char *operation, cons
                     "AudioSessionSetProperty(kAudioSessionProperty_OverrideCategoryMixWithOthers)");
     }
 	
+#if DEBUG
+	NSData *data = [NSData dataWithContentsOfFile:self.tempPath];
+	NSError *err;
+	AVAudioPlayer *player = [[AVAudioPlayer alloc] initWithData:data error:&err];
+	[player prepareToPlay];
+	if (![player play]) {
+		NSLog(@"Playing failed: %@", err);
+	}
+#endif
+	
 	if (self.processMp3) {
 		[self convertToMp3From:self.tempPath To:self.destination];
 	}else{
@@ -214,6 +224,7 @@ static inline BOOL _checkResultLite(OSStatus result, const char *operation, cons
 		[[NSFileManager defaultManager] removeItemAtPath:self.tempPath error:NULL];
 		[_delegate AACAudioConverterDidFinishConversion:self];
 	}
+	
 }
 
 - (void)reportErrorAndCleanup:(NSError*)error {
@@ -276,10 +287,10 @@ static inline BOOL _checkResultLite(OSStatus result, const char *operation, cons
         UInt16 channel = sourceFormat.mChannelsPerFrame;
 		destinationFormat.mSampleRate = sourceFormat.mSampleRate;
 		destinationFormat.mChannelsPerFrame = sourceFormat.mChannelsPerFrame;
-		destinationFormat.mBitsPerChannel = 8 * channel;
-		destinationFormat.mBytesPerPacket = destinationFormat.mBytesPerFrame = channel * sourceFormat.mChannelsPerFrame;
+		destinationFormat.mBitsPerChannel = 16;
+		destinationFormat.mBytesPerPacket = destinationFormat.mBytesPerFrame = sizeof(AudioSampleType) * sourceFormat.mChannelsPerFrame;
 		destinationFormat.mFramesPerPacket = 1;
-		destinationFormat.mFormatFlags = kAudioFormatFlagsCanonical; //kLinearPCMFormatFlagIsPacked | kLinearPCMFormatFlagIsSignedInteger; // little-endian
+		destinationFormat.mFormatFlags = kLinearPCMFormatFlagIsPacked | kLinearPCMFormatFlagIsSignedInteger; // little-endian
 	}
 	if (!checkResult(AudioFormatGetProperty(kAudioFormatProperty_FormatInfo, 0, NULL, &size, &destinationFormat),
                       "AudioFormatGetProperty(kAudioFormatProperty_FormatInfo)")) {
@@ -498,6 +509,12 @@ static inline BOOL _checkResultLite(OSStatus result, const char *operation, cons
 #pragma mark - convert to MP3
 - (void) convertToMp3From:(NSString *)input To:(NSString *)output
 {
+	ExtAudioFileRef sourceFile;
+	AudioStreamBasicDescription sourceFormat;
+	ExtAudioFileOpenURL((__bridge CFURLRef)[NSURL fileURLWithPath:self.tempPath], &sourceFile);
+	UInt32 size = sizeof(sourceFormat);
+	ExtAudioFileGetProperty(sourceFile, kExtAudioFileProperty_FileDataFormat, &size, &sourceFormat);
+	
 	
 	@try {
 		int read, write;
@@ -506,6 +523,7 @@ static inline BOOL _checkResultLite(OSStatus result, const char *operation, cons
 		fseek(pcm, 4*1024, SEEK_CUR); //skip file header
 		//output
 		FILE *mp3 = fopen([output cStringUsingEncoding:1], "wb");
+		UInt32 channel = sourceFormat.mChannelsPerFrame;
 		
 		const int PCM_SIZE = 8192;
 		const int MP3_SIZE = 8192;
@@ -515,15 +533,23 @@ static inline BOOL _checkResultLite(OSStatus result, const char *operation, cons
 		lame_t lame = lame_init();
 		lame_set_in_samplerate(lame, 44100.0f);
 		lame_set_VBR(lame, vbr_default);
+		if (channel == 1) {
+			lame_set_num_channels(lame, 1);
+			lame_set_mode(lame, MONO);
+		}
+		
 		lame_init_params(lame);
 		
 		do {
-			read = fread(pcm_buffer, 2*sizeof(short int), PCM_SIZE, pcm);
+			read = fread(pcm_buffer, sourceFormat.mChannelsPerFrame * sizeof(short int), PCM_SIZE, pcm);
 			if (read == 0)
 				write = lame_encode_flush(lame, mp3_buffer, MP3_SIZE);
 			else
-				write = lame_encode_buffer_interleaved(lame, pcm_buffer, read, mp3_buffer, MP3_SIZE);
-			
+				if (channel == 1) {
+					write = lame_encode_buffer(lame, pcm_buffer, NULL, read, mp3_buffer, MP3_SIZE);
+				}else{
+					write = lame_encode_buffer_interleaved(lame, pcm_buffer, read, mp3_buffer, MP3_SIZE);
+				}
 			fwrite(mp3_buffer, write, 1, mp3);
 			
 		} while (read != 0);

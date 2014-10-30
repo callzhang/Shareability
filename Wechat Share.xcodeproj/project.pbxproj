@@ -133,6 +133,8 @@
 		9B87B6CE19E8EF7900F1C01C /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
 		9B89750319EF06D0004D75F3 /* ConfigTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigTableViewController.h; sourceTree = "<group>"; };
 		9B89750419EF06D0004D75F3 /* ConfigTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigTableViewController.m; sourceTree = "<group>"; };
+		9B9827DE1A02C01F0037C0D9 /* Wechat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Wechat.entitlements; sourceTree = "<group>"; };
+		9B9827DF1A02C0AB0037C0D9 /* Wechat Share.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Wechat Share.entitlements"; sourceTree = "<group>"; };
 		9BB0816219F1BFA700570E1D /* AnimatedGIFImageSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedGIFImageSerialization.h; sourceTree = "<group>"; };
 		9BB0816319F1BFA700570E1D /* AnimatedGIFImageSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimatedGIFImageSerialization.m; sourceTree = "<group>"; };
 		9BB0816619F581E100570E1D /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -232,10 +234,11 @@
 		9B87B69119E8E7A100F1C01C = {
 			isa = PBXGroup;
 			children = (
+				9B9827DF1A02C0AB0037C0D9 /* Wechat Share.entitlements */,
 				9B87B69C19E8E7A100F1C01C /* Shareability */,
 				9B87B6C819E8EF7900F1C01C /* Wechat */,
-				9B87B69B19E8E7A100F1C01C /* Products */,
 				9BB2A67019F977FB0025CC7A /* Frameworks */,
+				9B87B69B19E8E7A100F1C01C /* Products */,
 				9B1B255419FDB49100CC3037 /* Resources */,
 			);
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 		9B87B6C819E8EF7900F1C01C /* Wechat */ = {
 			isa = PBXGroup;
 			children = (
+				9B9827DE1A02C01F0037C0D9 /* Wechat.entitlements */,
 				9BB367C01A01886600589D0E /* components */,
 				9B6D1D361A005D70009A1E18 /* sample.mp3 */,
 				9B6D1D281A003205009A1E18 /* AudioConverter.h */,
@@ -399,10 +403,20 @@
 					9B87B69919E8E7A100F1C01C = {
 						CreatedOnToolsVersion = 6.0.1;
 						DevelopmentTeam = SDR7T9YB58;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					9B87B6C619E8EF7900F1C01C = {
 						CreatedOnToolsVersion = 6.0.1;
 						DevelopmentTeam = SDR7T9YB58;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -614,6 +628,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = "Wechat Share.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				HEADER_SEARCH_PATHS = (
@@ -638,6 +653,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = "Wechat Share.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				HEADER_SEARCH_PATHS = (
@@ -662,6 +678,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-wechat";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = Wechat/Wechat.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -679,6 +698,7 @@
 					"$(PROJECT_DIR)/Wechat",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -688,6 +708,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-wechat";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = Wechat/Wechat.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				HEADER_SEARCH_PATHS = (
 					"\"${PODS_ROOT}/Headers\"/**",
 					"$(BUILT_PRODUCTS_DIR)/**",
@@ -701,6 +724,7 @@
 					"$(PROJECT_DIR)/Wechat",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
