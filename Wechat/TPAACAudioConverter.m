@@ -501,7 +501,7 @@ static inline BOOL _checkResultLite(OSStatus result, const char *operation, cons
 		int read, write;
 		//source
 		FILE *pcm = fopen([input cStringUsingEncoding:1], "rb");
-		//fseek(pcm, 4*1024, SEEK_CUR);                                   //skip file header
+		fseek(pcm, 4*1024, SEEK_CUR); //skip file header
 		//output
 		FILE *mp3 = fopen([output cStringUsingEncoding:1], "wb");
 		
@@ -516,7 +516,7 @@ static inline BOOL _checkResultLite(OSStatus result, const char *operation, cons
 		lame_init_params(lame);
 		
 		do {
-			read = fread(pcm_buffer, 2*sizeof(short int), PCM_SIZE, pcm);
+			read = fread(pcm_buffer, sizeof(short int), PCM_SIZE, pcm);
 			if (read == 0)
 				write = lame_encode_flush(lame, mp3_buffer, MP3_SIZE);
 			else

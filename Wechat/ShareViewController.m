@@ -226,14 +226,19 @@ enum{
 			
 			//file
 			if ([provider hasItemConformingToTypeIdentifier:(NSString *)kUTTypeFileURL]) {
-				[provider loadItemForTypeIdentifier:(NSString *)kUTTypeFileURL options:nil completionHandler:^(NSURL *item, NSError *error) {
-					self.file = [NSData dataWithContentsOfURL:item];
-					self.type = file;
-					NSArray *arr = [item.absoluteString componentsSeparatedByString:@"."];
+				[provider loadItemForTypeIdentifier:(NSString *)kUTTypeFileURL options:nil completionHandler:^(NSURL *url, NSError *error) {
+                    if (_audio || _video || _text || _emotion || _url || _text) {
+                        NSLog(@"More than one attachment found, skip assign type to file");
+                    }else{
+                        self.type = file;
+                    }
+                    
+                    self.file = [NSData dataWithContentsOfURL:url];
+					NSArray *arr = [url.absoluteString componentsSeparatedByString:@"."];
 					arr = [arr[arr.count - 2] componentsSeparatedByString:@"/"];
 					self.title = [arr.lastObject stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-					NSLog(@"Audio type is: %@", arr.lastObject);
-					NSLog(@"Get file: %@", item);
+					
+                    NSLog(@"Get file: %@", item);
 				}];
 			}
 			
