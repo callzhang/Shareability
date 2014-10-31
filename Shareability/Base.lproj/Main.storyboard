@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
@@ -63,18 +63,15 @@
                                 <variation key="heightClass=regular" ambiguous="YES">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
                                 </variation>
-                                <variation key="widthClass=compact" ambiguous="YES">
+                                <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
                                     <rect key="frame" x="0.0" y="0.0" width="400" height="600"/>
                                 </variation>
                             </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SZu-Ho-sIC">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SZu-Ho-sIC">
                                 <rect key="frame" x="320" y="620" width="22" height="22"/>
-                                <state key="normal">
+                                <state key="normal" image="enter">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="348" y="-52" width="22" height="22"/>
-                                </variation>
                                 <connections>
                                     <segue destination="QfE-An-CLW" kind="presentation" modalTransitionStyle="flipHorizontal" id="OB8-tD-nJl"/>
                                 </connections>
@@ -83,12 +80,16 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="cgO-ly-LT1" secondAttribute="trailing" id="8hr-xK-SEx"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="SZu-Ho-sIC" secondAttribute="trailing" constant="20" id="AZZ-XD-cEX"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="SZu-Ho-sIC" secondAttribute="trailing" constant="20" id="AZZ-XD-cEX">
+                                <variation key="widthClass=compact" constant="-16"/>
+                            </constraint>
                             <constraint firstItem="FDa-jo-wEf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="12" id="D7a-Js-tcr"/>
                             <constraint firstItem="cgO-ly-LT1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="GXk-ai-zyn"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="FDa-jo-wEf" secondAttribute="bottom" constant="100" id="m3X-xa-qxS"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="bottom" secondItem="cgO-ly-LT1" secondAttribute="bottom" id="ocm-eA-mYA"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="SZu-Ho-sIC" secondAttribute="bottom" constant="25" id="rKM-SG-Qi8"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="SZu-Ho-sIC" secondAttribute="bottom" constant="25" id="rKM-SG-Qi8">
+                                <variation key="widthClass=compact" constant="0.0"/>
+                            </constraint>
                             <constraint firstAttribute="trailingMargin" secondItem="FDa-jo-wEf" secondAttribute="trailing" constant="12" id="sq2-aT-jps"/>
                             <constraint firstItem="cgO-ly-LT1" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="ur0-US-wnq"/>
                         </constraints>
@@ -156,11 +157,14 @@
                                     <rect key="frame" x="0.0" y="0.0" width="0.0" height="0.0"/>
                                 </variation>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OL2-Ft-etG">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OL2-Ft-etG">
                                 <rect key="frame" x="-36" y="-22" width="72" height="44"/>
-                                <state key="normal" title="Close">
+                                <state key="normal" image="return">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="550" width="50" height="50"/>
+                                </variation>
                                 <connections>
                                     <action selector="close:" destination="QfE-An-CLW" eventType="touchUpInside" id="aG7-Im-cB1"/>
                                 </connections>
@@ -177,8 +181,8 @@
                             <constraint firstItem="8Jy-rF-Xsb" firstAttribute="top" secondItem="frF-BS-s2g" secondAttribute="bottom" constant="100" id="VUN-Ye-Pyq"/>
                             <constraint firstItem="Hli-Uq-Aut" firstAttribute="leading" secondItem="q3g-jI-vPC" secondAttribute="leadingMargin" constant="100" id="XKb-2M-P1O"/>
                             <constraint firstItem="FnN-qs-rp7" firstAttribute="leading" secondItem="q3g-jI-vPC" secondAttribute="leadingMargin" constant="10" id="YkL-vg-ZJO"/>
-                            <constraint firstItem="OL2-Ft-etG" firstAttribute="top" secondItem="FXB-U9-riV" secondAttribute="bottom" constant="25" id="fHX-ih-8aD"/>
-                            <constraint firstItem="OL2-Ft-etG" firstAttribute="leading" secondItem="q3g-jI-vPC" secondAttribute="leadingMargin" constant="25" id="osv-aE-yqH"/>
+                            <constraint firstItem="OL2-Ft-etG" firstAttribute="bottom" secondItem="FXB-U9-riV" secondAttribute="bottom" id="fHX-ih-8aD"/>
+                            <constraint firstItem="OL2-Ft-etG" firstAttribute="leading" secondItem="q3g-jI-vPC" secondAttribute="leadingMargin" id="osv-aE-yqH"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
@@ -237,5 +241,7 @@
     </scenes>
     <resources>
         <image name="background" width="320" height="648"/>
+        <image name="enter" width="50" height="50"/>
+        <image name="return" width="50" height="50"/>
     </resources>
 </document>
