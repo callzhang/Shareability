@@ -127,7 +127,7 @@
 		9B7C651919FC8F9700C422D5 /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLResponseSerialization.m; sourceTree = "<group>"; };
 		9B7C651A19FC8F9800C422D5 /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
 		9B7C651B19FC8F9800C422D5 /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
-		9B87B69A19E8E7A100F1C01C /* Wechat Share.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Wechat Share.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B87B69A19E8E7A100F1C01C /* Shareability.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shareability.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B87B69E19E8E7A100F1C01C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9B87B69F19E8E7A100F1C01C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9B87B6A119E8E7A100F1C01C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -286,7 +286,7 @@
 		9B87B69B19E8E7A100F1C01C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9B87B69A19E8E7A100F1C01C /* Wechat Share.app */,
+				9B87B69A19E8E7A100F1C01C /* Shareability.app */,
 				9B87B6C719E8EF7900F1C01C /* Wechat.appex */,
 			);
 			name = Products;
@@ -449,7 +449,7 @@
 			);
 			name = "Wechat Share";
 			productName = Shareability;
-			productReference = 9B87B69A19E8E7A100F1C01C /* Wechat Share.app */;
+			productReference = 9B87B69A19E8E7A100F1C01C /* Shareability.app */;
 			productType = "com.apple.product-type.application";
 		};
 		9B87B6C619E8EF7900F1C01C /* Wechat */ = {
@@ -733,7 +733,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/SDKExport",
 				);
-				PRODUCT_NAME = "Wechat Share";
+				PRODUCT_NAME = Shareability;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -758,7 +758,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/SDKExport",
 				);
-				PRODUCT_NAME = "Wechat Share";
+				PRODUCT_NAME = Shareability;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};

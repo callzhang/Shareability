@@ -30,7 +30,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "9B87B69919E8E7A100F1C01C"
-               BuildableName = "Wechat Share.app"
+               BuildableName = "Shareability.app"
                BlueprintName = "Wechat Share"
                ReferencedContainer = "container:Wechat Share.xcodeproj">
             </BuildableReference>
@@ -48,7 +48,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9B87B69919E8E7A100F1C01C"
-            BuildableName = "Wechat Share.app"
+            BuildableName = "Shareability.app"
             BlueprintName = "Wechat Share"
             ReferencedContainer = "container:Wechat Share.xcodeproj">
          </BuildableReference>
@@ -64,15 +64,18 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
+<<<<<<< Updated upstream
       <IDERemoteRunnable
          RemotePath = "/Applications/VoiceMemos.app"
          BundleIdentifier = "/Applications/VoiceMemos.app">
       </IDERemoteRunnable>
+=======
+>>>>>>> Stashed changes
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9B87B69919E8E7A100F1C01C"
-            BuildableName = "Wechat Share.app"
+            BuildableName = "Shareability.app"
             BlueprintName = "Wechat Share"
             ReferencedContainer = "container:Wechat Share.xcodeproj">
          </BuildableReference>
@@ -99,7 +102,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9B87B69919E8E7A100F1C01C"
-            BuildableName = "Wechat Share.app"
+            BuildableName = "Shareability.app"
             BlueprintName = "Wechat Share"
             ReferencedContainer = "container:Wechat Share.xcodeproj">
          </BuildableReference>
