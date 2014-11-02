@@ -91,6 +91,7 @@ NSString *const unlockID = @"com.wokealarm.Shareability.unlock";
                 }
                 [[CargoManager sharedManager] buyProduct:unlock];
             }
+            [[NSNotificationCenter defaultCenter] removeObserver:self name:CMProductRequestDidReceiveResponseNotification object:nil];
         }];
     }
 }
