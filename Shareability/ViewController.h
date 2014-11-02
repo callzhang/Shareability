@@ -9,9 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "KASlideShow.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController<KASlideShowDelegate>
 
 @property (weak, nonatomic) IBOutlet KASlideShow *slideShow;
+@property (weak, nonatomic) IBOutlet UIPageControl *pager;
+@property (weak, nonatomic) IBOutlet UILabel *tutorial;
 
 @end
 

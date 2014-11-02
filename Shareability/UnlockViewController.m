@@ -7,7 +7,7 @@
 //
 
 #import "UnlockViewController.h"
-NSString *const unlockID = @"com.leizh.wechatshare.unlock";
+NSString *const unlockID = @"com.wokealarm.Shareability.unlock";
 
 @interface UnlockViewController()
 
@@ -28,6 +28,7 @@ NSString *const unlockID = @"com.leizh.wechatshare.unlock";
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - contentDelegate
 - (NSArray *)productIdentifiers{
     NSArray *SKUs = @[unlockID];
     return SKUs;
@@ -47,36 +48,60 @@ NSString *const unlockID = @"com.leizh.wechatshare.unlock";
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
+
+
+
+#pragma mark - UIDelegate
+//optional
 - (void)transactionDidFinishWithSuccess:(BOOL)success{
     if (success) {
-        self.detail.text = @"Thank you for your purchase!";
-        self.buy.hidden = YES;
-        self.restore.hidden = YES;
+        if ([[NSUserDefaults standardUserDefaults] objectForKey:unlockID]) {
+            self.detail.text = @"Thank you for your purchase!";
+            self.buy.hidden = YES;
+            self.restore.hidden = YES;
+            [[NSUserDefaults standardUserDefaults] setObject:@YES forKey:unlockID];
+        }
     }else{
-        [[[UIAlertView alloc] initWithTitle:@"Error" message:@"Transaction failed." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+        [[[UIAlertView alloc] initWithTitle:@"Error" message:@"Transaction failed. Please try again." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
     }
 }
 
+- (void)restoredTransactionsDidFinishWithSuccess:(BOOL)success{
+    [self transactionDidFinishWithSuccess:success];
+}
 
+
+#pragma mark - UI
 
 - (IBAction)buy:(id)sender {
+    SKProduct *unlock = [[CargoManager sharedManager] productForIdentifier:unlockID];
+    if (unlock) {
+        [[CargoManager sharedManager] buyProduct:unlock];
+    }else{
+        //wait until the product ready
+        [[NSNotificationCenter defaultCenter] addObserverForName:CMProductRequestDidReceiveResponseNotification object:nil queue:nil usingBlock:^(NSNotification *note) {
+            if (note.userInfo[@"error"]) {
+                //something wrong, restate the UI
+            }else{
+                SKProduct *unlock = [[CargoManager sharedManager] productForIdentifier:unlockID];
+                if (!unlock) {
+                    return;
+                }
+                [[CargoManager sharedManager] buyProduct:unlock];
+            }
+        }];
+    }
 }
 
 - (IBAction)restore:(id)sender {
+    [[CargoManager sharedManager] restorePurchasedProducts];
 }
 
 - (IBAction)close:(id)sender {
 	self.presentingViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
 	[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
 }
+
 @end

@@ -16,5 +16,5 @@
 - (IBAction)close:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *buy;
 @property (weak, nonatomic) IBOutlet UIButton *restore;
-
+@property (weak, nonatomic) IBOutlet UITextView *appDescription;
 @end
