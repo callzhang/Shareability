@@ -8,6 +8,7 @@
 
 #import "UnlockViewController.h"
 NSString *const unlockID = @"com.wokealarm.Shareability.unlock";
+NSString *const sharedSecret = @"f99be586cac5465185100229aabdba71";
 
 @interface UnlockViewController()
 
@@ -39,13 +40,10 @@ NSString *const unlockID = @"com.wokealarm.Shareability.unlock";
     // Implement the result of a successful IAP
     // on the according productIdentifier.
     // YOUR CODE GOES HERE
-    if ([productIdentifier isEqualToString:unlockID]) {
-        [[NSUserDefaults standardUserDefaults] setObject:@YES forKey:unlockID];
-    }
-    
-    // Save user data to disk.
-    // YOUR CODE GOES HERE
+    NSLog(@"Provide content for %@", productIdentifier);
+    [[NSUserDefaults standardUserDefaults] setObject:@YES forKey:productIdentifier];
     [[NSUserDefaults standardUserDefaults] synchronize];
+    
 }
 
 
@@ -61,10 +59,10 @@ NSString *const unlockID = @"com.wokealarm.Shareability.unlock";
             self.detail.text = @"Thank you for your purchase!";
             self.buy.hidden = YES;
             self.restore.hidden = YES;
-            [[NSUserDefaults standardUserDefaults] setObject:@YES forKey:unlockID];
+            [self.view setNeedsDisplay];//???
         }
     }else{
-        [[[UIAlertView alloc] initWithTitle:@"Error" message:@"Transaction failed. Please try again." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+        [[[UIAlertView alloc] initWithTitle:@"In App Purchase failed" message:@"The purchase failed due to an error. Please, try again later." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
     }
 }
 
@@ -81,6 +79,7 @@ NSString *const unlockID = @"com.wokealarm.Shareability.unlock";
         [[CargoManager sharedManager] buyProduct:unlock];
     }else{
         //wait until the product ready
+        [[CargoManager sharedManager] retryLoadingProducts];
         [[NSNotificationCenter defaultCenter] addObserverForName:CMProductRequestDidReceiveResponseNotification object:nil queue:nil usingBlock:^(NSNotification *note) {
             if (note.userInfo[@"error"]) {
                 //something wrong, restate the UI

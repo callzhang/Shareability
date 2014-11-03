@@ -99,8 +99,6 @@
 		9B2DFCCE19FD759600DEE429 /* CargoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CargoManager.h; sourceTree = "<group>"; };
 		9B2DFCCF19FD759600DEE429 /* CargoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CargoManager.m; sourceTree = "<group>"; };
 		9B2DFCD119FD759600DEE429 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/CargoManagerLocalizable.strings; sourceTree = "<group>"; };
-		9B2DFCD419FD75D600DEE429 /* UnlockViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UnlockViewController.h; path = Shareability/UnlockViewController.h; sourceTree = SOURCE_ROOT; };
-		9B2DFCD519FD75D600DEE429 /* UnlockViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UnlockViewController.m; path = Shareability/UnlockViewController.m; sourceTree = SOURCE_ROOT; };
 		9B4670C81A02DE8C00BA3E13 /* UnlockViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnlockViewController.h; sourceTree = "<group>"; };
 		9B4670C91A02DE8C00BA3E13 /* UnlockViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnlockViewController.m; sourceTree = "<group>"; };
 		9B6D1D171A0025EB009A1E18 /* MusicNotes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MusicNotes.png; sourceTree = "<group>"; };
@@ -145,8 +143,6 @@
 		9B87B6CE19E8EF7900F1C01C /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
 		9B89750319EF06D0004D75F3 /* ConfigTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigTableViewController.h; sourceTree = "<group>"; };
 		9B89750419EF06D0004D75F3 /* ConfigTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigTableViewController.m; sourceTree = "<group>"; };
-		9B9827DE1A02C01F0037C0D9 /* Wechat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Wechat.entitlements; sourceTree = "<group>"; };
-		9B9827DF1A02C0AB0037C0D9 /* Wechat Share.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Wechat Share.entitlements"; sourceTree = "<group>"; };
 		9BB0816219F1BFA700570E1D /* AnimatedGIFImageSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedGIFImageSerialization.h; sourceTree = "<group>"; };
 		9BB0816319F1BFA700570E1D /* AnimatedGIFImageSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimatedGIFImageSerialization.m; sourceTree = "<group>"; };
 		9BB0816619F581E100570E1D /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -232,8 +228,6 @@
 			children = (
 				9B2DFCCE19FD759600DEE429 /* CargoManager.h */,
 				9B2DFCCF19FD759600DEE429 /* CargoManager.m */,
-				9B2DFCD419FD75D600DEE429 /* UnlockViewController.h */,
-				9B2DFCD519FD75D600DEE429 /* UnlockViewController.m */,
 				9B2DFCD019FD759600DEE429 /* CargoManagerLocalizable.strings */,
 			);
 			path = CargoManager;
@@ -277,7 +271,6 @@
 		9B87B69119E8E7A100F1C01C = {
 			isa = PBXGroup;
 			children = (
-				9B9827DF1A02C0AB0037C0D9 /* Wechat Share.entitlements */,
 				9B87B69C19E8E7A100F1C01C /* Shareability */,
 				9B87B6C819E8EF7900F1C01C /* Wechat */,
 				9BB2A67019F977FB0025CC7A /* Frameworks */,
@@ -326,7 +319,6 @@
 		9B87B6C819E8EF7900F1C01C /* Wechat */ = {
 			isa = PBXGroup;
 			children = (
-				9B9827DE1A02C01F0037C0D9 /* Wechat.entitlements */,
 				9BB367C01A01886600589D0E /* components */,
 				9B6D1D361A005D70009A1E18 /* sample.mp3 */,
 				9B87B6CB19E8EF7900F1C01C /* ShareViewController.h */,

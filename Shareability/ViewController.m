@@ -25,10 +25,11 @@
     // Do any additional setup after loading the view, typically from a nib.
     self.unlockViewController = [[UnlockViewController alloc] initWithNibName:nil bundle:nil];
     [CargoManager sharedManager].contentDelegate = self.unlockViewController;
+    [CargoManager sharedManager].UIDelegate = self.unlockViewController;
     [[CargoManager sharedManager] loadStore];
 	
 	//slideshow
-	self.slideShow.delay = 3.0;
+	self.slideShow.delay = 5.0;
 	self.slideShow.transitionDuration = 1;
 	self.slideShow.transitionType = KASlideShowTransitionFade;
 	self.slideShow.imagesContentMode = UIViewContentModeScaleAspectFill;
@@ -73,16 +74,6 @@
 
 - (void) kaSlideShowWillShowPrevious:(KASlideShow *) slideShow{
     self.pager.currentPage = slideShow.currentIndex;
-}
-
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-    UIViewController *unlockView = segue.destinationViewController;
-   
 }
 
 @end

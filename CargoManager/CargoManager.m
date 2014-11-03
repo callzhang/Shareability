@@ -275,14 +275,15 @@ static CargoManager *_storeKitManager = nil;
 {
     // DLog(@"{ transaction.error: %@ }", transaction.error);
 
-    if (transaction.error.code != SKErrorPaymentCancelled) {
-        // Display a transaction error here
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:CMTransactionFailedAlertTitle
-                                                        message:CMTransactionFailedAlertMessage
-                                                       delegate:nil
-                                              cancelButtonTitle:CMAlertCancelButtonTitle
-                                              otherButtonTitles:nil];
-        [alert show];
+    if (transaction.error) {
+        NSLog(@"Transaction failed: %@", transaction.error);
+//        // Display a transaction error here
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:CMTransactionFailedAlertTitle
+//                                                        message:CMTransactionFailedAlertMessage
+//                                                       delegate:nil
+//                                              cancelButtonTitle:CMAlertCancelButtonTitle
+//                                              otherButtonTitles:nil];
+//        [alert show];
     }
     
     // Remove the transaction from the payment queue
