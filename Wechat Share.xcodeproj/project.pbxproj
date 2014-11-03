@@ -104,7 +104,6 @@
 		9B6D1D171A0025EB009A1E18 /* MusicNotes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MusicNotes.png; sourceTree = "<group>"; };
 		9B6D1D181A0025EB009A1E18 /* MusicNotes@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MusicNotes@2x.png"; sourceTree = "<group>"; };
 		9B6D1D261A00276A009A1E18 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		9B6D1D361A005D70009A1E18 /* sample.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sample.mp3; sourceTree = "<group>"; };
 		9B7C650519FC8DE600C422D5 /* CargoBay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CargoBay.h; sourceTree = "<group>"; };
 		9B7C650619FC8DE600C422D5 /* CargoBay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CargoBay.m; sourceTree = "<group>"; };
 		9B7C650919FC8F9700C422D5 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -182,6 +181,8 @@
 		9BFBA95E1A02F03F00E2B765 /* KASlideShow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KASlideShow.m; sourceTree = "<group>"; };
 		9BFBA9611A02F7C100E2B765 /* 2.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 2.PNG; path = images/Screenshots/2.PNG; sourceTree = "<group>"; };
 		9BFBA9621A02F7C100E2B765 /* 3.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 3.PNG; path = images/Screenshots/3.PNG; sourceTree = "<group>"; };
+		9BFBA9661A07E6B600E2B765 /* Shareability.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Shareability.entitlements; sourceTree = SOURCE_ROOT; };
+		9BFBA9671A07EDBC00E2B765 /* Wechat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Wechat.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -310,6 +311,7 @@
 		9B87B69D19E8E7A100F1C01C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9BFBA9661A07E6B600E2B765 /* Shareability.entitlements */,
 				9B87B69E19E8E7A100F1C01C /* Info.plist */,
 				9B87B69F19E8E7A100F1C01C /* main.m */,
 			);
@@ -319,8 +321,8 @@
 		9B87B6C819E8EF7900F1C01C /* Wechat */ = {
 			isa = PBXGroup;
 			children = (
+				9BFBA9671A07EDBC00E2B765 /* Wechat.entitlements */,
 				9BB367C01A01886600589D0E /* components */,
-				9B6D1D361A005D70009A1E18 /* sample.mp3 */,
 				9B87B6CB19E8EF7900F1C01C /* ShareViewController.h */,
 				9B87B6CC19E8EF7900F1C01C /* ShareViewController.m */,
 				9B89750319EF06D0004D75F3 /* ConfigTableViewController.h */,
@@ -715,7 +717,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_ENTITLEMENTS = "Wechat Share.entitlements";
+				CODE_SIGN_ENTITLEMENTS = Shareability.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				HEADER_SEARCH_PATHS = (
@@ -740,9 +742,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_ENTITLEMENTS = "Wechat Share.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_ENTITLEMENTS = Shareability.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Derek Zhang (SRS98HY45T)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Derek Zhang (SRS98HY45T)";
 				HEADER_SEARCH_PATHS = (
 					"\"${PODS_ROOT}/Headers/Public\"",
 					"\"${PODS_ROOT}/Headers/Public/JGProgressHUD\"",

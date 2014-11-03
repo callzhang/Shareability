@@ -184,8 +184,8 @@ static CargoManager *_storeKitManager = nil;
 
          [weakSelf _postProductRequestDidReceiveResponseNotificationWithError:nil];
 
-         // DLog(@"Products: %@", products);
-         // DLog(@"Invalid Identifiers: %@", invalidIdentifiers);
+         NSLog(@"Products: %@", products);
+         NSLog(@"Invalid Identifiers: %@", invalidIdentifiers);
      }
                                               failure:
      ^(NSError *error)
@@ -197,7 +197,7 @@ static CargoManager *_storeKitManager = nil;
 
          [weakSelf _postProductRequestDidReceiveResponseNotificationWithError:error];
 
-         // DLog(@"Error: %@", error);
+         NSLog(@"Error: %@", error);
      }];
 }
 
@@ -218,7 +218,7 @@ static CargoManager *_storeKitManager = nil;
 
 - (void)transactionUpdated:(SKPaymentTransaction *)transaction
 {
-    // DLog(@"{ transaction.transactionState: %d }", transaction.transactionState);
+    NSLog(@"{ transaction.transactionState: %ld }", transaction.transactionState);
     switch (transaction.transactionState)
     {
         case SKPaymentTransactionStatePurchased:
@@ -229,13 +229,13 @@ static CargoManager *_storeKitManager = nil;
                                                 success:
              ^(NSDictionary *receipt)
             {
-                // DLog(@"Transaction verified.");
+                NSLog(@"Transaction verified.");
                 [weakSelf completeTransaction:transaction];
             }
                                                 failure:
              ^(NSError *error)
             {
-                // DLog(@"Transaction vertification failed.");
+                NSLog(@"Transaction vertification failed.");
                 [weakSelf transactionFailed:transaction];
             }];
         } break;
@@ -251,7 +251,7 @@ static CargoManager *_storeKitManager = nil;
 
 - (void)completeTransaction:(SKPaymentTransaction *)transaction
 {
-    // DLog(@"");
+    NSLog(@"");
 
     [self recordTransaction:transaction];
     [self.contentDelegate provideContentForProductIdentifier:transaction.payment.productIdentifier];
@@ -262,7 +262,7 @@ static CargoManager *_storeKitManager = nil;
 
 - (void)restoreTransaction:(SKPaymentTransaction *)transaction
 {
-    // DLog(@"");
+    NSLog(@"");
 
     [self recordTransaction:transaction];
     [self.contentDelegate provideContentForProductIdentifier:transaction.originalTransaction.payment.productIdentifier];
@@ -273,17 +273,17 @@ static CargoManager *_storeKitManager = nil;
 
 - (void)transactionFailed:(SKPaymentTransaction *)transaction
 {
-    // DLog(@"{ transaction.error: %@ }", transaction.error);
+    NSLog(@"{ transaction.error: %@ }", transaction.error);
 
     if (transaction.error) {
         NSLog(@"Transaction failed: %@", transaction.error);
-//        // Display a transaction error here
-//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:CMTransactionFailedAlertTitle
-//                                                        message:CMTransactionFailedAlertMessage
-//                                                       delegate:nil
-//                                              cancelButtonTitle:CMAlertCancelButtonTitle
-//                                              otherButtonTitles:nil];
-//        [alert show];
+        // Display a transaction error here
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:CMTransactionFailedAlertTitle
+                                                        message:CMTransactionFailedAlertMessage
+                                                       delegate:nil
+                                              cancelButtonTitle:CMAlertCancelButtonTitle
+                                              otherButtonTitles:nil];
+        [alert show];
     }
     
     // Remove the transaction from the payment queue
@@ -292,9 +292,7 @@ static CargoManager *_storeKitManager = nil;
 
 - (void)transactionRemoved:(SKPaymentTransaction *)transaction
 {
-    // DLog(@"{ transaction.transactionState: %d transaction.error: %@ }",
-    //     transaction.transactionState,
-    //     transaction.error);
+    NSLog(@"{ transaction.transactionState: %ld transaction.error: %@ }", transaction.transactionState, transaction.error);
 
     switch (transaction.transactionState)
     {
@@ -353,7 +351,7 @@ static CargoManager *_storeKitManager = nil;
 {
     if ([SKPaymentQueue canMakePayments])
     {
-        // DLog(@"Queuing payment.")
+		NSLog(@"Queuing payment.");
         // Queue payment
         SKPayment *payment = [SKPayment paymentWithProduct:product];
         [[SKPaymentQueue defaultQueue] addPayment:payment];
@@ -366,7 +364,7 @@ static CargoManager *_storeKitManager = nil;
 
 - (void)showCannotMakePaymentsAlert
 {
-    // DLog(@"IAP are disabled.")
+	NSLog(@"IAP are disabled.");
     // Warn the user that purchases are disabled.
     // Display a transaction error here
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:CMCannotMakePaymentsAlertTitle

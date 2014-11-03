@@ -8,20 +8,28 @@
 
 #import "UnlockViewController.h"
 NSString *const unlockID = @"com.wokealarm.Shareability.unlock";
-NSString *const sharedSecret = @"f99be586cac5465185100229aabdba71";
+NSString *const groupID = @"group.Shareability";
 
 @interface UnlockViewController()
-
+@property (nonatomic) NSUserDefaults *sharedDefaults;
 @end
 
 @implementation UnlockViewController
 
+- (NSUserDefaults *)sharedDefaults{
+	if (!_sharedDefaults) {
+		_sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:groupID];
+	}
+	return _sharedDefaults;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    if ([[NSUserDefaults standardUserDefaults] objectForKey:unlockID]) {
+	
+    if ([self.sharedDefaults boolForKey:unlockID]) {
         [self transactionDidFinishWithSuccess:YES];
-    }
+	}
 }
 
 - (void)didReceiveMemoryWarning {
@@ -41,8 +49,8 @@ NSString *const sharedSecret = @"f99be586cac5465185100229aabdba71";
     // on the according productIdentifier.
     // YOUR CODE GOES HERE
     NSLog(@"Provide content for %@", productIdentifier);
-    [[NSUserDefaults standardUserDefaults] setObject:@YES forKey:productIdentifier];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+	[self.sharedDefaults setBool:YES forKey:productIdentifier];
+    [self.sharedDefaults synchronize];
     
 }
 
@@ -54,15 +62,14 @@ NSString *const sharedSecret = @"f99be586cac5465185100229aabdba71";
 #pragma mark - UIDelegate
 //optional
 - (void)transactionDidFinishWithSuccess:(BOOL)success{
-    if (success) {
-        if ([[NSUserDefaults standardUserDefaults] objectForKey:unlockID]) {
-            self.detail.text = @"Thank you for your purchase!";
-            self.buy.hidden = YES;
-            self.restore.hidden = YES;
-            [self.view setNeedsDisplay];//???
-        }
-    }else{
-        [[[UIAlertView alloc] initWithTitle:@"In App Purchase failed" message:@"The purchase failed due to an error. Please, try again later." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+	if (success) {
+		self.detail.text = @"Thank you for your support!";
+		self.buy.hidden = YES;
+		self.restore.hidden = YES;
+		[self.view setNeedsDisplay];//???
+	}else{
+		//No need to show error
+		//[[[UIAlertView alloc] initWithTitle:@"In App Purchase failed" message:@"The purchase failed due to an error. Please, try again later." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
     }
 }
 
