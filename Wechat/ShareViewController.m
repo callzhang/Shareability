@@ -16,6 +16,10 @@
 #import <AudioToolbox/AudioToolbox.h>
 #import "TPAACAudioConverter.h"
 
+NSString *const unlockID = @"com.wokealarm.Shareability.unlock";
+NSString *const trailLeft = @"trail_left";
+NSString *const groupID = @"group.Shareability";
+
 enum{
 	audio,
 	video,
@@ -39,13 +43,23 @@ enum{
 @property (nonatomic) SLComposeSheetConfigurationItem *selected;
 @property (nonatomic) NSInteger type;
 @property (nonatomic) UIAlertController *alert;
+
+@property (nonatomic) NSUserDefaults *sharedDefaults;
 @end
 
 @implementation ShareViewController
 
+- (NSUserDefaults *)sharedDefaults{
+	if (!_sharedDefaults) {
+		_sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:groupID];
+	}
+	return _sharedDefaults;
+}
+
 - (BOOL)isContentValid {
 	BOOL charValid = YES;
 	BOOL sizeValid = YES;
+	BOOL trailValid = YES;
     // Do validation of contentText and/or NSExtensionContext attachments here
     NSInteger messageLength = [[self.contentText stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length];
     NSInteger charactersRemaining = 1000 - messageLength;
@@ -79,6 +93,26 @@ enum{
 	
 	if (!sizeValid) {
 		[self showAlert:@"File is too large" withButton:YES];
+	}
+	
+	//trial
+	if (![self.sharedDefaults boolForKey:unlockID]) {
+		//not purchased
+		if ([self.sharedDefaults objectForKey:trailLeft]) {
+			NSInteger trails = [self.sharedDefaults integerForKey:trailLeft];
+			if (trails > 0) {
+				NSLog(@"Trail left: %ld", trails);
+			}else{
+				trailValid = NO;
+				
+				[self showAlert:@"Thank you for using WeChat Share. You can now unlock all features in the main app now." withButton:YES];
+			}
+		}else{
+			NSLog(@"First time trail");
+			[self.sharedDefaults setInteger:10 forKey:trailLeft];
+			[self.sharedDefaults synchronize];
+			[self showAlert:@"Thank you for using WeChat Share. You have 10 trails now." withButton:YES];
+		}
 	}
 	
 	
@@ -344,6 +378,10 @@ enum{
 	
 	if (![WXApi sendReq:req]){
 		NSLog(@"Failed to send request");
+	}else{
+		NSInteger trails = [self.sharedDefaults integerForKey:trailLeft];
+		[self.sharedDefaults setInteger:--trails forKey:trailLeft];
+		[self.sharedDefaults synchronize];
 	}
 	
 	
@@ -451,7 +489,7 @@ enum{
 			[self dismissAlert];
 		}
 		NSLog(@"Alert: %@", alert);
-		_alert = [UIAlertController alertControllerWithTitle:@"Alert" message:alert preferredStyle:UIAlertControllerStyleAlert];
+		_alert = [UIAlertController alertControllerWithTitle:@"Wechat Share" message:alert preferredStyle:UIAlertControllerStyleAlert];
 		if (show) {
 			UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
 			[_alert addAction:action];
@@ -486,26 +524,5 @@ enum{
 	[self showAlert:[NSString stringWithFormat:@"Processing audio failed with error:%@", error] withButton:YES];
 }
 
-//- (void)emailConverted{
-//	
-//	MFMailComposeViewController *mailController = [[MFMailComposeViewController alloc] init];
-//	mailController.mailComposeDelegate = self;
-//	[mailController setSubject:NSLocalizedString(@"Recording", @"")];
-//	[mailController addAttachmentData:self.audio
-//							 mimeType:@"audio/L24"
-//							 fileName:@"audio.caf"];
-//	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//		
-//		[self presentViewController:mailController animated:YES completion:NULL];
-//	});
-//}
-//
-//-(void)mailComposeController:(MFMailComposeViewController *)controller
-//		 didFinishWithResult:(MFMailComposeResult)result
-//					   error:(NSError *)error{
-//	
-//	[self dismissViewControllerAnimated:YES completion:NULL];
-//	
-//}
 
 @end
