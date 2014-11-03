@@ -64,13 +64,10 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
-<<<<<<< Updated upstream
       <IDERemoteRunnable
          RemotePath = "/Applications/VoiceMemos.app"
          BundleIdentifier = "/Applications/VoiceMemos.app">
       </IDERemoteRunnable>
-=======
->>>>>>> Stashed changes
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"

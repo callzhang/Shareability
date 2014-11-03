@@ -33,7 +33,7 @@
 	self.slideShow.transitionDuration = 1;
 	self.slideShow.transitionType = KASlideShowTransitionFade;
 	self.slideShow.imagesContentMode = UIViewContentModeScaleAspectFill;
-	NSArray *images = @[@"0.png", @"1.PNG", @"2.PNG", @"3.PNG"];
+	NSArray *images = @[@"0", @"1", @"2", @"3"];
 	[self.slideShow addImagesFromResources:images];
 	[self.slideShow start];
     self.slideShow.delegate = self;

@@ -39,8 +39,6 @@
 		9BB0816419F1BFA700570E1D /* AnimatedGIFImageSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB0816319F1BFA700570E1D /* AnimatedGIFImageSerialization.m */; };
 		9BB0816519F1BFA700570E1D /* AnimatedGIFImageSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB0816319F1BFA700570E1D /* AnimatedGIFImageSerialization.m */; };
 		9BB0816719F581E100570E1D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BB0816619F581E100570E1D /* AVFoundation.framework */; };
-		9BB2BDEC1A057586009430B6 /* 0.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BB2BDEB1A057586009430B6 /* 0.png */; };
-		9BB2BDEE1A0594B7009430B6 /* 1.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 9BB2BDED1A0594B7009430B6 /* 1.PNG */; };
 		9BB367C31A01887000589D0E /* TPAACAudioConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB367C21A01887000589D0E /* TPAACAudioConverter.m */; };
 		9BB367C61A01887F00589D0E /* libmp3lame.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BB367C51A01887F00589D0E /* libmp3lame.a */; };
 		9BDA98C019FA1CDE004240E6 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BDA98BF19FA1CDE004240E6 /* libWeChatSDK.a */; };
@@ -58,8 +56,6 @@
 		9BFBA95A1A02E45A00E2B765 /* JGProgressHUDRingIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFBA94E1A02E45A00E2B765 /* JGProgressHUDRingIndicatorView.m */; };
 		9BFBA95B1A02E45A00E2B765 /* JGProgressHUDSuccessIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFBA9501A02E45A00E2B765 /* JGProgressHUDSuccessIndicatorView.m */; };
 		9BFBA95F1A02F03F00E2B765 /* KASlideShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFBA95E1A02F03F00E2B765 /* KASlideShow.m */; };
-		9BFBA9641A02F7C100E2B765 /* 2.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 9BFBA9611A02F7C100E2B765 /* 2.PNG */; };
-		9BFBA9651A02F7C100E2B765 /* 3.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 9BFBA9621A02F7C100E2B765 /* 3.PNG */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -145,8 +141,6 @@
 		9BB0816219F1BFA700570E1D /* AnimatedGIFImageSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedGIFImageSerialization.h; sourceTree = "<group>"; };
 		9BB0816319F1BFA700570E1D /* AnimatedGIFImageSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimatedGIFImageSerialization.m; sourceTree = "<group>"; };
 		9BB0816619F581E100570E1D /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		9BB2BDEB1A057586009430B6 /* 0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 0.png; path = images/Screenshots/0.png; sourceTree = "<group>"; };
-		9BB2BDED1A0594B7009430B6 /* 1.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 1.PNG; path = images/Screenshots/1.PNG; sourceTree = "<group>"; };
 		9BB367C11A01887000589D0E /* TPAACAudioConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPAACAudioConverter.h; sourceTree = "<group>"; };
 		9BB367C21A01887000589D0E /* TPAACAudioConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPAACAudioConverter.m; sourceTree = "<group>"; };
 		9BB367C41A01887F00589D0E /* lame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lame.h; sourceTree = "<group>"; };
@@ -179,8 +173,6 @@
 		9BFBA9501A02E45A00E2B765 /* JGProgressHUDSuccessIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGProgressHUDSuccessIndicatorView.m; sourceTree = "<group>"; };
 		9BFBA95D1A02F03F00E2B765 /* KASlideShow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KASlideShow.h; sourceTree = "<group>"; };
 		9BFBA95E1A02F03F00E2B765 /* KASlideShow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KASlideShow.m; sourceTree = "<group>"; };
-		9BFBA9611A02F7C100E2B765 /* 2.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 2.PNG; path = images/Screenshots/2.PNG; sourceTree = "<group>"; };
-		9BFBA9621A02F7C100E2B765 /* 3.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 3.PNG; path = images/Screenshots/3.PNG; sourceTree = "<group>"; };
 		9BFBA9661A07E6B600E2B765 /* Shareability.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Shareability.entitlements; sourceTree = SOURCE_ROOT; };
 		9BFBA9671A07EDBC00E2B765 /* Wechat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Wechat.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -213,10 +205,6 @@
 		9B1B255419FDB49100CC3037 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				9BB2BDEB1A057586009430B6 /* 0.png */,
-				9BB2BDED1A0594B7009430B6 /* 1.PNG */,
-				9BFBA9611A02F7C100E2B765 /* 2.PNG */,
-				9BFBA9621A02F7C100E2B765 /* 3.PNG */,
 				9B6D1D171A0025EB009A1E18 /* MusicNotes.png */,
 				9B6D1D181A0025EB009A1E18 /* MusicNotes@2x.png */,
 				9B134FBD19FFED3900A6FB32 /* Wechat Share silent 2.mp4 */,
@@ -519,13 +507,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9BB2BDEE1A0594B7009430B6 /* 1.PNG in Resources */,
-				9BFBA9651A02F7C100E2B765 /* 3.PNG in Resources */,
 				9B2DFCD319FD759600DEE429 /* CargoManagerLocalizable.strings in Resources */,
 				9B134FBE19FFED3900A6FB32 /* Wechat Share silent 2.mp4 in Resources */,
-				9BFBA9641A02F7C100E2B765 /* 2.PNG in Resources */,
 				9BFBA9511A02E45A00E2B765 /* JGProgressHUD Resources.bundle in Resources */,
-				9BB2BDEC1A057586009430B6 /* 0.png in Resources */,
 				9B87B6A919E8E7A100F1C01C /* Main.storyboard in Resources */,
 				9B87B6AE19E8E7A100F1C01C /* LaunchScreen.xib in Resources */,
 				9B87B6AB19E8E7A100F1C01C /* Images.xcassets in Resources */,

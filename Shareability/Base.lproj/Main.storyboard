@@ -17,25 +17,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cgO-ly-LT1">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cgO-ly-LT1">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uAt-FA-hd4">
+                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uAt-FA-hd4">
                                         <rect key="frame" x="-89" y="-201" width="553" height="742"/>
                                         <subviews>
-                                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="ATg-Tl-eHu">
+                                            <pageControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="ATg-Tl-eHu">
                                                 <rect key="frame" x="257" y="685" width="39" height="37"/>
                                                 <color key="pageIndicatorTintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                 <color key="currentPageIndicatorTintColor" red="0.77254909279999995" green="0.84313732389999996" blue="0.066666670139999995" alpha="1" colorSpace="deviceRGB"/>
                                             </pageControl>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="lFR-Te-bqR">
-                                                <rect key="frame" x="20" y="22" width="513" height="665"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="665" id="aam-P9-8lR"/>
-                                                    <constraint firstAttribute="width" constant="513" id="sUY-lq-gRk"/>
-                                                </constraints>
-                                            </imageView>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="61t-WN-hsm" customClass="KASlideShow">
+                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="61t-WN-hsm" customClass="KASlideShow">
                                                 <rect key="frame" x="133" y="100" width="287" height="509"/>
                                                 <color key="backgroundColor" red="0.77254909279999995" green="0.84313732389999996" blue="0.066666670139999995" alpha="1" colorSpace="deviceRGB"/>
                                                 <constraints>
@@ -43,6 +36,13 @@
                                                     <constraint firstAttribute="width" constant="287" id="U59-03-XD7"/>
                                                 </constraints>
                                             </view>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="lFR-Te-bqR">
+                                                <rect key="frame" x="20" y="22" width="513" height="665"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="665" id="aam-P9-8lR"/>
+                                                    <constraint firstAttribute="width" constant="513" id="sUY-lq-gRk"/>
+                                                </constraints>
+                                            </imageView>
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="61t-WN-hsm" secondAttribute="bottom" constant="133" id="5Vy-i8-q40"/>
@@ -56,12 +56,6 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="uAt-FA-hd4" firstAttribute="top" secondItem="cgO-ly-LT1" secondAttribute="top" constant="-200" id="3fx-w6-WXq"/>
-                                    <constraint firstItem="uAt-FA-hd4" firstAttribute="leading" secondItem="cgO-ly-LT1" secondAttribute="leading" constant="-89" id="ZtN-8X-P3x"/>
-                                    <constraint firstAttribute="bottom" secondItem="uAt-FA-hd4" secondAttribute="bottom" constant="125" id="wjQ-wz-IF2"/>
-                                    <constraint firstAttribute="trailing" secondItem="uAt-FA-hd4" secondAttribute="trailing" constant="-89" id="y0q-C8-yVu"/>
-                                </constraints>
                                 <variation key="heightClass=compact" ambiguous="YES">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="400"/>
                                 </variation>
