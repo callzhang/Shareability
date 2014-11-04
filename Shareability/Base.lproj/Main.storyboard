@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
@@ -15,36 +16,40 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" opaque="NO" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="668"/>
+                        <rect key="frame" x="0.0" y="0.0" width="350" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cgO-ly-LT1">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="668"/>
+                                <rect key="frame" x="0.0" y="0.0" width="350" height="600"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uAt-FA-hd4" userLabel="iphone">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="668"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="350" height="600"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="lFR-Te-bqR">
-                                                <rect key="frame" x="28" y="-100" width="320" height="648"/>
+                                                <rect key="frame" x="35" y="-118" width="280" height="568"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="lFR-Te-bqR" secondAttribute="height" multiplier="40:81" id="3wW-Mp-QFF"/>
+                                                </constraints>
                                             </imageView>
                                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="ATg-Tl-eHu">
-                                                <rect key="frame" x="168" y="548" width="39" height="37"/>
+                                                <rect key="frame" x="156" y="450" width="39" height="37"/>
                                                 <color key="pageIndicatorTintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                 <color key="currentPageIndicatorTintColor" red="0.77254909279999995" green="0.84313732389999996" blue="0.066666670139999995" alpha="1" colorSpace="deviceRGB"/>
                                             </pageControl>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="61t-WN-hsm" userLabel="screen" customClass="KASlideShow">
-                                                <rect key="frame" x="48" y="-23" width="280" height="494"/>
+                                                <rect key="frame" x="53" y="-52" width="245" height="436"/>
                                                 <color key="backgroundColor" red="0.77254909279999995" green="0.84313732389999996" blue="0.066666670139999995" alpha="1" colorSpace="deviceRGB"/>
                                             </view>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="61t-WN-hsm" firstAttribute="centerY" secondItem="lFR-Te-bqR" secondAttribute="centerY" id="0B6-Vk-hgo"/>
                                             <constraint firstItem="lFR-Te-bqR" firstAttribute="bottom" secondItem="ATg-Tl-eHu" secondAttribute="top" id="5bt-Nd-uWG"/>
-                                            <constraint firstAttribute="bottom" secondItem="lFR-Te-bqR" secondAttribute="bottom" constant="120" id="BGD-1o-Pu5"/>
+                                            <constraint firstAttribute="bottom" secondItem="lFR-Te-bqR" secondAttribute="bottom" constant="150" id="BGD-1o-Pu5"/>
+                                            <constraint firstAttribute="width" secondItem="lFR-Te-bqR" secondAttribute="width" multiplier="375:300" id="KgN-vb-hW2"/>
                                             <constraint firstAttribute="centerX" secondItem="61t-WN-hsm" secondAttribute="centerX" id="WjA-u2-XAC"/>
                                             <constraint firstAttribute="centerX" secondItem="lFR-Te-bqR" secondAttribute="centerX" id="b83-Tf-fYB"/>
                                             <constraint firstAttribute="centerX" secondItem="ATg-Tl-eHu" secondAttribute="centerX" id="b93-Cw-f9K"/>
-                                            <constraint firstItem="61t-WN-hsm" firstAttribute="height" secondItem="lFR-Te-bqR" secondAttribute="height" multiplier="494:648" id="nWx-0K-7e6"/>
+                                            <constraint firstItem="61t-WN-hsm" firstAttribute="height" secondItem="lFR-Te-bqR" secondAttribute="height" multiplier="498:648" id="nWx-0K-7e6"/>
                                             <constraint firstItem="61t-WN-hsm" firstAttribute="width" secondItem="lFR-Te-bqR" secondAttribute="width" multiplier="280:320" id="uf2-ye-Hk0"/>
                                         </constraints>
                                     </view>
@@ -68,7 +73,7 @@
                                 </variation>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SZu-Ho-sIC">
-                                <rect key="frame" x="325" y="618" width="50" height="50"/>
+                                <rect key="frame" x="300" y="550" width="50" height="50"/>
                                 <state key="normal" image="enter">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -77,7 +82,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start using Shareability from the share section of your favorate apps" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="FDa-jo-wEf">
-                                <rect key="frame" x="56" y="587" width="263" height="41"/>
+                                <rect key="frame" x="56" y="519" width="238" height="41"/>
                                 <color key="backgroundColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -98,7 +103,7 @@
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="375" height="668"/>
+                    <size key="freeformSize" width="350" height="600"/>
                     <connections>
                         <outlet property="pager" destination="ATg-Tl-eHu" id="BSQ-rV-nGc"/>
                         <outlet property="slideShow" destination="61t-WN-hsm" id="1i5-2I-jLU"/>
@@ -107,7 +112,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="200" y="502"/>
+            <point key="canvasLocation" x="199.5" y="502"/>
         </scene>
         <!--Unlock View Controller-->
         <scene sceneID="seg-0x-1s0">
