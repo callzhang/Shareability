@@ -81,10 +81,11 @@
                                     <segue destination="QfE-An-CLW" kind="presentation" modalTransitionStyle="flipHorizontal" id="OB8-tD-nJl"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start using Shareability from the share section of your favorate apps" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="FDa-jo-wEf">
-                                <rect key="frame" x="56" y="519" width="238" height="41"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="FDa-jo-wEf">
+                                <rect key="frame" x="36" y="499" width="278" height="61"/>
                                 <color key="backgroundColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <string key="text">Start using Shareability from the share section of your favorate appsStart using Shareability from the share section of your favorate apps</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -92,8 +93,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="SZu-Ho-sIC" secondAttribute="bottom" id="ILb-XE-GPE"/>
-                            <constraint firstItem="FDa-jo-wEf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="40" id="L1D-WP-RWw"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="FDa-jo-wEf" secondAttribute="trailing" constant="40" id="O0x-8N-FyZ"/>
+                            <constraint firstItem="FDa-jo-wEf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="L1D-WP-RWw"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="FDa-jo-wEf" secondAttribute="trailing" constant="20" id="O0x-8N-FyZ"/>
                             <constraint firstItem="cgO-ly-LT1" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-20" id="ae7-xN-nzy"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="cgO-ly-LT1" secondAttribute="bottom" id="dQS-pL-fU1"/>
                             <constraint firstAttribute="trailing" secondItem="cgO-ly-LT1" secondAttribute="trailing" id="fMn-uc-VkH"/>
@@ -112,7 +113,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="199.5" y="502"/>
+            <point key="canvasLocation" x="199" y="502"/>
         </scene>
         <!--Unlock View Controller-->
         <scene sceneID="seg-0x-1s0">

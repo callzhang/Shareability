@@ -35,11 +35,18 @@
 	self.slideShow.imagesContentMode = UIViewContentModeScaleAspectFill;
 	NSArray *images = @[@"0", @"1", @"2", @"3"];
 	[self.slideShow addImagesFromResources:images];
-	[self.slideShow start];
     self.slideShow.delegate = self;
-    
+    self.tutorial.text = @"Start using Shareability from the share section of your favorate apps by click the \"Share\" button";
     //pager
     self.pager.numberOfPages = 4;
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.slideShow start];
+    });
+    
 }
 
 - (void)didReceiveMemoryWarning {
