@@ -76,4 +76,7 @@
     self.pager.currentPage = slideShow.currentIndex;
 }
 
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleDefault;
+}
 @end
