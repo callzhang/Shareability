@@ -86,4 +86,10 @@
 - (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleDefault;
 }
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+	self.unlockViewController = (UnlockViewController *)[segue destinationViewController];
+	[CargoManager sharedManager].contentDelegate = self.unlockViewController;
+	[CargoManager sharedManager].UIDelegate = self.unlockViewController;
+}
 @end

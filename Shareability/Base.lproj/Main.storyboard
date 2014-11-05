@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -130,7 +130,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Unlock all features " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FnN-qs-rp7" userLabel="label">
                                 <rect key="frame" x="114" y="352" width="147" height="21"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UYz-aJ-wag">
@@ -142,18 +142,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="0.0" height="0.0"/>
                                 </variation>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OL2-Ft-etG">
-                                <rect key="frame" x="0.0" y="617" width="50" height="50"/>
-                                <state key="normal" image="return">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="close:" destination="QfE-An-CLW" eventType="touchUpInside" id="aG7-Im-cB1"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="frF-BS-s2g">
-                                <rect key="frame" x="200" y="447" width="70" height="30"/>
-                                <state key="normal" title="Restore">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="frF-BS-s2g">
+                                <rect key="frame" x="158" y="499" width="58" height="30"/>
+                                <state key="normal" title="Restore ">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -164,6 +155,7 @@
                                 <rect key="frame" x="36" y="70" width="303" height="232"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -176,19 +168,34 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Trail left: 10" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="O5U-Lq-GHd">
                                 <rect key="frame" x="36" y="381" width="303" height="33"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="headTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hli-Uq-Aut">
-                                <rect key="frame" x="98" y="447" width="70" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="headTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hli-Uq-Aut">
+                                <rect key="frame" x="83" y="442" width="209" height="49"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="70" id="kKU-Hv-FNp"/>
                                 </constraints>
-                                <state key="normal" title="Buy">
+                                <state key="normal" image="support_btn">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="kKU-Hv-FNp"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="buy:" destination="QfE-An-CLW" eventType="touchUpInside" id="2Gl-tR-Ep7"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OL2-Ft-etG">
+                                <rect key="frame" x="0.0" y="617" width="50" height="50"/>
+                                <state key="normal" image="return">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="buy:" destination="QfE-An-CLW" eventType="touchUpInside" id="2Gl-tR-Ep7"/>
+                                    <action selector="close:" destination="QfE-An-CLW" eventType="touchUpInside" id="aG7-Im-cB1"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -196,7 +203,7 @@
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="o04-gC-wps" secondAttribute="centerX" id="1X5-Qs-Lba"/>
                             <constraint firstItem="O5U-Lq-GHd" firstAttribute="top" secondItem="FnN-qs-rp7" secondAttribute="bottom" constant="8" id="4ka-oo-fsj"/>
-                            <constraint firstAttribute="centerX" secondItem="frF-BS-s2g" secondAttribute="centerX" constant="-47.5" id="9WI-Yh-HXb"/>
+                            <constraint firstAttribute="centerX" secondItem="frF-BS-s2g" secondAttribute="centerX" id="9WI-Yh-HXb"/>
                             <constraint firstItem="o04-gC-wps" firstAttribute="top" secondItem="FXB-U9-riV" secondAttribute="bottom" constant="38" id="Avx-FE-PUV"/>
                             <constraint firstItem="OL2-Ft-etG" firstAttribute="leading" secondItem="q3g-jI-vPC" secondAttribute="leading" id="FH6-AL-YtU"/>
                             <constraint firstAttribute="trailingMargin" secondItem="O5U-Lq-GHd" secondAttribute="trailing" constant="20" id="GhR-51-i5Z"/>
@@ -206,13 +213,13 @@
                             <constraint firstItem="O5U-Lq-GHd" firstAttribute="leading" secondItem="q3g-jI-vPC" secondAttribute="leadingMargin" constant="20" id="geB-Hc-wQa"/>
                             <constraint firstAttribute="trailingMargin" secondItem="dKr-ID-YhF" secondAttribute="trailing" constant="20" id="k5e-ne-Lt5"/>
                             <constraint firstItem="8Jy-rF-Xsb" firstAttribute="top" secondItem="OL2-Ft-etG" secondAttribute="bottom" id="mHE-BX-B9X"/>
-                            <constraint firstAttribute="centerX" secondItem="Hli-Uq-Aut" secondAttribute="centerX" constant="55" id="mbX-Tx-Hdb"/>
+                            <constraint firstAttribute="centerX" secondItem="Hli-Uq-Aut" secondAttribute="centerX" id="mbX-Tx-Hdb"/>
                             <constraint firstItem="frF-BS-s2g" firstAttribute="width" secondItem="Hli-Uq-Aut" secondAttribute="width" id="nao-GK-gCa"/>
                             <constraint firstItem="dKr-ID-YhF" firstAttribute="top" secondItem="o04-gC-wps" secondAttribute="bottom" constant="8" id="pOl-kd-rMy"/>
                             <constraint firstAttribute="centerX" secondItem="FnN-qs-rp7" secondAttribute="centerX" id="tdC-oR-hYf"/>
                             <constraint firstItem="dKr-ID-YhF" firstAttribute="leading" secondItem="q3g-jI-vPC" secondAttribute="leadingMargin" constant="20" id="ubL-he-WJx"/>
                             <constraint firstItem="Hli-Uq-Aut" firstAttribute="top" secondItem="FnN-qs-rp7" secondAttribute="bottom" constant="74" id="xVy-2P-e8y"/>
-                            <constraint firstItem="frF-BS-s2g" firstAttribute="top" secondItem="FnN-qs-rp7" secondAttribute="bottom" constant="74" id="yib-3n-SYq"/>
+                            <constraint firstItem="frF-BS-s2g" firstAttribute="top" secondItem="FnN-qs-rp7" secondAttribute="bottom" constant="130" id="yib-3n-SYq"/>
                         </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
@@ -228,12 +235,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kkl-lu-yJb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="945.5" y="501.5"/>
+            <point key="canvasLocation" x="946.5" y="501.5"/>
         </scene>
     </scenes>
     <resources>
         <image name="background" width="320" height="648"/>
         <image name="enter" width="50" height="50"/>
         <image name="return" width="50" height="50"/>
+        <image name="support_btn" width="177" height="49"/>
     </resources>
 </document>

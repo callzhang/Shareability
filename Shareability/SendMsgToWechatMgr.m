@@ -8,6 +8,8 @@
 
 #import "SendMsgToWechatMgr.h"
 #import "JGProgressHUD.h"
+#import "JGProgressHUDSuccessIndicatorView.h"
+#import "JGProgressHUDErrorIndicatorView.h"
 
 @implementation SendMsgToWechatMgr
 
@@ -20,10 +22,7 @@
 		//NSString *strTitle = [NSString stringWithFormat:@"WeChat request app contenct"];
         NSString *strMsg = @"WeChat requests content from App, and the App reponses WeChat by calling sendResp:GetMessageFromWXResp";
 		
-		JGProgressHUD *hud = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleDark];
-		hud.textLabel.text = strMsg;
-		[hud showInView:[UIApplication sharedApplication].delegate.window.rootViewController.view];
-		[hud dismissAfterDelay:4];
+
 		//UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle message:strMsg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
 		//alert.tag = 1000;
 		//[alert show];
@@ -39,6 +38,7 @@
         NSString *strMsg = [NSString stringWithFormat:@"Title: %@ \nContent:%@ \nDescription: %@ \nThumb: %lu bytes\n\n",msg.title, msg.description, obj.extInfo, (unsigned long)msg.thumbData.length];
 		JGProgressHUD *hud = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleDark];
 		hud.textLabel.text = strMsg;
+		hud.indicatorView = nil;
 		[hud showInView:[UIApplication sharedApplication].delegate.window.rootViewController.view];
 		[hud dismissAfterDelay:4];
 		//UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle message:strMsg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
@@ -49,10 +49,7 @@
         
 		//NSString *strTitle = [NSString stringWithFormat:@"Launched by WeChat"];
         NSString *strMsg = @"This message is from the App when started in WeChat";
-		JGProgressHUD *hud = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleDark];
-		hud.textLabel.text = strMsg;
-		[hud showInView:[UIApplication sharedApplication].delegate.window.rootViewController.view];
-		[hud dismissAfterDelay:4];
+
 		//UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle message:strMsg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
 		//[alert show];
     }
@@ -73,6 +70,7 @@
 		//                                      otherButtonTitles:nil, nil];
 		//[alert show];
 		JGProgressHUD *hud = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleDark];
+		hud.indicatorView = resp.errCode ? [JGProgressHUDErrorIndicatorView new] : [JGProgressHUDSuccessIndicatorView new];
 		hud.textLabel.text = resp.errCode ? strError : strSuccess;
 		[hud showInView:[UIApplication sharedApplication].delegate.window.rootViewController.view];
 		[hud dismissAfterDelay:4];

@@ -7,8 +7,12 @@
 //
 
 #import "UnlockViewController.h"
+#import "JGProgressHUD.h"
+#import "JGProgressHUDSuccessIndicatorView.h"
+#import "JGProgressHUDErrorIndicatorView.h"
 NSString *const unlockID = @"com.wokealarm.Shareability.unlock";
 NSString *const groupID = @"group.Shareability";
+NSString *const trailLeft = @"trail_left";
 
 @interface UnlockViewController()
 @property (nonatomic) NSUserDefaults *sharedDefaults;
@@ -29,7 +33,10 @@ NSString *const groupID = @"group.Shareability";
 	
     if ([self.sharedDefaults boolForKey:unlockID]) {
         [self transactionDidFinishWithSuccess:YES];
+	}else{
+		[self transactionDidFinishWithSuccess:NO];
 	}
+	
 }
 
 - (void)didReceiveMemoryWarning {
@@ -66,14 +73,26 @@ NSString *const groupID = @"group.Shareability";
 		self.detail.text = @"Thank you for your support!";
 		self.buy.hidden = YES;
 		self.restore.hidden = YES;
-		[self.view setNeedsDisplay];//???
+		self.unlockInfo.hidden = YES;
 	}else{
-		//No need to show error
-		//[[[UIAlertView alloc] initWithTitle:@"In App Purchase failed" message:@"The purchase failed due to an error. Please, try again later." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+		self.detail.text = @"Unlock all features";
+		self.buy.hidden = NO;
+		self.restore.hidden = NO;
+		self.unlockInfo.hidden = NO;
+		if ([self.sharedDefaults objectForKey:trailLeft] == nil) {
+			[self.sharedDefaults setObject:@10 forKey:trailLeft];
+		}
+		NSInteger n = [self.sharedDefaults integerForKey:trailLeft];
+		self.unlockInfo.text = [NSString stringWithFormat:@"Trail left: %ld", n];
     }
 }
 
 - (void)restoredTransactionsDidFinishWithSuccess:(BOOL)success{
+	JGProgressHUD *hud = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleDark];
+	hud.indicatorView = success ? [JGProgressHUDSuccessIndicatorView new] : [JGProgressHUDErrorIndicatorView new];
+	hud.textLabel.text = success ? @"Restore success!" : @"Restore failed";
+	[hud showInView:self.view];
+	[hud dismissAfterDelay:3];
     [self transactionDidFinishWithSuccess:success];
 }
 

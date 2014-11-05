@@ -117,7 +117,7 @@ enum{
 	
 	
 	
-    BOOL valid = sizeValid && charValid;
+    BOOL valid = sizeValid && charValid && trailValid;
 	return valid;
 }
 
@@ -180,7 +180,7 @@ enum{
 					[self validateContent];
 					NSLog(@"Get movie: %luMB", item.length/1048576);
 					
-					if (self.video.length/1048576 > 10) {
+					if (self.video.length/1048576 > 10 && self.isContentValid) {
                         [self showAlert:@"Processing video" withButton:NO];
 						//resize
 						NSString *path = [NSTemporaryDirectory() stringByAppendingString:@"videoTempFile.mov"];
@@ -237,13 +237,16 @@ enum{
 					[[NSFileManager defaultManager] createFileAtPath:tempPath contents:item attributes:nil];
 					
 					//convert
-					[self showAlert:@"Processing audio" withButton:NO];
-					TPAACAudioConverter *converter = [[TPAACAudioConverter alloc] init];
-					[converter convertWithDelegate:self
-											 Input:tempPath
-											Output:[NSTemporaryDirectory() stringByAppendingString:@"output.mp3"]];
+					if (self.isContentValid) {
+						[self showAlert:@"Processing audio. Large audio file will cause longer processing time." withButton:NO];
+						TPAACAudioConverter *converter = [[TPAACAudioConverter alloc] init];
+						[converter convertWithDelegate:self
+												 Input:tempPath
+												Output:[NSTemporaryDirectory() stringByAppendingString:@"output.mp3"]];
+						
+						NSLog(@"Get audio: %ld bytes", item.length);
+					}
 					
-					NSLog(@"Get audio: %ld bytes", item.length);
 
 				}];
 			}
@@ -324,7 +327,7 @@ enum{
 		ext.fileData = self.audio;
 		//thumb
 		if (!message.thumbData) {
-			[message setThumbImage:[UIImage imageNamed:@"MusicNotes.png"]];
+			[message setThumbImage:[UIImage imageNamed:@"MusicNotes"]];
 		}
 		message.mediaObject = ext;
 	}else if (self.type == file){
@@ -403,7 +406,7 @@ enum{
 - (UIImage *)getImageFromSubviews:(UIView *)view{
     UIImage *img;
     for (UIView *subView in view.subviews) {
-        if ([subView isKindOfClass:[UIImageView class]]) {
+        if ([subView isMemberOfClass:[UIImageView class]]) {
             if (subView.frame.size.height > 10 && subView.frame.size.width > 10) {
                 img = [(UIImageView *)subView image];
             }
