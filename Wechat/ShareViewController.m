@@ -59,10 +59,23 @@ enum{
 	return _sharedDefaults;
 }
 
+- (void)viewDidLoad{
+    [super viewDidLoad];
+    
+    
+    // Register your app
+    [WXApi registerApp:@"wx166b37c35f3f6d9a" withDescription:@"Shareability"];
+}
+
 - (BOOL)isContentValid {
 	BOOL charValid = YES;
 	BOOL sizeValid = YES;
 	BOOL trailValid = YES;
+    if (![WXApi isWXAppSupportApi]) {
+        [self showAlert:@"Please install WeChat first!" withButton:YES];
+        return NO;
+    }
+    
     // Do validation of contentText and/or NSExtensionContext attachments here
     NSInteger messageLength = [[self.contentText stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length];
     NSInteger charactersRemaining = 1000 - messageLength;
@@ -86,6 +99,7 @@ enum{
 		dataSize = self.file.length;
 	}
 	if (dataSize/1024/1024 > 10) {
+        NSLog(@"Data size: %.1fMB", dataSize/1024/1024);
 		sizeValid = NO;
 	}
 	if (self.text){
@@ -159,23 +173,14 @@ enum{
 						[provider loadItemForTypeIdentifier:( NSString *)kUTTypeImage options:nil completionHandler:^(NSData *data, NSError *error) {
 							self.emotion = data;
 						}];
-					}else{
-						NSLog(@"Get image");
-						self.type = image;
-					}
+                    }else{
+                        NSLog(@"Get image");
+                        self.type = image;
+                    }
                     
 				}];
                 [provider loadItemForTypeIdentifier:(NSString *)kUTTypeImage options:nil completionHandler:^(NSURL *url, NSError *error) {
-                    if (!error) {
-                        //file type and name
-                        NSArray *arr = [url.absoluteString componentsSeparatedByString:@"/"];
-                        arr = [arr.lastObject componentsSeparatedByString:@"."];
-                        self.placeholder = [arr.firstObject stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-                        self.fileName = self.placeholder;
-                        if (arr.count > 1) {
-                            self.fileType = arr.lastObject;
-                        }
-                    }
+                    [self getFileNameAndTypeFromURL:url];
                 }];
 			}
 			
@@ -188,28 +193,19 @@ enum{
 				}];
 			}
 			
-			//video
+			//movie
 			if ([provider hasItemConformingToTypeIdentifier:(NSString *)kUTTypeVideo] || [provider hasItemConformingToTypeIdentifier:(NSString *)kUTTypeMovie]) {
-				[provider loadItemForTypeIdentifier:(NSString *)kUTTypeVideo options:nil completionHandler:^(NSURL *url, NSError *error) {
-                    NSData *data = [NSData dataWithContentsOfFile:url.absoluteString];
-					self.video = data;
+				[provider loadItemForTypeIdentifier:(NSString *)kUTTypeMovie options:nil completionHandler:^(NSData *item, NSError *error) {
+					self.video = item;
 					self.type = video;
-                    //file type and name
-                    NSArray *arr = [url.absoluteString componentsSeparatedByString:@"/"];
-                    arr = [arr.lastObject componentsSeparatedByString:@"."];
-                    self.placeholder = [arr.firstObject stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-                    self.fileName = self.placeholder;
-                    if (arr.count > 1) {
-                        self.fileType = arr.lastObject;
-                    }
-                    
-					[self validateContent];
-					NSLog(@"Get movie: %luMB", data.length/1048576);
+					NSLog(@"Get movie: %luMB", item.length/1048576);
 					
-					if (self.video.length/1048576 > 10 && self.isContentValid) {
+					if (self.video.length/1048576 > 10) {
                         [self showAlert:@"Processing video" withButton:NO];
-						AVURLAsset *urlAsset = [AVURLAsset URLAssetWithURL:[NSURL fileURLWithPath:url.absoluteString] options:nil];
-						AVAssetExportSession *session = [[AVAssetExportSession alloc] initWithAsset:urlAsset presetName:AVAssetExportPreset640x480];
+                        NSString *path = [NSTemporaryDirectory() stringByAppendingString:@"videoTempFile.mov"];
+                        NSParameterAssert([item writeToFile:path atomically:NO]);
+						AVURLAsset *urlAsset = [AVURLAsset URLAssetWithURL:[NSURL fileURLWithPath:path] options:nil];
+						AVAssetExportSession *session = [[AVAssetExportSession alloc] initWithAsset:urlAsset presetName:AVAssetExportPresetMediumQuality];
 						
 						//output
 						NSURL *outputURL = [NSURL fileURLWithPath:[NSTemporaryDirectory() stringByAppendingString:@"videoOutTempFile"]];
@@ -218,6 +214,7 @@ enum{
 						session.outputURL = outputURL;
 						session.outputFileType = AVFileTypeQuickTimeMovie;
                         [session exportAsynchronouslyWithCompletionHandler:^(void){
+                            [self dismissAlert];
                             self.fileType = @"mov";//change file type to quicktime movie
                             switch ([session status]) {
                                 case AVAssetExportSessionStatusFailed:
@@ -229,7 +226,7 @@ enum{
                                     break;
                                 default:{
                                     NSData *data = [NSData dataWithContentsOfURL:outputURL];
-                                    if (data.length/1048576 > 10) {
+                                    if (data.length/1024.0/1024.0 > 10) {
                                         NSLog(@"Too large");
                                         //too large
                                         [self showAlert:@"File is too large" withButton:YES];
@@ -248,7 +245,17 @@ enum{
 						 }];
 					}
 				}];
-			}
+			}//video
+            else if ([provider hasItemConformingToTypeIdentifier:(NSString *)kUTTypeVideo] || [provider hasItemConformingToTypeIdentifier:(NSString *)kUTTypeMovie]) {
+                [provider loadItemForTypeIdentifier:(NSString *)kUTTypeMovie options:nil completionHandler:^(NSData *item, NSError *error) {
+                    self.video = item;
+                    self.type = video;
+                    NSLog(@"Get video: %luMB", item.length/1048576);
+                }];
+                [provider loadItemForTypeIdentifier:(NSString *)kUTTypeMovie options:nil completionHandler:^(NSURL *url, NSError *error) {
+                    [self getFileNameAndTypeFromURL:url];
+                }];
+            }
 			
 			//audio
 			if ([provider hasItemConformingToTypeIdentifier:(NSString *)kUTTypeAudio]) {
@@ -265,7 +272,7 @@ enum{
 						[converter convertWithDelegate:self
 												 Input:tempPath
 												Output:[NSTemporaryDirectory() stringByAppendingString:@"output.mp3"]];
-						
+                        self.fileType = @"mp3";
 						NSLog(@"Get audio: %ld bytes", item.length);
 					}
 					
@@ -274,15 +281,7 @@ enum{
                 
                 //file type and name
                 [provider loadItemForTypeIdentifier:(NSString *)kUTTypeVideo options:nil completionHandler:^(NSURL *url, NSError *error) {
-                    if (!error) {
-                        NSArray *arr = [url.absoluteString componentsSeparatedByString:@"/"];
-                        arr = [arr.lastObject componentsSeparatedByString:@"."];
-                        self.placeholder = [arr.firstObject stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-                        self.fileName = self.placeholder;
-                        if (arr.count > 1) {
-                            self.fileType = arr.lastObject;
-                        }
-                    }
+                    [self getFileNameAndTypeFromURL:url];
                 }];
 			}
 			
@@ -298,26 +297,15 @@ enum{
                     self.file = [NSData dataWithContentsOfURL:url];
                     
                     //file type and name
-					NSArray *arr = [url.absoluteString componentsSeparatedByString:@"/"];
-					arr = [arr.lastObject componentsSeparatedByString:@"."];
-					self.placeholder = [arr.firstObject stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-                    if (arr.count > 1) {
-                        self.fileType = arr.lastObject;
-                    }
+                    [self getFileNameAndTypeFromURL:url];
 					
                     NSLog(@"Get file: %@", item);
 				}];
 			}
-			
-			//validate
-			[self validateContent];
 		}
 	}
 	
 	[self validateContent];
-	
-	// Register your app
-	[WXApi registerApp:@"wx166b37c35f3f6d9a" withDescription:@"Shareability"];
 }
 
 - (void)didSelectPost {
@@ -364,7 +352,7 @@ enum{
 		
 	}else if (self.type == audio){
 		WXFileObject *ext = [WXFileObject object];
-		ext.fileExtension = @"mp3";
+		ext.fileExtension = self.fileType;
 		ext.fileData = self.audio;
 		//thumb
 		if (!message.thumbData) {
@@ -448,23 +436,6 @@ enum{
 	
 }
 
-- (UIImage *)getImageFromSubviews:(UIView *)view{
-    UIImage *img;
-    for (UIView *subView in view.subviews) {
-        if ([subView isMemberOfClass:[UIImageView class]]) {
-            if (subView.frame.size.height > 10 && subView.frame.size.width > 10) {
-                img = [(UIImageView *)subView image];
-            }
-        }else if (subView.subviews){
-            img = [self getImageFromSubviews:subView];
-        }
-        if (img) {
-            return img;
-        }
-    }
-    return nil;
-}
-
 
 - (NSArray *)configurationItems{
 
@@ -498,6 +469,35 @@ enum{
 	self.selected.value = array[1];
 	[self popConfigurationViewController];
 
+}
+
+#pragma mark - Helper
+- (void)getFileNameAndTypeFromURL:(NSURL *)url{
+    if (url) {
+        
+        NSArray *arr = [url.absoluteString componentsSeparatedByString:@"/"];
+        arr = [arr.lastObject componentsSeparatedByString:@"."];
+        self.placeholder = [arr.firstObject stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        self.fileName = self.placeholder;
+        if (arr.count > 1) {
+            self.fileType = arr.lastObject;
+        }
+    }
+}
+
+
+
+- (UIImage *)getImageFromSubviews:(UIView *)view{
+    for (UIView *subView in view.subviews) {
+        if ([subView isMemberOfClass:[UIImageView class]]) {
+            if (subView.frame.size.height > 10 && subView.frame.size.width > 10) {
+                return [(UIImageView *)subView image];
+            }
+        }else if (subView.subviews){
+            return [self getImageFromSubviews:subView];
+        }
+    }
+    return nil;
 }
 
 
@@ -542,7 +542,17 @@ enum{
 			UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
 			[_alert addAction:action];
 		}
-		[self presentViewController:_alert animated:YES completion:nil];
+        [self presentViewController:_alert animated:YES completion:^{
+            if (!show) {
+                //if not showing button, dismiss it after 60s
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(60 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    if (_alert) {
+                        [self dismissAlert];
+                        [self showAlert:@"Error occurred" withButton:YES];
+                    }
+                });
+            }
+        }];
 	});
 }
 

@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Wechat/ShareViewController.m"
-            timestampString = "436838955.061274"
+            timestampString = "436861507.416767"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "330"
-            endingLineNumber = "330"
+            startingLineNumber = "407"
+            endingLineNumber = "407"
             landmarkName = "-didSelectPost"
             landmarkType = "5">
          </BreakpointContent>
@@ -58,28 +58,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Wechat/ShareViewController.m"
-            timestampString = "436839310.665446"
+            timestampString = "436860279.937003"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "301"
-            endingLineNumber = "301"
-            landmarkName = "-didSelectPost"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Wechat/ShareViewController.m"
-            timestampString = "436839390.698446"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "411"
-            endingLineNumber = "411"
-            landmarkName = "-getImageFromSubviews:"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
+            landmarkName = "-isContentValid"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
