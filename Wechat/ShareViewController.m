@@ -43,6 +43,9 @@ enum{
 @property (nonatomic) SLComposeSheetConfigurationItem *selected;
 @property (nonatomic) NSInteger type;
 @property (nonatomic) UIAlertController *alert;
+@property (nonatomic) NSString *fileType;
+@property (nonatomic) NSString *fileName;
+@property (nonatomic) NSString *messageTitle;
 
 @property (nonatomic) NSUserDefaults *sharedDefaults;
 @end
@@ -124,7 +127,7 @@ enum{
 - (void)presentationAnimationDidFinish{
 	
 	//get the context title first, as it will be changed by user
-	self.title = self.contentText;
+	self.title = @"WeChat Share";
 	
 	for (NSExtensionItem *item in self.extensionContext.inputItems) {
 		NSLog(@"checking for input item: %@", item);
@@ -134,6 +137,7 @@ enum{
 			//website
 			if ([provider hasItemConformingToTypeIdentifier:( NSString *)kUTTypeURL]) {
 				[provider loadItemForTypeIdentifier:( NSString *)kUTTypeURL options:nil completionHandler:^(NSURL *url, NSError *error) {
+                    self.messageTitle = self.contentText;
 					self.url = url;
 					if (item.attachments.count == 1) {
 						self.type = website;
@@ -159,8 +163,20 @@ enum{
 						NSLog(@"Get image");
 						self.type = image;
 					}
-					
+                    
 				}];
+                [provider loadItemForTypeIdentifier:(NSString *)kUTTypeImage options:nil completionHandler:^(NSURL *url, NSError *error) {
+                    if (!error) {
+                        //file type and name
+                        NSArray *arr = [url.absoluteString componentsSeparatedByString:@"/"];
+                        arr = [arr.lastObject componentsSeparatedByString:@"."];
+                        self.placeholder = [arr.firstObject stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+                        self.fileName = self.placeholder;
+                        if (arr.count > 1) {
+                            self.fileType = arr.lastObject;
+                        }
+                    }
+                }];
 			}
 			
 			//text
@@ -174,18 +190,25 @@ enum{
 			
 			//video
 			if ([provider hasItemConformingToTypeIdentifier:(NSString *)kUTTypeVideo] || [provider hasItemConformingToTypeIdentifier:(NSString *)kUTTypeMovie]) {
-				[provider loadItemForTypeIdentifier:(NSString *)kUTTypeVideo options:nil completionHandler:^(NSData *item, NSError *error) {
-					self.video = item;
+				[provider loadItemForTypeIdentifier:(NSString *)kUTTypeVideo options:nil completionHandler:^(NSURL *url, NSError *error) {
+                    NSData *data = [NSData dataWithContentsOfFile:url.absoluteString];
+					self.video = data;
 					self.type = video;
+                    //file type and name
+                    NSArray *arr = [url.absoluteString componentsSeparatedByString:@"/"];
+                    arr = [arr.lastObject componentsSeparatedByString:@"."];
+                    self.placeholder = [arr.firstObject stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+                    self.fileName = self.placeholder;
+                    if (arr.count > 1) {
+                        self.fileType = arr.lastObject;
+                    }
+                    
 					[self validateContent];
-					NSLog(@"Get movie: %luMB", item.length/1048576);
+					NSLog(@"Get movie: %luMB", data.length/1048576);
 					
 					if (self.video.length/1048576 > 10 && self.isContentValid) {
                         [self showAlert:@"Processing video" withButton:NO];
-						//resize
-						NSString *path = [NSTemporaryDirectory() stringByAppendingString:@"videoTempFile.mov"];
-						NSParameterAssert([item writeToFile:path atomically:NO]);
-						AVURLAsset *urlAsset = [AVURLAsset URLAssetWithURL:[NSURL fileURLWithPath:path] options:nil];
+						AVURLAsset *urlAsset = [AVURLAsset URLAssetWithURL:[NSURL fileURLWithPath:url.absoluteString] options:nil];
 						AVAssetExportSession *session = [[AVAssetExportSession alloc] initWithAsset:urlAsset presetName:AVAssetExportPreset640x480];
 						
 						//output
@@ -194,35 +217,34 @@ enum{
 						[fileManager removeItemAtURL:outputURL error:NULL];
 						session.outputURL = outputURL;
 						session.outputFileType = AVFileTypeQuickTimeMovie;
-						[session exportAsynchronouslyWithCompletionHandler:^(void){
-							
-							 switch ([session status]) {
-								 case AVAssetExportSessionStatusFailed:
-									 NSLog(@"Failed with error: %@", session.error.description);
-                                     [self showAlert:@"Failed processing video" withButton:YES];
-									 break;
-								 case AVAssetExportSessionStatusCancelled:
-									 NSLog(@"User cancelled");
-									 break;
-								 default:{
-									 NSData *data = [NSData dataWithContentsOfURL:outputURL];
-									 if (data.length/1048576 > 10) {
-										 NSLog(@"Too large");
-										 //too large
-                                         [self showAlert:@"File is too large" withButton:YES];
-									 }else{
-										 NSLog(@"Finished");
-									 }
-									 self.video = data;
-								 }
-									 break;
-							 }
-							
-							//delete file
-							NSFileManager *fileManager = [NSFileManager defaultManager];
-							[fileManager removeItemAtPath:path error:NULL];
-							[fileManager removeItemAtURL:outputURL error:NULL];
-							
+                        [session exportAsynchronouslyWithCompletionHandler:^(void){
+                            self.fileType = @"mov";//change file type to quicktime movie
+                            switch ([session status]) {
+                                case AVAssetExportSessionStatusFailed:
+                                    NSLog(@"Failed with error: %@", session.error.description);
+                                    [self showAlert:@"Failed processing video" withButton:YES];
+                                    break;
+                                case AVAssetExportSessionStatusCancelled:
+                                    NSLog(@"User cancelled");
+                                    break;
+                                default:{
+                                    NSData *data = [NSData dataWithContentsOfURL:outputURL];
+                                    if (data.length/1048576 > 10) {
+                                        NSLog(@"Too large");
+                                        //too large
+                                        [self showAlert:@"File is too large" withButton:YES];
+                                    }else{
+                                        NSLog(@"Finished");
+                                    }
+                                    self.video = data;
+                                }
+                                    break;
+                            }
+                            
+                            //delete file
+                            NSFileManager *fileManager = [NSFileManager defaultManager];
+                            [fileManager removeItemAtURL:outputURL error:NULL];
+                            
 						 }];
 					}
 				}];
@@ -249,6 +271,19 @@ enum{
 					
 
 				}];
+                
+                //file type and name
+                [provider loadItemForTypeIdentifier:(NSString *)kUTTypeVideo options:nil completionHandler:^(NSURL *url, NSError *error) {
+                    if (!error) {
+                        NSArray *arr = [url.absoluteString componentsSeparatedByString:@"/"];
+                        arr = [arr.lastObject componentsSeparatedByString:@"."];
+                        self.placeholder = [arr.firstObject stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+                        self.fileName = self.placeholder;
+                        if (arr.count > 1) {
+                            self.fileType = arr.lastObject;
+                        }
+                    }
+                }];
 			}
 			
 			//file
@@ -261,9 +296,14 @@ enum{
                     }
                     
                     self.file = [NSData dataWithContentsOfURL:url];
-					NSArray *arr = [url.absoluteString componentsSeparatedByString:@"."];
-					arr = [arr[arr.count - 2] componentsSeparatedByString:@"/"];
-					self.title = [arr.lastObject stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+                    
+                    //file type and name
+					NSArray *arr = [url.absoluteString componentsSeparatedByString:@"/"];
+					arr = [arr.lastObject componentsSeparatedByString:@"."];
+					self.placeholder = [arr.firstObject stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+                    if (arr.count > 1) {
+                        self.fileType = arr.lastObject;
+                    }
 					
                     NSLog(@"Get file: %@", item);
 				}];
@@ -290,8 +330,8 @@ enum{
     //send msg
 	//conversation
 	WXMediaMessage *message = [WXMediaMessage message];
-	message.title = self.title;
-	message.description = [self.contentText stringByAppendingString:@"\n(from Shareability)"];
+	message.title = self.messageTitle;
+	message.description = [self.contentText stringByAppendingString:@"\n (WeChat Share)"];
 	
 	//get image
 	if (!self.image) {
@@ -317,8 +357,9 @@ enum{
 	//media
 	if (self.type == video){
 		WXFileObject *ext = [WXFileObject object];
-		ext.fileExtension = @"mov";
+		ext.fileExtension = self.fileType;
 		ext.fileData = self.video;
+        message.title = nil;
 		message.mediaObject = ext;
 		
 	}else if (self.type == audio){
@@ -329,11 +370,13 @@ enum{
 		if (!message.thumbData) {
 			[message setThumbImage:[UIImage imageNamed:@"MusicNotes"]];
 		}
+        message.title = nil;
 		message.mediaObject = ext;
 	}else if (self.type == file){
 		WXFileObject *file = [WXFileObject object];
 		file.fileExtension = nil;
 		file.fileData = self.file;
+        message.title = self.fileName;
 		message.mediaObject = file;
 	}else if (self.type == emotion){
 		//GIF
@@ -345,11 +388,13 @@ enum{
 		WXImageObject *ext = [WXImageObject object];
 		UIImage *img = [self imageWithImage:self.image scaledToSize:CGSizeMake(2000, 2000)];
 		ext.imageData = UIImageJPEGRepresentation(img, 0.7);
+        message.title = self.fileName;
 		message.mediaObject = ext;
 		
 	}else if (self.type == website) {
 		WXWebpageObject *ext = [WXWebpageObject object];
 		ext.webpageUrl = self.url.absoluteString;
+        message.title = self.messageTitle;
 		message.mediaObject = ext;
 	}else if(self.type == text){
 		req.message = nil;
