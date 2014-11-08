@@ -31,7 +31,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "9B87B69919E8E7A100F1C01C"
                BuildableName = "Shareability.app"
-               BlueprintName = "Wechat Share"
+               BlueprintName = "WeChat Share"
                ReferencedContainer = "container:Wechat Share.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -49,7 +49,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9B87B69919E8E7A100F1C01C"
             BuildableName = "Shareability.app"
-            BlueprintName = "Wechat Share"
+            BlueprintName = "WeChat Share"
             ReferencedContainer = "container:Wechat Share.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -64,21 +64,21 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
-      <IDERemoteRunnable
-         RemotePath = "/Applications/VoiceMemos.app"
-         BundleIdentifier = "/Applications/VoiceMemos.app">
-      </IDERemoteRunnable>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9B87B69919E8E7A100F1C01C"
             BuildableName = "Shareability.app"
-            BlueprintName = "Wechat Share"
+            BlueprintName = "WeChat Share"
             ReferencedContainer = "container:Wechat Share.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
+      <IDERemoteRunnable
+         RemotePath = "/Applications/VoiceMemos.app"
+         BundleIdentifier = "/Applications/VoiceMemos.app">
+      </IDERemoteRunnable>
       <IDERemoteRunnable
          RemotePath = "/Applications/MobileSafari.app"
          BundleIdentifier = "/Applications/MobileSafari.app">
@@ -100,7 +100,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9B87B69919E8E7A100F1C01C"
             BuildableName = "Shareability.app"
-            BlueprintName = "Wechat Share"
+            BlueprintName = "WeChat Share"
             ReferencedContainer = "container:Wechat Share.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

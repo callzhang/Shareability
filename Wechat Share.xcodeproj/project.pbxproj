@@ -417,9 +417,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9B87B69919E8E7A100F1C01C /* Wechat Share */ = {
+		9B87B69919E8E7A100F1C01C /* WeChat Share */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9B87B6BD19E8E7A100F1C01C /* Build configuration list for PBXNativeTarget "Wechat Share" */;
+			buildConfigurationList = 9B87B6BD19E8E7A100F1C01C /* Build configuration list for PBXNativeTarget "WeChat Share" */;
 			buildPhases = (
 				9B87B69619E8E7A100F1C01C /* Sources */,
 				9B87B69719E8E7A100F1C01C /* Frameworks */,
@@ -432,7 +432,7 @@
 				9B87B6D119E8EF7900F1C01C /* PBXTargetDependency */,
 				9B87B6D419E8EF7900F1C01C /* PBXTargetDependency */,
 			);
-			name = "Wechat Share";
+			name = "WeChat Share";
 			productName = Shareability;
 			productReference = 9B87B69A19E8E7A100F1C01C /* Shareability.app */;
 			productType = "com.apple.product-type.application";
@@ -496,7 +496,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9B87B69919E8E7A100F1C01C /* Wechat Share */,
+				9B87B69919E8E7A100F1C01C /* WeChat Share */,
 				9B87B6C619E8EF7900F1C01C /* Wechat */,
 			);
 		};
@@ -678,8 +678,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -704,8 +704,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = Shareability.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				HEADER_SEARCH_PATHS = (
 					"\"${PODS_ROOT}/Headers/Public\"",
 					"\"${PODS_ROOT}/Headers/Public/JGProgressHUD\"",
@@ -729,8 +727,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = Shareability.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				HEADER_SEARCH_PATHS = (
 					"\"${PODS_ROOT}/Headers/Public\"",
 					"\"${PODS_ROOT}/Headers/Public/JGProgressHUD\"",
@@ -818,7 +814,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9B87B6BD19E8E7A100F1C01C /* Build configuration list for PBXNativeTarget "Wechat Share" */ = {
+		9B87B6BD19E8E7A100F1C01C /* Build configuration list for PBXNativeTarget "WeChat Share" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9B87B6BE19E8E7A100F1C01C /* Debug */,
