@@ -51,7 +51,6 @@
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
-
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
@@ -64,7 +63,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "411"
             endingLineNumber = "411"
-            landmarkName = "-getImageFromSubviews:"
+            landmarkName = "-didSelectPost"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
