@@ -118,7 +118,7 @@ enum{
 		if ([self.sharedDefaults objectForKey:trailLeft]) {
 			NSInteger trails = [self.sharedDefaults integerForKey:trailLeft];
 			if (trails > 0) {
-				NSLog(@"Trail left: %ld", trails);
+				NSLog(@"Trail left: %ld", (long)trails);
 			}else{
 				trailValid = NO;
 				
@@ -323,7 +323,7 @@ enum{
 	
 	//get image
 	if (!self.image) {
-		self.image = [self getImageFromSubviews:self.view];
+		self.image = [self getImageFromView:self.view];
 	}
 	//thumbnail
 	if (self.image) {
@@ -487,14 +487,18 @@ enum{
 
 
 
-- (UIImage *)getImageFromSubviews:(UIView *)view{
+- (UIImage *)getImageFromView:(UIView *)view{
+	
     for (UIView *subView in view.subviews) {
-        if ([subView isMemberOfClass:[UIImageView class]]) {
-            if (subView.frame.size.height > 10 && subView.frame.size.width > 10) {
+        if ([subView isKindOfClass:[UIImageView class]]) {
+            if (subView.frame.size.height > 50 && subView.frame.size.width > 50) {
                 return [(UIImageView *)subView image];
             }
         }else if (subView.subviews){
-            return [self getImageFromSubviews:subView];
+            UIImage *image = [self getImageFromView:subView];
+			if (image) {
+				return image;
+			}
         }
     }
     return nil;
