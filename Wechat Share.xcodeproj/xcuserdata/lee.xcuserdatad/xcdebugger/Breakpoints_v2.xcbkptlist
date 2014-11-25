@@ -38,15 +38,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Wechat/ShareViewController.m"
-            timestampString = "436861507.416767"
+            timestampString = "438296217.172694"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "407"
-            endingLineNumber = "407"
+            startingLineNumber = "325"
+            endingLineNumber = "325"
             landmarkName = "-didSelectPost"
             landmarkType = "5">
          </BreakpointContent>
@@ -58,12 +58,34 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Wechat/ShareViewController.m"
-            timestampString = "436839390.698446"
+            timestampString = "438297810.608697"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "500"
+            endingLineNumber = "500"
+            landmarkName = "-getImageFromView:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Wechat/ShareViewController.m"
+            timestampString = "438297812.326289"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+<<<<<<< HEAD
             startingLineNumber = "411"
             endingLineNumber = "411"
             landmarkName = "-didSelectPost"
+=======
+            startingLineNumber = "495"
+            endingLineNumber = "495"
+            landmarkName = "-getImageFromView:"
+>>>>>>> FETCH_HEAD
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
