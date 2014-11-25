@@ -72,7 +72,7 @@ enum{
 	BOOL sizeValid = YES;
 	BOOL trailValid = YES;
     if (![WXApi isWXAppSupportApi]) {
-        [self showAlert:@"Please install WeChat first!" withButton:YES];
+        [self showAlert:@"Please register a WeChat account before using it." withButton:YES];
         return NO;
     }
     
