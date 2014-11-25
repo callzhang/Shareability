@@ -538,7 +538,13 @@ enum{
 - (void)showAlert:(NSString *)alert withButton:(BOOL)show{
 	dispatch_async(dispatch_get_main_queue(), ^{
 		if (_alert) {
-			[self dismissAlert];
+            if([_alert.message isEqualToString:alert]){
+                //do nothing
+                return;
+            }else{
+                [self dismissAlert];
+            }
+			
 		}
 		NSLog(@"Alert: %@", alert);
 		_alert = [UIAlertController alertControllerWithTitle:@"Wechat Share" message:alert preferredStyle:UIAlertControllerStyleAlert];
