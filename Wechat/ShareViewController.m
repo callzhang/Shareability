@@ -17,7 +17,7 @@
 #import "TPAACAudioConverter.h"
 
 NSString *const unlockID = @"com.wokealarm.Shareability.unlock";
-NSString *const trailLeft = @"trail_left";
+NSString *const trialLeft = @"trail_left";
 NSString *const groupID = @"group.Shareability";
 
 enum{
@@ -72,7 +72,7 @@ enum{
 	BOOL sizeValid = YES;
 	BOOL trailValid = YES;
     if (![WXApi isWXAppSupportApi]) {
-        [self showAlert:@"Please register a WeChat account before using it." withButton:YES];
+        [self showAlert:@"Please register a WeChat account first." withButton:YES];
         return NO;
     }
     
@@ -115,8 +115,8 @@ enum{
 	//trial
 	if (![self.sharedDefaults boolForKey:unlockID]) {
 		//not purchased
-		if ([self.sharedDefaults objectForKey:trailLeft]) {
-			NSInteger trails = [self.sharedDefaults integerForKey:trailLeft];
+		if ([self.sharedDefaults objectForKey:trialLeft]) {
+			NSInteger trails = [self.sharedDefaults integerForKey:trialLeft];
 			if (trails > 0) {
 				NSLog(@"Trail left: %ld", (long)trails);
 			}else{
@@ -126,7 +126,7 @@ enum{
 			}
 		}else{
 			NSLog(@"First time trail");
-			[self.sharedDefaults setInteger:10 forKey:trailLeft];
+			[self.sharedDefaults setInteger:10 forKey:trialLeft];
 			[self.sharedDefaults synchronize];
 			[self showAlert:@"Thank you for using WeChat Share. You have 10 trails now." withButton:YES];
 		}
@@ -415,8 +415,8 @@ enum{
 	if (![WXApi sendReq:req]){
 		NSLog(@"Failed to send request");
 	}else{
-		NSInteger trails = [self.sharedDefaults integerForKey:trailLeft];
-		[self.sharedDefaults setInteger:--trails forKey:trailLeft];
+		NSInteger trails = [self.sharedDefaults integerForKey:trialLeft];
+		[self.sharedDefaults setInteger:--trails forKey:trialLeft];
 		[self.sharedDefaults synchronize];
 	}
 	

@@ -12,7 +12,7 @@
 #import "JGProgressHUDErrorIndicatorView.h"
 NSString *const unlockID = @"com.wokealarm.Shareability.unlock";
 NSString *const groupID = @"group.Shareability";
-NSString *const trailLeft = @"trail_left";
+NSString *const trialLeft = @"trial_left";
 
 @interface UnlockViewController()
 @property (nonatomic) NSUserDefaults *sharedDefaults;
@@ -79,11 +79,11 @@ NSString *const trailLeft = @"trail_left";
 		self.buy.hidden = NO;
 		self.restore.hidden = NO;
 		self.unlockInfo.hidden = NO;
-		if ([self.sharedDefaults objectForKey:trailLeft] == nil) {
-			[self.sharedDefaults setObject:@10 forKey:trailLeft];
+		if ([self.sharedDefaults objectForKey:trialLeft] == nil) {
+			[self.sharedDefaults setObject:@10 forKey:trialLeft];
 		}
-		NSInteger n = [self.sharedDefaults integerForKey:trailLeft];
-		self.unlockInfo.text = [NSString stringWithFormat:@"Trail left: %ld", n];
+		NSInteger n = [self.sharedDefaults integerForKey:trialLeft];
+		self.unlockInfo.text = [NSString stringWithFormat:@"Trial left: %ld", n];
     }
 }
 
