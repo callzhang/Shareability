@@ -83,7 +83,7 @@ NSString *const trialLeft = @"trial_left";
 			[self.sharedDefaults setObject:@10 forKey:trialLeft];
 		}
 		NSInteger n = [self.sharedDefaults integerForKey:trialLeft];
-		self.unlockInfo.text = [NSString stringWithFormat:@"Trial left: %ld", n];
+		self.unlockInfo.text = [NSString stringWithFormat:@"Wechat shares left: %ld", n];
     }
 }
 

@@ -128,7 +128,7 @@ enum{
 			NSLog(@"First time trail");
 			[self.sharedDefaults setInteger:10 forKey:trialLeft];
 			[self.sharedDefaults synchronize];
-			[self showAlert:@"Thank you for using WeChat Share. You have 10 trails now." withButton:YES];
+			[self showAlert:@"Thank you for using WeChat Share. You have 10 shares now." withButton:YES];
 		}
 	}
 	
