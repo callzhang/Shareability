@@ -60,11 +60,11 @@
     self.pager.currentPage = slideShow.currentIndex;
     switch (slideShow.currentIndex) {
         case 0:
-            self.tutorial.text = @"Start using Shareability from the share section of your favorate apps by click the \"Share\" button";
+            self.tutorial.text = @"Start using WeChat Share from the share section of your favorate apps by click the \"Share\" button";
             break;
             
         case 1:
-            self.tutorial.text = @"Select the \"Wechat\" extension";
+            self.tutorial.text = @"Select the \"WeChat\" extension";
             break;
         case 2:
             self.tutorial.text = @"Add optional description";

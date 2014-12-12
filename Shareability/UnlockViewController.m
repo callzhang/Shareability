@@ -36,7 +36,6 @@ NSString *const trialLeft = @"trial_left";
 	}else{
 		[self transactionDidFinishWithSuccess:NO];
 	}
-	
 }
 
 - (void)didReceiveMemoryWarning {
@@ -58,12 +57,7 @@ NSString *const trialLeft = @"trial_left";
     NSLog(@"Provide content for %@", productIdentifier);
 	[self.sharedDefaults setBool:YES forKey:productIdentifier];
     [self.sharedDefaults synchronize];
-    
 }
-
-
-
-
 
 
 #pragma mark - UIDelegate
@@ -83,7 +77,7 @@ NSString *const trialLeft = @"trial_left";
 			[self.sharedDefaults setObject:@10 forKey:trialLeft];
 		}
 		NSInteger n = [self.sharedDefaults integerForKey:trialLeft];
-		self.unlockInfo.text = [NSString stringWithFormat:@"Trial left: %ld", n];
+		self.unlockInfo.text = [NSString stringWithFormat:@"Trial left: %ld", (long)n];
     }
 }
 

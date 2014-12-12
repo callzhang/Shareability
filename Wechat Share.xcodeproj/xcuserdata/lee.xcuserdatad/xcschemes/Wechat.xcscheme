@@ -16,8 +16,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "9B87B6C619E8EF7900F1C01C"
-               BuildableName = "Wechat.appex"
-               BlueprintName = "Wechat"
+               BuildableName = "WeChat.appex"
+               BlueprintName = "WeChat"
                ReferencedContainer = "container:Wechat Share.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
