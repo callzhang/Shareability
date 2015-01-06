@@ -69,15 +69,15 @@ NSString *const trialLeft = @"trial_left";
 		self.restore.hidden = YES;
 		self.unlockInfo.hidden = YES;
 	}else{
-		self.detail.text = @"Unlock all features";
+		self.detail.text = @"";
 		self.buy.hidden = NO;
 		self.restore.hidden = NO;
 		self.unlockInfo.hidden = NO;
-		if ([self.sharedDefaults objectForKey:trialLeft] == nil) {
-			[self.sharedDefaults setObject:@10 forKey:trialLeft];
-		}
-		NSInteger n = [self.sharedDefaults integerForKey:trialLeft];
-		self.unlockInfo.text = [NSString stringWithFormat:@"Trial left: %ld", (long)n];
+//		if ([self.sharedDefaults objectForKey:trialLeft] == nil) {
+//			[self.sharedDefaults setObject:@10 forKey:trialLeft];
+//		}
+//		NSInteger n = [self.sharedDefaults integerForKey:trialLeft];
+//	self.unlockInfo.text = [NSString stringWithFormat:@"Wechat shares left: %ld", (long)n];
     }
 }
 

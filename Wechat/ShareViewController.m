@@ -113,24 +113,24 @@ enum{
 	}
 	
 	//trial
-	if (![self.sharedDefaults boolForKey:unlockID]) {
-		//not purchased
-		if ([self.sharedDefaults objectForKey:trialLeft]) {
-			NSInteger trails = [self.sharedDefaults integerForKey:trialLeft];
-			if (trails > 0) {
-				NSLog(@"Trail left: %ld", (long)trails);
-			}else{
-				trailValid = NO;
-				
-				[self showAlert:@"Thank you for using WeChat Share. You can now unlock all features in the main app now." withButton:YES];
-			}
-		}else{
-			NSLog(@"First time trail");
-			[self.sharedDefaults setInteger:10 forKey:trialLeft];
-			[self.sharedDefaults synchronize];
-			[self showAlert:@"Thank you for using WeChat Share. You have 10 trails now." withButton:YES];
-		}
-	}
+//	if (![self.sharedDefaults boolForKey:unlockID]) {
+//		//not purchased
+//		if ([self.sharedDefaults objectForKey:trialLeft]) {
+//			NSInteger trails = [self.sharedDefaults integerForKey:trialLeft];
+//			if (trails > 0) {
+//				NSLog(@"Trail left: %ld", (long)trails);
+//			}else{
+//				trailValid = NO;
+//				
+//				[self showAlert:@"Thank you for using WeChat Share. You can now unlock all features in the main app now." withButton:YES];
+//			}
+//		}else{
+//			NSLog(@"First time trail");
+//			[self.sharedDefaults setInteger:10 forKey:trialLeft];
+//			[self.sharedDefaults synchronize];
+//			[self showAlert:@"Thank you for using WeChat Share. You have 10 shares now." withButton:YES];
+//		}
+//	}
 	
 	
 	
@@ -415,9 +415,9 @@ enum{
 	if (![WXApi sendReq:req]){
 		NSLog(@"Failed to send request");
 	}else{
-		NSInteger trails = [self.sharedDefaults integerForKey:trialLeft];
-		[self.sharedDefaults setInteger:--trails forKey:trialLeft];
-		[self.sharedDefaults synchronize];
+//		NSInteger trails = [self.sharedDefaults integerForKey:trialLeft];
+//		[self.sharedDefaults setInteger:--trails forKey:trialLeft];
+//		[self.sharedDefaults synchronize];
 	}
 	
 	
@@ -538,7 +538,13 @@ enum{
 - (void)showAlert:(NSString *)alert withButton:(BOOL)show{
 	dispatch_async(dispatch_get_main_queue(), ^{
 		if (_alert) {
-			[self dismissAlert];
+            if([_alert.message isEqualToString:alert]){
+                //do nothing
+                return;
+            }else{
+                [self dismissAlert];
+            }
+			
 		}
 		NSLog(@"Alert: %@", alert);
 		_alert = [UIAlertController alertControllerWithTitle:@"Wechat Share" message:alert preferredStyle:UIAlertControllerStyleAlert];
