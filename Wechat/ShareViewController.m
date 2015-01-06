@@ -290,6 +290,7 @@ enum{
 				[provider loadItemForTypeIdentifier:(NSString *)kUTTypeFileURL options:nil completionHandler:^(NSURL *url, NSError *error) {
                     if (_audio || _video || _text || _emotion || _url || _text) {
                         NSLog(@"More than one attachment found, skip assign type to file");
+						return;
                     }else{
                         self.type = file;
                     }
@@ -415,9 +416,9 @@ enum{
 	if (![WXApi sendReq:req]){
 		NSLog(@"Failed to send request");
 	}else{
-//		NSInteger trails = [self.sharedDefaults integerForKey:trialLeft];
-//		[self.sharedDefaults setInteger:--trails forKey:trialLeft];
-//		[self.sharedDefaults synchronize];
+		NSLog(@"Content sent");
+		//NSInteger trails = [self.sharedDefaults integerForKey:trialLeft];
+		//[self.sharedDefaults setInteger:--trails forKey:trialLeft];
 	}
 	
 	
@@ -579,6 +580,7 @@ enum{
 - (void)AACAudioConverterDidFinishConversion:(TPAACAudioConverter *)converter{
 	NSData *mp3 = [NSData dataWithContentsOfFile:converter.destination];
 	self.audio = mp3;
+	self.fileType = @"mp3";
 	[self dismissAlert];
 	NSLog(@"processing succeed");
 }
