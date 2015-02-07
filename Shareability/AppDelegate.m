@@ -11,6 +11,7 @@
 #import "WXApiObject.h"
 #import "SendMsgToWechatMgr.h"
 #import "ViewController.h"
+#import <Mixpanel.h>
 
 @interface AppDelegate ()
 @property (nonatomic) SendMsgToWechatMgr *WXManager;
@@ -20,11 +21,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
-    //self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    //UIViewController *controller = [[ViewController alloc] initWithNibName:nil bundle:nil];
-    //self.window.rootViewController = controller;
-    //[self.window makeKeyAndVisible];
+    [Mixpanel sharedInstanceWithToken:@"7f85199c8ee037135e84e015cedd5d61"];
     
     _WXManager = [[SendMsgToWechatMgr alloc] init];
     //_WXManager.viewController = controller;

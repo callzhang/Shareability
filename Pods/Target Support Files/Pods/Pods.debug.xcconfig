@@ -1,0 +1,7 @@
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/AFNetworking" "${PODS_ROOT}/Headers/Public/AnimatedGIFImageSerialization" "${PODS_ROOT}/Headers/Public/CargoBay" "${PODS_ROOT}/Headers/Public/JGProgressHUD" "${PODS_ROOT}/Headers/Public/KASlideShow" "${PODS_ROOT}/Headers/Public/Mixpanel"
+LIBRARY_SEARCH_PATHS = "$(PODS_ROOT)/Mixpanel/Mixpanel"
+OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/AFNetworking" -isystem "${PODS_ROOT}/Headers/Public/AnimatedGIFImageSerialization" -isystem "${PODS_ROOT}/Headers/Public/CargoBay" -isystem "${PODS_ROOT}/Headers/Public/JGProgressHUD" -isystem "${PODS_ROOT}/Headers/Public/KASlideShow" -isystem "${PODS_ROOT}/Headers/Public/Mixpanel"
+OTHER_LDFLAGS = -ObjC -l"MPCategoryHelpers" -l"Pods-AFNetworking" -l"Pods-AnimatedGIFImageSerialization" -l"Pods-CargoBay" -l"Pods-JGProgressHUD" -l"Pods-KASlideShow" -l"Pods-Mixpanel" -l"icucore" -framework "Accelerate" -framework "CoreGraphics" -framework "CoreTelephony" -framework "Foundation" -framework "ImageIO" -framework "MobileCoreServices" -framework "QuartzCore" -framework "Security" -framework "StoreKit" -framework "SystemConfiguration" -framework "UIKit"
+OTHER_LIBTOOLFLAGS = $(OTHER_LDFLAGS)
+PODS_ROOT = ${SRCROOT}/Pods

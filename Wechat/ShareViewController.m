@@ -10,11 +10,11 @@
 #import <MobileCoreServices/UTCoreTypes.h>
 #import "WXApi.h"
 #import "WXApiObject.h"
-#import "AnimatedGIFImageSerialization.h"
 #import <AVFoundation/AVFoundation.h>
 // standard includes
 #import <AudioToolbox/AudioToolbox.h>
 #import "TPAACAudioConverter.h"
+#import "AnimatedGIFImageSerialization.h"
 
 NSString *const unlockID = @"com.wokealarm.Shareability.unlock";
 NSString *const trialLeft = @"trail_left";
