@@ -33,6 +33,14 @@
 		9BDA98C019FA1CDE004240E6 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BDA98BF19FA1CDE004240E6 /* libWeChatSDK.a */; };
 		9BDA98C119FA1CDE004240E6 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BDA98BF19FA1CDE004240E6 /* libWeChatSDK.a */; };
 		9BDBA73E19EB976500EF194D /* SendMsgToWechatMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BDBA73D19EB976500EF194D /* SendMsgToWechatMgr.m */; };
+		ED0E63491C4E93F400ECE1A8 /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0E63481C4E93F400ECE1A8 /* ShareViewController.m */; };
+		ED0E634C1C4E93F400ECE1A8 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED0E634A1C4E93F400ECE1A8 /* MainInterface.storyboard */; };
+		ED0E63501C4E93F400ECE1A8 /* WxExpress.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = ED0E63451C4E93F400ECE1A8 /* WxExpress.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		ED4450C71C4E95BC002FCC38 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BDA98BF19FA1CDE004240E6 /* libWeChatSDK.a */; };
+		ED4450C81C4E95C1002FCC38 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8395B014236D0710CF7E05FD /* libPods.a */; settings = {ATTRIBUTES = (Weak, ); }; };
+		ED4450C91C4E95F7002FCC38 /* ConfigTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B89750419EF06D0004D75F3 /* ConfigTableViewController.m */; };
+		ED4450CA1C4E9642002FCC38 /* libmp3lame.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BB367C51A01887F00589D0E /* libmp3lame.a */; };
+		ED4450CB1C4E965E002FCC38 /* TPAACAudioConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB367C21A01887000589D0E /* TPAACAudioConverter.m */; };
 		F8251ADF44841E64753E1143 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8395B014236D0710CF7E05FD /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +59,13 @@
 			remoteGlobalIDString = 9B87B6C619E8EF7900F1C01C;
 			remoteInfo = Wechat;
 		};
+		ED0E634E1C4E93F400ECE1A8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9B87B69219E8E7A100F1C01C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ED0E63441C4E93F400ECE1A8;
+			remoteInfo = WxExpress;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -60,6 +75,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				ED0E63501C4E93F400ECE1A8 /* WxExpress.appex in Embed App Extensions */,
 				9B87B6D219E8EF7900F1C01C /* Wechat.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
@@ -109,6 +125,11 @@
 		9BDBA73D19EB976500EF194D /* SendMsgToWechatMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendMsgToWechatMgr.m; sourceTree = "<group>"; };
 		9BFBA9661A07E6B600E2B765 /* Shareability.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Shareability.entitlements; sourceTree = SOURCE_ROOT; };
 		A4BE8263B9C52DDD7B8F1372 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		ED0E63451C4E93F400ECE1A8 /* WxExpress.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WxExpress.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED0E63471C4E93F400ECE1A8 /* ShareViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShareViewController.h; sourceTree = "<group>"; };
+		ED0E63481C4E93F400ECE1A8 /* ShareViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShareViewController.m; sourceTree = "<group>"; };
+		ED0E634B1C4E93F400ECE1A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		ED0E634D1C4E93F400ECE1A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +153,16 @@
 				9B134FBF19FFEE7100A6FB32 /* AVFoundation.framework in Frameworks */,
 				9BDA98C119FA1CDE004240E6 /* libWeChatSDK.a in Frameworks */,
 				0BB486968F46E2F065359AA6 /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ED0E63421C4E93F400ECE1A8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED4450CA1C4E9642002FCC38 /* libmp3lame.a in Frameworks */,
+				ED4450C71C4E95BC002FCC38 /* libWeChatSDK.a in Frameworks */,
+				ED4450C81C4E95C1002FCC38 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,6 +203,7 @@
 			children = (
 				9B87B69C19E8E7A100F1C01C /* Shareability */,
 				9B87B6C819E8EF7900F1C01C /* Wechat */,
+				ED0E63461C4E93F400ECE1A8 /* WxExpress */,
 				9BB2A67019F977FB0025CC7A /* Frameworks */,
 				9B87B69B19E8E7A100F1C01C /* Products */,
 				9B1B255419FDB49100CC3037 /* Resources */,
@@ -184,6 +216,7 @@
 			children = (
 				9B87B69A19E8E7A100F1C01C /* Shareability.app */,
 				9B87B6C719E8EF7900F1C01C /* Wechat.appex */,
+				ED0E63451C4E93F400ECE1A8 /* WxExpress.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -273,6 +306,17 @@
 			path = SDKExport;
 			sourceTree = "<group>";
 		};
+		ED0E63461C4E93F400ECE1A8 /* WxExpress */ = {
+			isa = PBXGroup;
+			children = (
+				ED0E63471C4E93F400ECE1A8 /* ShareViewController.h */,
+				ED0E63481C4E93F400ECE1A8 /* ShareViewController.m */,
+				ED0E634A1C4E93F400ECE1A8 /* MainInterface.storyboard */,
+				ED0E634D1C4E93F400ECE1A8 /* Info.plist */,
+			);
+			path = WxExpress;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -292,6 +336,7 @@
 			dependencies = (
 				9B87B6D119E8EF7900F1C01C /* PBXTargetDependency */,
 				9B87B6D419E8EF7900F1C01C /* PBXTargetDependency */,
+				ED0E634F1C4E93F400ECE1A8 /* PBXTargetDependency */,
 			);
 			name = "WeChat Share";
 			productName = Shareability;
@@ -317,13 +362,30 @@
 			productReference = 9B87B6C719E8EF7900F1C01C /* Wechat.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		ED0E63441C4E93F400ECE1A8 /* WxExpress */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ED0E63511C4E93F400ECE1A8 /* Build configuration list for PBXNativeTarget "WxExpress" */;
+			buildPhases = (
+				ED0E63411C4E93F400ECE1A8 /* Sources */,
+				ED0E63421C4E93F400ECE1A8 /* Frameworks */,
+				ED0E63431C4E93F400ECE1A8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WxExpress;
+			productName = WxExpress;
+			productReference = ED0E63451C4E93F400ECE1A8 /* WxExpress.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		9B87B69219E8E7A100F1C01C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Black Frog";
 				TargetAttributes = {
 					9B87B69919E8E7A100F1C01C = {
@@ -344,6 +406,10 @@
 							};
 						};
 					};
+					ED0E63441C4E93F400ECE1A8 = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = SDR7T9YB58;
+					};
 				};
 			};
 			buildConfigurationList = 9B87B69519E8E7A100F1C01C /* Build configuration list for PBXProject "Wechat Share" */;
@@ -361,6 +427,7 @@
 			targets = (
 				9B87B69919E8E7A100F1C01C /* WeChat Share */,
 				9B87B6C619E8EF7900F1C01C /* Wechat */,
+				ED0E63441C4E93F400ECE1A8 /* WxExpress */,
 			);
 		};
 /* End PBXProject section */
@@ -385,6 +452,14 @@
 				9B6D1D1A1A0025EB009A1E18 /* MusicNotes@2x.png in Resources */,
 				9B87B6CF19E8EF7900F1C01C /* MainInterface.storyboard in Resources */,
 				9B6D1D191A0025EB009A1E18 /* MusicNotes.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ED0E63431C4E93F400ECE1A8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED0E634C1C4E93F400ECE1A8 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -477,6 +552,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		ED0E63411C4E93F400ECE1A8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED0E63491C4E93F400ECE1A8 /* ShareViewController.m in Sources */,
+				ED4450CB1C4E965E002FCC38 /* TPAACAudioConverter.m in Sources */,
+				ED4450C91C4E95F7002FCC38 /* ConfigTableViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -489,6 +574,11 @@
 			isa = PBXTargetDependency;
 			target = 9B87B6C619E8EF7900F1C01C /* Wechat */;
 			targetProxy = 9B87B6D319E8EF7900F1C01C /* PBXContainerItemProxy */;
+		};
+		ED0E634F1C4E93F400ECE1A8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ED0E63441C4E93F400ECE1A8 /* WxExpress */;
+			targetProxy = ED0E634E1C4E93F400ECE1A8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -517,6 +607,14 @@
 			name = LaunchScreen.xib;
 			sourceTree = "<group>";
 		};
+		ED0E634A1C4E93F400ECE1A8 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ED0E634B1C4E93F400ECE1A8 /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -541,6 +639,7 @@
 				CODE_SIGN_IDENTITY = "iOS Development: Derek Zhang (SRS98HY45T)";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -608,6 +707,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				HEADER_SEARCH_PATHS = (
 					"\"${PODS_ROOT}/Headers/Public\"",
 					"\"${PODS_ROOT}/Headers/Public/JGProgressHUD\"",
@@ -619,6 +719,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/SDKExport",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.wokealarm.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Shareability;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -633,6 +734,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				HEADER_SEARCH_PATHS = (
 					"\"${PODS_ROOT}/Headers/Public\"",
 					"\"${PODS_ROOT}/Headers/Public/JGProgressHUD\"",
@@ -644,6 +746,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/SDKExport",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.wokealarm.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Shareability;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -656,6 +759,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-wechat";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -672,7 +778,9 @@
 					"$(PROJECT_DIR)/SDKExport",
 					"$(PROJECT_DIR)/Wechat",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.wokealarm.Shareability.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -684,6 +792,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-wechat";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				HEADER_SEARCH_PATHS = (
 					"\"${PODS_ROOT}/Headers\"/**",
 					"$(BUILT_PRODUCTS_DIR)/**",
@@ -696,9 +807,58 @@
 					"$(PROJECT_DIR)/SDKExport",
 					"$(PROJECT_DIR)/Wechat",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.wokealarm.Shareability.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		ED0E63521C4E93F400ECE1A8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = WxExpress/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SDKExport",
+					"$(PROJECT_DIR)/Wechat",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.wokealarm.Shareability.WxExpress;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		ED0E63531C4E93F400ECE1A8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = WxExpress/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SDKExport",
+					"$(PROJECT_DIR)/Wechat",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.wokealarm.Shareability.WxExpress;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
@@ -728,6 +888,15 @@
 			buildConfigurations = (
 				9B87B6D619E8EF7900F1C01C /* Debug */,
 				9B87B6D719E8EF7900F1C01C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ED0E63511C4E93F400ECE1A8 /* Build configuration list for PBXNativeTarget "WxExpress" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ED0E63521C4E93F400ECE1A8 /* Debug */,
+				ED0E63531C4E93F400ECE1A8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
